@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-09-30T21:33:56+00:00",
+ "generated_at": "2026-09-30T21:36:18+00:00",
  "as_of": "2026-09-22",
- "contracts": [{"id": "c096742", "label": "British pound", "code": "096742"}, {"id": "c299741", "label": "Euro fx/british pound xrate", "code": "299741"}],
+ "contracts": [{"id": "c096742", "label": "GBP/USD (CME)", "code": "096742"}, {"id": "c299741", "label": "EUR/GBP cross (CME)", "code": "299741"}],
  "weekly": [
   {"date":"2018-01-02","c096742_lev":29699,"c096742_am":-34467,"c299741_lev":-4344,"c299741_am":17558},
   {"date":"2018-01-09","c096742_lev":35494,"c096742_am":-37302,"c299741_lev":-3677,"c299741_am":17910},
@@ -460,5 +460,5 @@
   {"date":"2026-09-15","c096742_lev":18878,"c096742_am":-89211,"c299741_lev":-422,"c299741_am":16671},
   {"date":"2026-09-22","c096742_lev":13239,"c096742_am":-115805,"c299741_lev":594,"c299741_am":16737}
  ],
- "latest": [{"id": "c096742", "label": "British pound", "code": "096742", "as_of": "2026-09-22", "lev_net": 13239, "am_net": -115805, "dealer_net": 108142, "oi": 244925, "lev_pct_oi": 5.41, "lev_change": -5639, "am_change": -26594, "lev_z": -1.21, "am_z": -1.38, "lev_pctile": 11}, {"id": "c299741", "label": "Euro fx/british pound xrate", "code": "299741", "as_of": "2026-09-22", "lev_net": 594, "am_net": 16737, "dealer_net": -23750, "oi": 40955, "lev_pct_oi": 1.45, "lev_change": 1016, "am_change": 66, "lev_z": 1.46, "am_z": 0.61, "lev_pctile": 97}]
+ "latest": [{"id": "c096742", "label": "GBP/USD (CME)", "code": "096742", "as_of": "2026-09-22", "lev_net": 13239, "am_net": -115805, "dealer_net": 108142, "oi": 244925, "lev_pct_oi": 5.41, "lev_change": -5639, "am_change": -26594, "lev_z": -1.21, "am_z": -1.38, "lev_pctile": 11}, {"id": "c299741", "label": "EUR/GBP cross (CME)", "code": "299741", "as_of": "2026-09-22", "lev_net": 594, "am_net": 16737, "dealer_net": -23750, "oi": 40955, "lev_pct_oi": 1.45, "lev_change": 1016, "am_change": 66, "lev_z": 1.46, "am_z": 0.61, "lev_pctile": 97}]
 }

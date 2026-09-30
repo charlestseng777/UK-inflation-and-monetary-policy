@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T21:40:08+00:00",
+  "generated_at": "2026-09-30T21:55:26+00:00",
   "latest_month": "2026-08",
   "latest": {
     "headline_cpi": 3.1,
@@ -7587,7 +7587,7 @@
       {
         "title": "Bank of England rate setters warn of 'sparks in the tinderbox'",
         "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5FcVl0V1FtOHU1M1duYWV4LTM5aVhMRV9RRHJXR1pqQ20yZ2NoTlJpaElKRFlxaHB3bVRtekJMWk1OZElSRjlSUHRUdlNQeW00U1d3MkgtRWw2UTFzV0RXWDk4Q1lfQW5uMUFzUDJaLUZvLTZSckF6VlJRdl9Gdw?oc=5",
-        "source": "AOL.ca",
+        "source": "aol.ca",
         "published": "2026-09-24T15:44:44+00:00"
       },
       {
@@ -7614,7 +7614,7 @@
         "title": "BOE’s Ramsden Sees Case for Raising Key Rate if Inflationary Pressures Build",
         "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRUdnZ0p6czNmbW0tWlhUS3NRbmt3RGlHVDRwT1Atd1dzdFdHdXNpaXlway1jbktpU0xzQWdOeVlWeEpibXQxekVMNTJDQlJhRFNuTi1aVUpjWU1yYjZqekYyYTJKajFGTEZ4aldaaWhJNmVzbGxoVGE2X1N1WXdjOHZ0OVZ3ZWFhdGczc21zOEUxQVQ2cFJUdk1LUE5PS29iTmRQYWpQZ3pPWGFTOEFCd2tqTGk4REcwdzlCNDNjRHJudw?oc=5",
         "source": "WSJ",
-        "published": "2026-09-30T20:17:57+00:00"
+        "published": "2026-09-30T21:47:57+00:00"
       },
       {
         "title": "BoE prepares quantitative tightening (QT), how's market responding?",
@@ -7721,7 +7721,7 @@
       {
         "title": "BoE's Breeden: 'Increasingly appropriate' for rates to respond to rising inflation",
         "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNX1M3dk9qdUdwMGpaNmlyZFdhQ0lVSnBiVVFxVlNIUGtwZlpLQ3p3cTlmc1NkTGpTaWZSMUphRlE0eXUyc0NpNWRKSUgyVDhUdWZYTFZnYUcxWEx5dUVpNHJrRm1aWEhCX0VsM0VleGpaYjRCdi03aG96UFVvdzBBX2VPeFJDZDJjTWVKRWVDVElaMlJyb1BET3dRSzE4UUMwVW5lOHNnSWkxV09Hb05n?oc=5",
-        "source": "Yahoo Finance",
+        "source": "finance.yahoo.com",
         "published": "2026-09-24T14:31:37+00:00"
       },
       {
@@ -8279,7 +8279,7 @@
     },
     "refinitiv:mpc_ois": {
       "ok": false,
-      "error": "no credentials configured"
+      "error": "https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400: {\"error\":\"access_denied\"  ,\"error_description\":\"Session quota is reached.\" } "
     },
     "cftc:sterling": {
       "ok": true

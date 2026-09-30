@@ -1,0 +1,7 @@
+{
+  "_comment": "Used only when Refinitiv credentials are set as repo secrets. MPC-dated SONIA OIS: M1 runs from the next MPC meeting to the one after, M2 the following period, and so on. Adjust the RICs if your entitlements use a different chain.",
+  "mpc_ois": [
+    "GBPMPCOISM1=", "GBPMPCOISM2=", "GBPMPCOISM3=", "GBPMPCOISM4=",
+    "GBPMPCOISM5=", "GBPMPCOISM6=", "GBPMPCOISM7=", "GBPMPCOISM8="
+  ]
+}

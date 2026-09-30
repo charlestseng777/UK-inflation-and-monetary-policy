@@ -14,13 +14,66 @@ import DrilldownPanel from './components/DrilldownPanel.jsx'
 import UpcomingReleasesCard from './components/UpcomingReleases.jsx'
 import LatestNewsCard from './components/MpcNews.jsx'
 import { nearestDecision } from './lib/mpcInsight.js'
+import { axisTickDay, bp, dayLong, dayShort, pct } from './lib/format.js'
+import SeriesChart from './components/SeriesChart.jsx'
+import DailyRangeSlider, { startIndexFor } from './components/DailyRangeSlider.jsx'
+import {
+  BREAKEVEN_SERIES, CONTRACT_COLORS, CURVE_SERIES, GILT_SERIES, GiltAuctionsTable, GiltSnapshot,
+  KpiCards, MpcOisTable, NotesCard, OIS_SERIES, OisCurveTable, PositioningTable, PRICED_SERIES,
+  RatesSourcesStatus, SPREAD_SERIES,
+} from './components/RatesExtras.jsx'
+import { PALETTE } from './lib/series.js'
 
 const DEFAULT_START = '2021-01'
 
 const TABS = [
   { id: 'overview', label: 'Macro Data' },
   { id: 'rates', label: 'Rates and Monetary Policy' },
+  { id: 'positioning', label: 'Positioning & flows' },
 ]
+
+const DAILY_FROM = '2021-01'
+const pctTick = (v) => `${v}%`
+const bpTick = (v) => `${v}bp`
+
+/** A [start, end] index window over a row array, defaulting to DAILY_FROM. */
+function useWindow(rows) {
+  const [range, setRange] = useState(null)
+  const effective = useMemo(() => {
+    if (range) return range
+    if (!rows.length) return [0, 0]
+    return [startIndexFor(rows, DAILY_FROM), rows.length - 1]
+  }, [range, rows])
+  const view = useMemo(() => rows.slice(effective[0], effective[1] + 1), [rows, effective])
+  return { range: effective, setRange, view }
+}
+
+function ratesCards(state) {
+  const snap = state.rates?.snapshot ?? {}
+  const wk = (key, scale = 100) => (snap[key]?.chg_1w === null || snap[key]?.chg_1w === undefined ? null : snap[key].chg_1w * scale)
+  const priced = snap.priced_12m
+  return [
+    { id: 'gilt_2y', label: '2Y gilt', color: PALETTE.headline, value: snap.gilt_2y?.value, unit: '%', change: wk('gilt_2y'), changeFormat: (v) => bp(v, 1), changeLabel: 'on the week', note: 'Most sensitive to the MPC path' },
+    { id: 'gilt_10y', label: '10Y gilt', color: PALETTE.policy, value: snap.gilt_10y?.value, unit: '%', change: wk('gilt_10y'), changeFormat: (v) => bp(v, 1), changeLabel: 'on the week', note: `Real ${pct(snap.real_10y?.value, 2)} · implied RPI ${pct(snap.be_10y?.value, 2)}` },
+    { id: 's2s10', label: '2s10s', color: PALETTE.services, value: snap.s2s10?.value, digits: 1, unit: 'bp', change: wk('s2s10', 1), changeFormat: (v) => bp(v, 1), changeLabel: 'on the week', note: `5s30s ${bp(snap.s5s30?.value, 1)}` },
+    { id: 'priced', label: 'Priced over 12m', color: PALETTE.goods, value: priced?.value, digits: 0, unit: 'bp', change: wk('priced_12m', 1), changeFormat: (v) => bp(v, 1), changeLabel: 'on the week', note: 'SONIA OIS 1y-ahead forward vs SONIA' },
+  ]
+}
+
+function positioningCards(state) {
+  const latest = state.positioning?.latest ?? []
+  const gbp = latest.find((c) => c.label.toLowerCase().includes('pound')) ?? latest[0]
+  const auction = state.rates?.auctions?.recent?.[0]
+  const snap = state.rates?.snapshot ?? {}
+  const soniaSpread = snap.sonia?.value !== undefined && snap.bank_rate?.value !== undefined
+    ? (snap.sonia.value - snap.bank_rate.value) * 100 : null
+  return [
+    { id: 'lev', label: `Lev funds · ${gbp?.label ?? 'GBP'}`, color: PALETTE.headline, value: gbp?.lev_net !== undefined && gbp?.lev_net !== null ? gbp.lev_net / 1000 : null, digits: 1, unit: 'k contracts', change: gbp?.lev_z, changeFormat: (v) => (v === null || v === undefined ? '—' : `${v.toFixed(2)}σ`), changeLabel: 'vs 3y mean', note: `CFTC week of ${dayLong(state.positioning?.as_of)}` },
+    { id: 'am', label: `Asset mgrs · ${gbp?.label ?? 'GBP'}`, color: PALETTE.policy, value: gbp?.am_net !== undefined && gbp?.am_net !== null ? gbp.am_net / 1000 : null, digits: 1, unit: 'k contracts', change: gbp?.am_z, changeFormat: (v) => (v === null || v === undefined ? '—' : `${v.toFixed(2)}σ`), changeLabel: 'vs 3y mean', note: 'Real-money positioning' },
+    { id: 'supply', label: 'Gilt supply, last 3 months', color: PALETTE.services, value: state.rates?.auctions?.last_3m_bn, digits: 1, unit: '£bn', change: null, changeFormat: () => `${state.rates?.auctions?.last_3m_count ?? '—'} operations`, changeLabel: '', note: auction ? `Latest: ${auction.name} · ${dayLong(auction.date)}` : 'UK Debt Management Office' },
+    { id: 'sonia', label: 'SONIA', color: PALETTE.goods, value: snap.sonia?.value, unit: '%', change: soniaSpread, changeFormat: (v) => bp(v, 0), changeLabel: 'vs Bank Rate', note: 'Funding pressure shows up here first' },
+  ]
+}
 
 function Shell({ children }) {
   return (
@@ -44,6 +97,26 @@ export default function App() {
   const [range, setRange] = useState(null)
 
   const observations = state.observations ?? []
+  const daily = state.daily ?? []
+  const posWeekly = state.positioning?.weekly ?? []
+  const d = useWindow(daily)
+  const p = useWindow(posWeekly)
+  const contractSeries = useMemo(() => (state.positioning?.contracts ?? []).map((c, i) => ({
+    id: `${c.id}_lev`,
+    label: `${c.label} — leveraged funds net`,
+    short: c.label,
+    color: CONTRACT_COLORS[i % CONTRACT_COLORS.length],
+    width: 1.75,
+    on: i < 3,
+  })), [state.positioning])
+  const amSeries = useMemo(() => (state.positioning?.contracts ?? []).map((c, i) => ({
+    id: `${c.id}_am`,
+    label: `${c.label} — asset managers net`,
+    short: c.label,
+    color: CONTRACT_COLORS[i % CONTRACT_COLORS.length],
+    width: 1.75,
+    on: i < 3,
+  })), [state.positioning])
 
   const effectiveRange = useMemo(() => {
     if (range) return range
@@ -188,7 +261,9 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
       </header>
 
       <div className="space-y-4">
-        <StatCards row={latest} />
+        {tab === 'overview' && <StatCards row={latest} />}
+        {tab === 'rates' && <KpiCards cards={ratesCards(state)} />}
+        {tab === 'positioning' && <KpiCards cards={positioningCards(state)} />}
 
         {tab === 'overview' ? (
           <>
@@ -245,7 +320,7 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
             <GrowthChart data={view} />
             <BoEWatch row={observations[cpiFocusIndex] ?? latest} />
           </>
-        ) : (
+        ) : tab === 'rates' ? (
           <>
             <div className="grid gap-3 lg:grid-cols-4">
               <div className="lg:col-span-3">
@@ -269,10 +344,160 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
             <MonetaryPolicySummaryCard decision={focusDecision} summary={focusSummary} />
             <RealRateChart data={view} />
             <SyntheticCurveTable curve={state.syntheticCurve} />
+
+            {daily.length > 0 && (
+              <>
+                <SeriesChart
+                  title="Gilt yields and the policy rate"
+                  subtitle="Nominal gilt spot yields against Bank Rate and SONIA, percent, daily."
+                  data={d.view}
+                  series={GILT_SERIES}
+                  syncId="uk-daily"
+                  xFormat={axisTickDay}
+                  tooltipDate={dayLong}
+                  leftFormat={pctTick}
+                  valueFormat={(v) => pct(v, 2)}
+                  events={state.events}
+                  decisions={(state.meta?.rate_changes ?? []).map((c) => ({ date: c.date, change_bp: c.change * 100 }))}
+                  height="h-[340px] sm:h-[400px]"
+                  header={<DailyRangeSlider rows={daily} range={d.range} onChange={d.setRange} format={dayShort} unit="days" />}
+                />
+
+                <div className="grid gap-3 xl:grid-cols-2">
+                  <MpcOisTable data={state.rates?.mpc_ois} status={state.ratesSources?.['refinitiv:mpc_ois']} />
+                  <SeriesChart
+                    title="How much the market prices over 12 months"
+                    subtitle="SONIA OIS 1-year-ahead forward minus today's SONIA, bp. Negative = cuts priced."
+                    data={d.view}
+                    series={PRICED_SERIES}
+                    syncId="uk-daily"
+                    xFormat={axisTickDay}
+                    tooltipDate={dayLong}
+                    leftFormat={bpTick}
+                    valueFormat={(v) => bp(v, 1)}
+                    refLines={[{ y: 0, solid: true, color: '#2E3545' }]}
+                  />
+                </div>
+
+                <div className="grid gap-3 xl:grid-cols-2">
+                  <OisCurveTable curve={state.rates?.ois_curve} />
+                  <SeriesChart
+                    title="SONIA OIS term rates"
+                    subtitle="1Y and 2Y SONIA OIS against Bank Rate, percent."
+                    data={d.view}
+                    series={OIS_SERIES}
+                    syncId="uk-daily"
+                    xFormat={axisTickDay}
+                    tooltipDate={dayLong}
+                    leftFormat={pctTick}
+                    valueFormat={(v) => pct(v, 2)}
+                  />
+                </div>
+
+                <div className="grid gap-3 xl:grid-cols-2">
+                  <SeriesChart
+                    title="Curve spreads"
+                    subtitle="Gilt 2s10s and 5s30s, basis points. Bull steepening usually means cuts being priced; bear steepening often means term premium or supply."
+                    data={d.view}
+                    series={CURVE_SERIES}
+                    syncId="uk-daily"
+                    xFormat={axisTickDay}
+                    tooltipDate={dayLong}
+                    leftFormat={bpTick}
+                    valueFormat={(v) => bp(v, 1)}
+                    refLines={[{ y: 0, solid: true, color: '#4A5468' }]}
+                  />
+                  <SeriesChart
+                    title="Gilts vs SONIA swaps"
+                    subtitle="2Y gilt yield minus 2Y SONIA OIS, bp. With no public UK term-premium model, this is the usual read on gilt supply and term-premium pressure: gilts cheapening to swaps shows up as a rising spread."
+                    data={d.view}
+                    series={SPREAD_SERIES}
+                    syncId="uk-daily"
+                    xFormat={axisTickDay}
+                    tooltipDate={dayLong}
+                    leftFormat={bpTick}
+                    valueFormat={(v) => bp(v, 1)}
+                    refLines={[{ y: 0, solid: true, color: '#4A5468' }]}
+                  />
+                </div>
+
+                <SeriesChart
+                  title="Inflation compensation"
+                  subtitle="Implied RPI inflation from index-linked vs conventional gilts, and the 10Y real yield, percent. RPI runs roughly 0.5–1pp above CPI, so the 2% target line is only a rough guide."
+                  data={d.view}
+                  series={BREAKEVEN_SERIES}
+                  syncId="uk-daily"
+                  xFormat={axisTickDay}
+                  tooltipDate={dayLong}
+                  leftFormat={pctTick}
+                  valueFormat={(v) => pct(v, 2)}
+                  refLines={[{ y: 2, label: '2% (CPI target)' }]}
+                />
+
+                <GiltSnapshot snapshot={state.rates?.snapshot} />
+              </>
+            )}
+          </>
+        ) : null}
+
+        {tab === 'positioning' && (
+          <>
+            {posWeekly.length > 0 ? (
+              <div className="grid gap-3 lg:grid-cols-4">
+                <div className="lg:col-span-3">
+                  <SeriesChart
+                    title="Leveraged-fund positioning in sterling futures"
+                    subtitle="Net contracts (long minus short), weekly, CFTC. CME sterling FX futures — gilt futures trade on ICE, outside the CFTC's reporting."
+                    data={p.view}
+                    series={contractSeries}
+                    syncId="uk-positioning"
+                    xFormat={axisTickDay}
+                    tooltipDate={dayLong}
+                    leftFormat={(v) => `${(v / 1000).toFixed(0)}k`}
+                    valueFormat={(v) => `${(v / 1000).toFixed(1)}k`}
+                    refLines={[{ y: 0, solid: true, color: '#2E3545' }]}
+                    height="h-[340px] sm:h-[400px]"
+                    header={<DailyRangeSlider rows={posWeekly} range={p.range} onChange={p.setRange} format={dayShort} unit="weeks" />}
+                  />
+                </div>
+                <div className="lg:relative lg:col-span-1">
+                  <div className="flex min-h-0 flex-col gap-3 lg:absolute lg:inset-0">
+                    <NotesCard notes={state.rates?.notes} className="flex-1 min-h-0" />
+                    <UpcomingReleasesCard releases={state.upcomingReleases} className="flex-1 min-h-0" />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <NotesCard notes={state.rates?.notes} />
+            )}
+
+            {posWeekly.length > 0 && (
+              <SeriesChart
+                title="Asset-manager positioning in sterling futures"
+                subtitle="Net contracts, weekly. Real-money positioning, often the other side of leveraged funds."
+                data={p.view}
+                series={amSeries}
+                syncId="uk-positioning"
+                xFormat={axisTickDay}
+                tooltipDate={dayLong}
+                leftFormat={(v) => `${(v / 1000).toFixed(0)}k`}
+                valueFormat={(v) => `${(v / 1000).toFixed(1)}k`}
+                refLines={[{ y: 0, solid: true, color: '#2E3545' }]}
+              />
+            )}
+
+            <PositioningTable positioning={state.positioning} />
+            <GiltAuctionsTable auctions={state.rates?.auctions} status={state.ratesSources?.['dmo:auctions']} />
           </>
         )}
 
         <footer className="card card-pad text-[11px] leading-relaxed text-faint">
+          {tab !== 'overview' && (
+            <div className="mb-3">
+              <div className="label-xs mb-2">Rates and positioning sources, this run</div>
+              <RatesSourcesStatus status={state.ratesSources} />
+            </div>
+          )}
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <span>
               Sources:{' '}

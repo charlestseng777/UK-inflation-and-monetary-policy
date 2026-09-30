@@ -41,10 +41,18 @@ jobs:
       - name: Install dependencies
         run: pip install -r fetcher/requirements.txt
  
-      - name: Fetch ONS + BoE data
+      - name: Fetch ONS, BoE, CFTC and DMO data
         # No Anthropic key here for now — commentary is skipped to keep this
         # to a single secret-free workflow. Re-add ANTHROPIC_API_KEY as a repo
         # secret and drop --no-llm later if you want the written note back.
+        env:
+          # Optional: MPC-dated SONIA OIS from Refinitiv. Unset secrets are
+          # simply empty and the fetcher skips that source.
+          REFINITIV_USERNAME: ${{ secrets.REFINITIV_USERNAME }}
+          REFINITIV_PASSWORD: ${{ secrets.REFINITIV_PASSWORD }}
+          REFINITIV_APP_KEY: ${{ secrets.REFINITIV_APP_KEY }}
+          REFINITIV_CLIENT_ID: ${{ secrets.REFINITIV_CLIENT_ID }}
+          REFINITIV_CLIENT_SECRET: ${{ secrets.REFINITIV_CLIENT_SECRET }}
         run: |
           python fetcher/fetch.py --no-llm ${{ inputs.force && '--force' || '' }}
  

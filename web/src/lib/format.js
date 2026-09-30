@@ -81,3 +81,41 @@ export function addMonths(key, delta) {
 export function clampRange(observations, from, to) {
   return observations.filter((row) => row.date >= from && row.date <= to)
 }
+/** Signed basis points, e.g. 12.3 -> '+12bp'. */
+export function bp(value, digits = 0) {
+  if (value === null || value === undefined || Number.isNaN(value)) return '—'
+  const sign = value > 0 ? '+' : value < 0 ? '−' : ''
+  return `${sign}${Math.abs(value).toFixed(digits)}bp`
+}
+
+/** Thousands with sign, e.g. payroll changes: 142 -> '+142k'. */
+export function kSigned(value) {
+  if (value === null || value === undefined || Number.isNaN(value)) return '—'
+  const sign = value > 0 ? '+' : value < 0 ? '−' : ''
+  return `${sign}${Math.abs(value).toFixed(0)}k`
+}
+
+/** Compact contract counts, e.g. -123456 -> '−123k'. */
+export function contracts(value) {
+  if (value === null || value === undefined || Number.isNaN(value)) return '—'
+  const sign = value > 0 ? '+' : value < 0 ? '−' : ''
+  const abs = Math.abs(value)
+  if (abs >= 1e6) return `${sign}${(abs / 1e6).toFixed(2)}m`
+  if (abs >= 1e3) return `${sign}${(abs / 1e3).toFixed(0)}k`
+  return `${sign}${abs.toFixed(0)}`
+}
+
+const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+/** '2026-09-29' -> '29 Sep 26'. */
+export function dayShort(iso) {
+  if (!iso) return ''
+  return `${parseInt(iso.slice(8, 10), 10)} ${MONTH_ABBR[parseInt(iso.slice(5, 7), 10) - 1]} ${iso.slice(2, 4)}`
+}
+
+/** Axis ticks for daily/weekly data: year on January dates, month otherwise. */
+export function axisTickDay(iso) {
+  if (!iso) return ''
+  const month = parseInt(iso.slice(5, 7), 10) - 1
+  return month === 0 ? iso.slice(0, 4) : MONTH_ABBR[month]
+}

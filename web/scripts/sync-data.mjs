@@ -8,7 +8,7 @@ const here = dirname(fileURLToPath(import.meta.url))
 const source = join(here, '..', '..', 'data')
 const target = join(here, '..', 'public', 'data')
 
-const files = ['timeseries.json', 'meta.json', 'commentary.json']
+const files = ['timeseries.json', 'meta.json', 'commentary.json', 'daily.json', 'positioning.json']
 
 await mkdir(target, { recursive: true })
 

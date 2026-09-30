@@ -12,7 +12,7 @@ Produces one row per business day with the points the rates tab plots:
   be_5y5y              5y5y forward implied inflation
   real_10y             real (index-linked) spot yield
   ois_1y/2y/5y         SONIA OIS spot
-  gilt_ois_5y          5Y gilt minus 5Y OIS (bp) — the UK's go-to read on
+  gilt_ois_2y          2Y gilt minus 2Y OIS (bp) — the UK's go-to read on
                        supply / term-premium pressure, since there is no
                        public UK equivalent of the NY Fed's ACM model
   priced_12m           change in SONIA the OIS curve prices over the next
@@ -153,7 +153,11 @@ def build_daily(curves: dict, ois: dict[str, list[tuple[float, float]]],
 
     rows = []
     rate = None
+    last_sonia = None
     for d in dates:
+        # SONIA publishes T+1, so the latest curve date usually has no fixing
+        # yet — carry the last one rather than drop the day's pricing.
+        last_sonia = sonia.get(d, last_sonia)
         n = nominal.get(d, {})
         row: dict = {"date": d}
         for t, key in ((2.0, "gilt_2y"), (5.0, "gilt_5y"), (10.0, "gilt_10y"), (30.0, "gilt_30y")):
@@ -174,15 +178,17 @@ def build_daily(curves: dict, ois: dict[str, list[tuple[float, float]]],
         if curve:
             o1, o2, o5 = (market.curve_rate(curve, t) for t in (1.0, 2.0, 5.0))
             row["ois_1y"], row["ois_2y"], row["ois_5y"] = _r(o1), _r(o2), _r(o5)
-            if o5 is not None and n.get(5.0) is not None:
-                row["gilt_ois_5y"] = _r((n[5.0] - o5) * 100, 1)
+            # The Bank's OIS curve only runs to a few years, so the gilt-swap
+            # spread is taken at 2Y, where both curves are always populated.
+            if o2 is not None and n.get(2.0) is not None:
+                row["gilt_ois_2y"] = _r((n[2.0] - o2) * 100, 1)
             # 1y-ahead forward (11m→13m window, DF space) vs today's SONIA.
             a, b = market.curve_rate(curve, 11 / 12), market.curve_rate(curve, 13 / 12)
-            s = sonia.get(d)
+            s = last_sonia
             if a is not None and b is not None and s is not None:
                 row["priced_12m"] = _r((forward(a, 11 / 12, b, 13 / 12) - s) * 100, 1)
 
-        row["sonia"] = _r(sonia.get(d))
+        row["sonia"] = _r(last_sonia)
         rate = bank_rate.get(d, rate)
         row["bank_rate"] = rate
         clean = {k: v for k, v in row.items() if v is not None}

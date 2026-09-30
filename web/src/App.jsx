@@ -383,7 +383,7 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
                   <OisCurveTable curve={state.rates?.ois_curve} />
                   <SeriesChart
                     title="SONIA OIS term rates"
-                    subtitle="1Y, 2Y and 5Y SONIA OIS against Bank Rate, percent."
+                    subtitle="1Y and 2Y SONIA OIS against Bank Rate, percent."
                     data={d.view}
                     series={OIS_SERIES}
                     syncId="uk-daily"
@@ -409,7 +409,7 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
                   />
                   <SeriesChart
                     title="Gilts vs SONIA swaps"
-                    subtitle="5Y gilt yield minus 5Y SONIA OIS, bp. With no public UK term-premium model, this is the usual read on gilt supply and term-premium pressure: gilts cheapening to swaps shows up as a rising spread."
+                    subtitle="2Y gilt yield minus 2Y SONIA OIS, bp. With no public UK term-premium model, this is the usual read on gilt supply and term-premium pressure: gilts cheapening to swaps shows up as a rising spread."
                     data={d.view}
                     series={SPREAD_SERIES}
                     syncId="uk-daily"
@@ -447,7 +447,7 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
                 <div className="lg:col-span-3">
                   <SeriesChart
                     title="Leveraged-fund positioning in sterling futures"
-                    subtitle="Net contracts (long minus short), weekly, CFTC. Sterling FX and CME SONIA futures."
+                    subtitle="Net contracts (long minus short), weekly, CFTC. CME sterling FX futures — gilt futures trade on ICE, outside the CFTC's reporting."
                     data={p.view}
                     series={contractSeries}
                     syncId="uk-positioning"

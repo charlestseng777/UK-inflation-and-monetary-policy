@@ -34,13 +34,13 @@ export const BREAKEVEN_SERIES = [
 ]
 
 export const SPREAD_SERIES = [
-  { id: 'gilt_ois_5y', label: '5Y gilt − 5Y SONIA OIS (bp)', short: 'Gilt−OIS 5Y', color: S.blue, width: 2, locked: true },
+  { id: 'gilt_ois_2y', label: '2Y gilt − 2Y SONIA OIS (bp)', short: 'Gilt−OIS 2Y', color: S.blue, width: 2, locked: true },
 ]
 
 export const OIS_SERIES = [
   { id: 'ois_1y', label: '1Y SONIA OIS', short: '1Y OIS', color: S.blue, width: 2, locked: true },
   { id: 'ois_2y', label: '2Y SONIA OIS', short: '2Y OIS', color: S.orange, width: 2, locked: true },
-  { id: 'ois_5y', label: '5Y SONIA OIS', short: '5Y OIS', color: S.aqua, width: 1.5, on: true },
+
   { id: 'bank_rate', label: 'Bank Rate', short: 'Bank Rate', color: PALETTE.other, width: 1.5, step: true, on: true },
 ]
 
@@ -109,8 +109,8 @@ export function GiltSnapshot({ snapshot }) {
   const rows = [
     ['gilt_2y', '2Y gilt', 'yield'], ['gilt_5y', '5Y gilt', 'yield'], ['gilt_10y', '10Y gilt', 'yield'],
     ['gilt_30y', '30Y gilt', 'yield'], ['s2s10', '2s10s', 'spread'], ['s5s30', '5s30s', 'spread'],
-    ['gilt_ois_5y', '5Y gilt − OIS', 'spread'], ['ois_1y', '1Y SONIA OIS', 'yield'], ['ois_2y', '2Y SONIA OIS', 'yield'],
-    ['ois_5y', '5Y SONIA OIS', 'yield'], ['be_5y', '5Y implied RPI', 'yield'], ['be_5y5y', '5y5y implied RPI', 'yield'],
+    ['gilt_ois_2y', '2Y gilt − OIS', 'spread'], ['ois_1y', '1Y SONIA OIS', 'yield'], ['ois_2y', '2Y SONIA OIS', 'yield'],
+['be_5y', '5Y implied RPI', 'yield'], ['be_5y5y', '5y5y implied RPI', 'yield'],
     ['real_10y', '10Y real (index-linked)', 'yield'], ['sonia', 'SONIA', 'yield'], ['bank_rate', 'Bank Rate', 'yield'],
   ]
   return (

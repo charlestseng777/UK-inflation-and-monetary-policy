@@ -53,6 +53,9 @@ def _pctile(values):
     return round(100 * sum(v <= w[-1] for v in w) / len(w))
 
 
+KNOWN_LABELS = {"096742": "GBP/USD (CME)", "299741": "EUR/GBP cross (CME)"}
+
+
 def _label(name: str) -> str:
     """'BRITISH POUND - CHICAGO MERCANTILE EXCHANGE' -> 'British pound'."""
     base = name.split(" - ")[0].strip()
@@ -76,7 +79,7 @@ def cftc_sterling(http_get, start: str) -> dict:
     for row in rows:
         code = str(row.get("cftc_contract_market_code", "")).strip()
         day = str(row.get("report_date_as_yyyy_mm_dd", ""))[:10]
-        labels[code] = _label(row.get("market_and_exchange_names", code))
+        labels[code] = KNOWN_LABELS.get(code) or _label(row.get("market_and_exchange_names", code))
         oi = _num(row.get("open_interest_all"))
         lev = _net(row, "lev_money_positions_long", "lev_money_positions_short")
         series.setdefault(code, {})[day] = {
@@ -90,7 +93,7 @@ def cftc_sterling(http_get, start: str) -> dict:
     # Drop contracts that stopped reporting long ago (renamed/delisted).
     latest_date = max(d for s in series.values() for d in s)
     codes = [c for c, s in series.items() if max(s) >= latest_date[:4]]
-    codes.sort(key=lambda c: (0 if "pound" in labels[c].lower() else 1, labels[c]))
+    codes.sort(key=lambda c: (0 if c == "096742" else 1, labels[c]))
 
     ids = {c: f"c{c}" for c in codes}
     dates = sorted({d for c in codes for d in series[c]})
@@ -138,7 +141,7 @@ def _records(root: ET.Element) -> list[dict]:
     out = []
     for el in root.iter():
         kids = list(el)
-        if kids and all(len(list(k)) == 0 for k in kids):
+        if len(kids) >= 3 and all(len(list(k)) == 0 for k in kids):
             rec = {k.tag.split("}")[-1].lower(): (k.text or "").strip() for k in kids}
             out.append(rec)
         elif not kids and el.attrib and len(el.attrib) >= 3:
@@ -179,7 +182,7 @@ def dmo_auctions(http_get, log, since: str) -> dict:
             continue
         recs = _records(root)
         if recs:
-            log(f"DMO  {url.split('=')[-1]}: {len(recs)} records; fields {sorted(recs[0])[:14]}")
+            log(f"DMO  {url.split('=')[-1]}: {len(recs)} records; sample {json.dumps(recs[-1])[:600]}")
         out = []
         for rec in recs:
             day = _date(_field(rec, "date", exclude=("close", "redemption", "maturity", "settle", "issue")))

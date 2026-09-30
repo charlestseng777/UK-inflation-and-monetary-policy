@@ -4,6 +4,8 @@ const FILES = {
   timeseries: 'data/timeseries.json',
   meta: 'data/meta.json',
   commentary: 'data/commentary.json',
+  daily: 'data/daily.json',
+  positioning: 'data/positioning.json',
 }
 
 // In production the data comes from the API service; with no API configured we
@@ -34,8 +36,10 @@ export function useData() {
       loadJson(FILES.timeseries),
       loadJson(FILES.meta),
       loadJson(FILES.commentary, { optional: true }),
+      loadJson(FILES.daily, { optional: true }),
+      loadJson(FILES.positioning, { optional: true }),
     ])
-      .then(([timeseries, meta, commentary]) => {
+      .then(([timeseries, meta, commentary, daily, positioning]) => {
         if (cancelled) return
         const observations = timeseries?.observations ?? []
         if (!observations.length) {
@@ -52,6 +56,10 @@ export function useData() {
           upcomingReleases: meta?.upcoming_releases ?? [],
           syntheticCurve: meta?.synthetic_mpc_curve ?? null,
           commentary: commentary?.entries ?? [],
+          daily: daily?.observations ?? [],
+          positioning: positioning ?? {},
+          rates: meta?.rates ?? {},
+          ratesSources: meta?.rates_sources ?? {},
           generatedAt: timeseries?.generated_at ?? meta?.generated_at ?? null,
         })
       })

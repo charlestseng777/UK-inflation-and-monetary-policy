@@ -28,7 +28,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -42,7 +42,7 @@ DATA_DIR = ROOT / "data"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from fetcher import market, mpc_news, mpc_summary  # noqa: E402 - needs the sys.path line above
+from fetcher import flows, gilts, market, mpc_news, mpc_summary, refinitiv  # noqa: E402 - needs the sys.path line above
 
 USER_AGENT = "uk-inflation-dashboard/1.0 (+https://github.com/)"
 TIMEOUT = 60
@@ -909,6 +909,98 @@ def write_commentary(target: str, entry: dict | None, now: str) -> None:
 # main
 # --------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------
+# rates tab extras: gilts, OIS term curve, Refinitiv, positioning, auctions
+# --------------------------------------------------------------------------
+
+DAILY_START = "2018-01-01"
+
+
+def write_rows_json(path: Path, payload: dict) -> None:
+    """Like write_json, but long row arrays go one compact row per line."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    parts = []
+    for key, value in payload.items():
+        if isinstance(value, list) and len(value) > 20 and all(isinstance(v, dict) for v in value):
+            rows = ",\n".join("  " + json.dumps(v, separators=(",", ":")) for v in value)
+            parts.append(f' {json.dumps(key)}: [\n{rows}\n ]')
+        else:
+            parts.append(f' {json.dumps(key)}: {json.dumps(value, ensure_ascii=False)}')
+    path.write_text("{\n" + ",\n".join(parts) + "\n}\n", encoding="utf-8")
+
+
+def build_rates_extras(config: dict, ois_curves: dict, sonia: dict[str, float],
+                       bank_rate_daily: dict[str, float], meeting_dates: list[str]) -> tuple[dict, dict]:
+    """Everything the extended rates and positioning tabs read. Each source
+    is independent: a failure keeps the previous run's values for it and is
+    recorded in `status`, and never stops the CPI panel publishing."""
+    status: dict[str, dict] = {}
+    prev_meta = (load_json(DATA_DIR / "meta.json", {}) or {}).get("rates") or {}
+    prev_daily = (load_json(DATA_DIR / "daily.json", {}) or {}).get("observations") or []
+    prev_pos = load_json(DATA_DIR / "positioning.json", {}) or {}
+    prev_pos.pop("generated_at", None)
+    start = datetime.strptime(DAILY_START, "%Y-%m-%d").date()
+    today = date.today()
+
+    def attempt(name, fn, fallback):
+        try:
+            value = fn()
+            status[name] = {"ok": True}
+            return value
+        except Exception as error:  # noqa: BLE001 - recorded, shown in the footer
+            log(f"{name} failed: {error}")
+            status[name] = {"ok": False, "error": str(error)[:200]}
+            return fallback
+
+    curves = attempt("boe:gilt_curves", lambda: gilts.fetch_curves(http_get, start, log), None)
+    if curves and curves.get("nominal"):
+        daily = gilts.build_daily(curves, ois_curves, sonia, bank_rate_daily, DAILY_START)
+    else:
+        daily = prev_daily
+    log(f"gilt panel: {len(daily)} daily rows" + (f", latest {daily[-1]['date']}" if daily else ""))
+
+    latest_ois = ois_curves[max(ois_curves)] if ois_curves else None
+    latest_sonia = sonia[max(sonia)] if sonia else None
+    latest_rate = bank_rate_daily[max(bank_rate_daily)] if bank_rate_daily else None
+    upcoming = [d for d in meeting_dates if d > today.isoformat()]
+
+    mpc_ois = None
+    if refinitiv.configured():
+        mpc_ois = attempt("refinitiv:mpc_ois", lambda: refinitiv.mpc_dated_ois(
+            CONFIG_DIR / "refinitiv.json", upcoming, latest_sonia, latest_rate,
+            (today - timedelta(days=30)).isoformat(), log), prev_meta.get("mpc_ois"))
+    else:
+        status["refinitiv:mpc_ois"] = {"ok": False, "error": "no credentials configured"}
+
+    positioning = attempt("cftc:sterling", lambda: flows.cftc_sterling(http_get, DAILY_START),
+                          prev_pos or None)
+    auctions = attempt("dmo:auctions", lambda: flows.dmo_auctions(
+        http_get, log, (today - timedelta(days=500)).isoformat()), prev_meta.get("auctions"))
+
+    meta = {
+        "latest_daily": daily[-1]["date"] if daily else None,
+        "snapshot": gilts.snapshot(daily),
+        "ois_curve": {"as_of": max(ois_curves) if ois_curves else None,
+                      "sonia": latest_sonia, "bank_rate": latest_rate,
+                      "points": gilts.ois_term_curve(latest_ois, latest_sonia)},
+        "mpc_ois": mpc_ois,
+        "auctions": auctions,
+        "notes": (load_json(CONFIG_DIR / "notes.json", {}) or {}).get("entries", []),
+        "next_meetings": upcoming[:8],
+    }
+    return {"daily": daily, "positioning": positioning, "meta": meta}, status
+
+
+def rates_extras_changed(extras: dict) -> bool:
+    old_daily = (load_json(DATA_DIR / "daily.json", {}) or {}).get("observations")
+    old_pos = load_json(DATA_DIR / "positioning.json", {}) or {}
+    old_pos.pop("generated_at", None)
+    old_meta = (load_json(DATA_DIR / "meta.json", {}) or {}).get("rates")
+    new = json.loads(json.dumps(extras))
+    return (old_daily != new["daily"] or old_pos != (new["positioning"] or {})
+            or old_meta != new["meta"])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Fetch UK CPI and Bank Rate data.")
     parser.add_argument("--no-llm", action="store_true",
@@ -963,6 +1055,7 @@ def main() -> int:
     latest_curve: list[dict] = []
     latest_spread_bp: float | None = None
     curves: dict[str, list[tuple[float, float]]] = {}
+    sonia: dict[str, float] = {}
     try:
         sonia = fetch_sonia(config, config["start"])
         curves = fetch_ois_curves(config, config["start"])
@@ -1012,6 +1105,10 @@ def main() -> int:
 
     market.attach_market_pricing(decisions, expected_path)
 
+    extras, extras_status = build_rates_extras(
+        config, curves, sonia, bank_rate_daily, all_meeting_dates)
+    extras_changed = rates_extras_changed(extras)
+
     panel = build_panel(config, rates, indices, weights, bank_rate, monthly_path,
                         ois_3m_monthly, ois_2y_monthly)
     if not panel:
@@ -1025,7 +1122,7 @@ def main() -> int:
     log(f"diff: {len(diff['added_months'])} new month(s), "
         f"{len(diff['revised_values'])} revised value(s)")
 
-    if not diff["has_changes"] and not args.force:
+    if not diff["has_changes"] and not extras_changed and not args.force:
         log("no changes since last run - nothing to write")
         return 0
 
@@ -1099,6 +1196,8 @@ def main() -> int:
             "meetings": latest_curve,
         },
         "events": events,
+        "rates": extras["meta"],
+        "rates_sources": extras_status,
         "reaction_function_flag": alert,
         "diff": diff,
         "sources": [
@@ -1244,6 +1343,11 @@ def main() -> int:
         # meta.json carries everything except the panel itself.
         write_json(DATA_DIR / "meta.json",
                    {k: v for k, v in meta_payload.items() if k != "start"})
+
+    # The daily gilt panel and positioning are static files whatever the
+    # storage target — the dashboard reads them straight from /data.
+    write_rows_json(DATA_DIR / "daily.json", {"generated_at": now, "observations": extras["daily"]})
+    write_rows_json(DATA_DIR / "positioning.json", {"generated_at": now, **(extras["positioning"] or {})})
 
     if args.no_llm:
         log("--no-llm passed - skipping commentary")

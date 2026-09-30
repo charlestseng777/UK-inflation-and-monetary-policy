@@ -2,16 +2,12 @@ name: Update data
  
 on:
   schedule:
-    # Cron is UTC; UK time is UTC in winter and UTC+1 in summer. Each slot below
-    # has to land AFTER the publication time in BOTH, so they are set against the
-    # later (winter) case.
-    #
-    #   ONS CPI, 07:00 UK  -> 06:00 UTC summer / 07:00 UTC winter
-    #   MPC decision, 12:00 UK -> 11:00 UTC summer / 12:00 UTC winter
-    #
-    - cron: '30 7 * * 1-5'   # 08:30 BST / 07:30 GMT — after the ONS release
-    - cron: '30 12 * * 1-5'  # 13:30 BST / 12:30 GMT — after the MPC announcement
-    - cron: '30 15 * * 1-5'  # safety net for late publication to the BoE database
+    # Once a night at 23:45 UK time, Mon–Fri. Cron is UTC and doesn't follow
+    # daylight saving, so there is a slot for each: 22:45 UTC is 23:45 in
+    # summer (BST), 23:45 UTC is 23:45 in winter (GMT). The gate job below
+    # lets only the one that lands at 23:45 UK time through.
+    - cron: '45 22 * * 1-5'
+    - cron: '45 23 * * 1-5'
   workflow_dispatch:
     inputs:
       force:
@@ -27,7 +23,32 @@ permissions:
   contents: write
  
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        # Scheduled runs go ahead only between 23:40 and 00:40 UK time: the
+        # right slot for the season lands there (GitHub can start scheduled
+        # jobs a few minutes late), the other one lands an hour off and is
+        # skipped. Manual runs always go ahead.
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          now=$(TZ=Europe/London date +%H%M)
+          echo "UK time is ${now}"
+          if [ "$now" -ge 2340 ] || [ "$now" -lt 40 ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Not 23:45 UK time in this season; skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
   fetch:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.commit.outputs.changed }}

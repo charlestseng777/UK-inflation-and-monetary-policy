@@ -31,7 +31,7 @@ hand-entered.
 | Piece | Where | What it does |
 |---|---|---|
 | **Fetcher** | `fetcher/fetch.py` | Pulls 20 ONS series + the BoE daily Bank Rate, derives the CPI decomposition, diffs against the last run, asks Claude for a note when something moved. Writes to Postgres when `DATABASE_URL` is set, flat JSON otherwise. |
-| **Scheduler** | Render Cron, or `.github/workflows/update-data.yml` | Three weekday runs (07:30, 12:30, 15:30 UTC) covering the 07:00 ONS release and the noon MPC announcement in both winter and summer, plus manual triggering. |
+| **Scheduler** | Render Cron, or `.github/workflows/update-data.yml` | GitHub Actions: one run each weekday at 23:45 UK time (after that day's ONS, MPC and market data; a gate step keeps it at 23:45 across BST/GMT), plus manual triggering. The Render cron in `render.yaml` keeps its own schedule. |
 | **Storage** | PostgreSQL (`backend/schema.sql`) | Observations, rate decisions, events, commentary, meta, and an audit log of every scrape. Falls back to flat JSON in `data/` for local work. |
 | **API** | `backend/app.py` | FastAPI. Serves the same three payloads the frontend always consumed, at the same paths, with a short in-process cache. |
 | **Frontend** | `web/` | Vite + React + Tailwind + Recharts. Reads from the API when `VITE_API_BASE_URL` is set, from static files otherwise. Unchanged by the move to a database. |

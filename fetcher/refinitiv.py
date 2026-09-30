@@ -64,7 +64,10 @@ def _token() -> str:
         payload = _request(f"{BASE}/auth/oauth2/v1/token", {
             "grant_type": "password", "username": env["REFINITIV_USERNAME"],
             "password": env["REFINITIV_PASSWORD"], "client_id": env["REFINITIV_APP_KEY"],
-            "scope": "trapi", "takeExclusiveSignOnControl": "true"})
+            # "false": never sign the account's owner out of Workspace. If
+            # the account is busy RDP refuses instead, and the fetcher keeps
+            # the previous run's values.
+            "scope": "trapi", "takeExclusiveSignOnControl": "false"})
     if not payload.get("access_token"):
         raise RuntimeError("RDP token response had no access_token")
     return payload["access_token"]

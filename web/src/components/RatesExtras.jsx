@@ -253,31 +253,31 @@ export function GiltAuctionsTable({ auctions, status }) {
   const rows = auctions?.recent ?? []
   if (!rows.length) {
     return (
-      <section className="card card-pad" aria-label="Gilt auctions">
-        <div className="label-xs">Gilt auctions</div>
+      <section className="card card-pad" aria-label="Gilt issuance">
+        <div className="label-xs">Gilt issuance</div>
         <p className="mt-2 text-xs text-muted">
-          DMO auction results unavailable this run{status?.error ? ` (${status.error})` : ''}.
+          DMO issuance data unavailable this run{status?.error ? ` (${status.error})` : ''}.
         </p>
       </section>
     )
   }
   return (
     <Table
-      title="Conventional gilt auctions"
-      subtitle="Recent DMO auction results. Higher cover and a smaller tail mean stronger demand."
-      footer="Source: UK Debt Management Office. Index-linked auctions are excluded (real yields aren't comparable)."
+      title="Conventional gilt issuance"
+      subtitle={`Recent DMO auctions and syndications. £${auctions.last_3m_bn ?? '—'}bn across ${auctions.last_3m_count ?? '—'} operations in the latest three months.`}
+      footer="Source: UK Debt Management Office gilt issuance history (report D2.1E). Index-linked operations are excluded, since their real yields aren't comparable. The DMO doesn't publish cover ratios or tails in a machine-readable form, so they aren't shown."
     >
       <thead className="border-b border-hairline">
-        <tr><Th>Auction</Th><Th right>Size</Th><Th right>Yield</Th><Th right>Cover</Th><Th right>Tail</Th></tr>
+        <tr><Th>Operation</Th><Th>Type</Th><Th right>Size</Th><Th right>Yield</Th><Th right>Clean price</Th></tr>
       </thead>
       <tbody>
         {rows.map((a) => (
-          <tr key={`${a.date}-${a.name}`} className="border-b border-hairline/60 last:border-0">
+          <tr key={`${a.date}-${a.name}-${a.type}`} className="border-b border-hairline/60 last:border-0">
             <Td className="text-ink">{dayShort(a.date)} · {a.name}</Td>
-            <Td right className="text-muted">{a.size_bn ? `£${a.size_bn}bn` : '—'}</Td>
+            <Td className="text-muted">{a.type || '—'}</Td>
+            <Td right className="text-muted">{a.size_bn ? `£${a.size_bn.toFixed(2)}bn` : '—'}</Td>
             <Td right className="text-ink">{a.yield !== null && a.yield !== undefined ? pct(a.yield, 3) : '—'}</Td>
-            <Td right className="text-ink">{a.cover?.toFixed(2) ?? '—'}</Td>
-            <Td right className="text-muted">{a.tail_bp !== null && a.tail_bp !== undefined ? `${a.tail_bp.toFixed(1)}bp` : '—'}</Td>
+            <Td right className="text-muted">{a.price !== null && a.price !== undefined ? a.price.toFixed(3) : '—'}</Td>
           </tr>
         ))}
       </tbody>
@@ -316,7 +316,7 @@ const SOURCE_LABELS = {
   'boe:gilt_curves': 'BoE gilt / real / inflation curves',
   'refinitiv:mpc_ois': 'Refinitiv MPC-dated OIS',
   'cftc:sterling': 'CFTC sterling positioning',
-  'dmo:auctions': 'DMO gilt auctions',
+  'dmo:auctions': 'DMO gilt issuance',
 }
 
 export function RatesSourcesStatus({ status }) {

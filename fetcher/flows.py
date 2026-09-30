@@ -20,10 +20,10 @@ import xml.etree.ElementTree as ET
 CFTC_URL = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"
 ZSCORE_WEEKS = 156
 
-DMO_URLS = [
-    "https://www.dmo.gov.uk/data/XmlDataReport?reportCode=D2.1E",
-    "https://www.dmo.gov.uk/data/XmlDataReport?reportCode=D2.1A",
-]
+# D2.1E: gilt issuance history — every auction, syndication and tap with
+# instrument, date, type, nominal and issue yield. (Cover ratios and tails
+# aren't in any machine-readable DMO report.)
+DMO_URL = "https://www.dmo.gov.uk/data/XmlDataReport?reportCode=D2.1E"
 
 
 def _num(raw):
@@ -172,37 +172,37 @@ def _date(text: str | None) -> str | None:
     return None
 
 
-def dmo_auctions(http_get, log, since: str) -> dict:
-    errors = []
-    for url in DMO_URLS:
-        try:
-            root = ET.fromstring(http_get(url))
-        except Exception as exc:  # noqa: BLE001
-            errors.append(f"{url}: {exc}")
+def dmo_issuance(http_get, log, since: str) -> dict:
+    root = ET.fromstring(http_get(DMO_URL))
+    recs = _records(root)
+    out = []
+    for rec in recs:
+        day = _date(rec.get("actual_date"))
+        name = (rec.get("instrument_name") or "").strip()
+        kind = (rec.get("issuance_type") or "").strip()
+        if not day or not name or day < since:
             continue
-        recs = _records(root)
-        if recs:
-            log(f"DMO  {url.split('=')[-1]}: {len(recs)} records; sample {json.dumps(recs[-1])[:600]}")
-        out = []
-        for rec in recs:
-            day = _date(_field(rec, "date", exclude=("close", "redemption", "maturity", "settle", "issue")))
-            name = _field(rec, "name") or _field(rec, "instrument") or _field(rec, "gilt")
-            cover = _num(_field(rec, "cover"))
-            if not day or not name or cover is None or day < since:
-                continue
-            if "index" in (name or "").lower() or "i/l" in (name or "").lower():
-                continue  # index-linked: real yields, not comparable
-            out.append({
-                "date": day,
-                "name": name,
-                "cover": cover,
-                "tail_bp": _num(_field(rec, "tail")),
-                "yield": _num(_field(rec, "yield", exclude=("tail", "range"))),
-                "size_bn": (lambda v: round(v / 1e9, 2) if v and v > 1e6 else v)(
-                    _num(_field(rec, "nominal") or _field(rec, "amount"))),
-            })
-        if out:
-            out.sort(key=lambda r: r["date"], reverse=True)
-            return {"recent": out[:20], "source": url}
-        errors.append(f"{url}: no auction records recognised")
-    raise RuntimeError("; ".join(errors)[:300])
+        if "index" in name.lower():
+            continue  # index-linked: real yields, not comparable
+        nominal = _num(rec.get("nominal_issued"))  # £ millions
+        out.append({
+            "date": day,
+            "name": name,
+            "type": kind,
+            "size_bn": round(nominal / 1000, 2) if nominal is not None else None,
+            "yield": _num(rec.get("issue_yield")),
+            "price": _num(rec.get("issue_clean_price")),
+        })
+    if not out:
+        raise RuntimeError(f"DMO D2.1E: {len(recs)} records, none recognised since {since}")
+    out.sort(key=lambda r: r["date"], reverse=True)
+    log(f"DMO  issuance: {len(out)} conventional operations since {since}, latest {out[0]['date']}")
+
+    import datetime as dt
+    cutoff = (dt.date.fromisoformat(out[0]["date"]) - dt.timedelta(days=91)).isoformat()
+    recent = [r for r in out if r["date"] > cutoff and r["size_bn"]]
+    return {
+        "recent": out[:20],
+        "last_3m_bn": round(sum(r["size_bn"] for r in recent), 1),
+        "last_3m_count": len(recent),
+    }

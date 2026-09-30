@@ -70,7 +70,7 @@ function positioningCards(state) {
   return [
     { id: 'lev', label: `Lev funds · ${gbp?.label ?? 'GBP'}`, color: PALETTE.headline, value: gbp?.lev_net !== undefined && gbp?.lev_net !== null ? gbp.lev_net / 1000 : null, digits: 1, unit: 'k contracts', change: gbp?.lev_z, changeFormat: (v) => (v === null || v === undefined ? '—' : `${v.toFixed(2)}σ`), changeLabel: 'vs 3y mean', note: `CFTC week of ${dayLong(state.positioning?.as_of)}` },
     { id: 'am', label: `Asset mgrs · ${gbp?.label ?? 'GBP'}`, color: PALETTE.policy, value: gbp?.am_net !== undefined && gbp?.am_net !== null ? gbp.am_net / 1000 : null, digits: 1, unit: 'k contracts', change: gbp?.am_z, changeFormat: (v) => (v === null || v === undefined ? '—' : `${v.toFixed(2)}σ`), changeLabel: 'vs 3y mean', note: 'Real-money positioning' },
-    { id: 'cover', label: 'Last gilt auction cover', color: PALETTE.services, value: auction?.cover, unit: '×', change: auction?.tail_bp ?? null, changeFormat: (v) => (v === null || v === undefined ? '—' : `${v.toFixed(1)}bp tail`), changeLabel: '', note: auction ? `${auction.name} · ${dayLong(auction.date)}` : 'UK Debt Management Office' },
+    { id: 'supply', label: 'Gilt supply, last 3 months', color: PALETTE.services, value: state.rates?.auctions?.last_3m_bn, digits: 1, unit: '£bn', change: null, changeFormat: () => `${state.rates?.auctions?.last_3m_count ?? '—'} operations`, changeLabel: '', note: auction ? `Latest: ${auction.name} · ${dayLong(auction.date)}` : 'UK Debt Management Office' },
     { id: 'sonia', label: 'SONIA', color: PALETTE.goods, value: snap.sonia?.value, unit: '%', change: soniaSpread, changeFormat: (v) => bp(v, 0), changeLabel: 'vs Bank Rate', note: 'Funding pressure shows up here first' },
   ]
 }

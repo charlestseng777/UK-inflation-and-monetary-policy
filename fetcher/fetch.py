@@ -974,7 +974,7 @@ def build_rates_extras(config: dict, ois_curves: dict, sonia: dict[str, float],
 
     positioning = attempt("cftc:sterling", lambda: flows.cftc_sterling(http_get, DAILY_START),
                           prev_pos or None)
-    auctions = attempt("dmo:auctions", lambda: flows.dmo_auctions(
+    auctions = attempt("dmo:auctions", lambda: flows.dmo_issuance(
         http_get, log, (today - timedelta(days=500)).isoformat()), prev_meta.get("auctions"))
 
     meta = {

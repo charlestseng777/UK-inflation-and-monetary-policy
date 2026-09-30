@@ -274,7 +274,7 @@ export function GiltAuctionsTable({ auctions, status }) {
         {rows.map((a) => (
           <tr key={`${a.date}-${a.name}-${a.type}`} className="border-b border-hairline/60 last:border-0">
             <Td className="text-ink">{dayShort(a.date)} · {a.name}</Td>
-            <Td className="text-muted">{a.type || '—'}</Td>
+            <Td className="text-muted">{a.type === 'Outright' ? 'Auction' : a.type || '—'}</Td>
             <Td right className="text-muted">{a.size_bn ? `£${a.size_bn.toFixed(2)}bn` : '—'}</Td>
             <Td right className="text-ink">{a.yield !== null && a.yield !== undefined ? pct(a.yield, 3) : '—'}</Td>
             <Td right className="text-muted">{a.price !== null && a.price !== undefined ? a.price.toFixed(3) : '—'}</Td>

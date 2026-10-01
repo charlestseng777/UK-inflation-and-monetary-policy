@@ -18,8 +18,10 @@ snapshots, which many RDP licences don't cover.
 
 from __future__ import annotations
 
+import base64
 import json
 import os
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -37,8 +39,10 @@ def configured() -> bool:
     )
 
 
-def _request(url: str, data: dict | None = None, token: str | None = None):
+def _request(url: str, data: dict | None = None, token: str | None = None,
+             extra_headers: dict | None = None):
     headers = {"Accept": "application/json", "User-Agent": "uk-inflation-dashboard/1.0"}
+    headers.update(extra_headers or {})
     body = None
     if data is not None:
         body = urllib.parse.urlencode(data).encode()
@@ -48,13 +52,14 @@ def _request(url: str, data: dict | None = None, token: str | None = None):
     req = urllib.request.Request(url, data=body, headers=headers, method="POST" if body else "GET")
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-            return json.loads(resp.read().decode("utf-8"))
+            body = resp.read().decode("utf-8")
+            return json.loads(body) if body.strip() else {}
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:200]
         raise RuntimeError(f"{url.split('?')[0]} -> HTTP {exc.code}: {detail}") from None
 
 
-def _token() -> str:
+def _login() -> dict:
     env = os.environ
     if env.get("REFINITIV_CLIENT_ID") and env.get("REFINITIV_CLIENT_SECRET"):
         payload = _request(f"{BASE}/auth/oauth2/v2/token", {
@@ -70,7 +75,45 @@ def _token() -> str:
             "scope": "trapi", "takeExclusiveSignOnControl": "false"})
     if not payload.get("access_token"):
         raise RuntimeError("RDP token response had no access_token")
-    return payload["access_token"]
+    return payload
+
+
+_SESSION: dict = {}
+
+
+def _token(log, attempts: int = 3, wait_s: int = 90) -> str:
+    """Log in, retrying while the account's single session is held by
+    something else — usually the Fed dashboard's nightly run, which starts
+    within minutes of this one and signs out when it's done."""
+    for attempt in range(attempts):
+        try:
+            payload = _login()
+            _SESSION.clear()
+            _SESSION.update(payload)
+            return payload["access_token"]
+        except RuntimeError as exc:
+            if "quota" not in str(exc).lower() or attempt == attempts - 1:
+                raise
+            log(f"RDP  session busy; retrying in {wait_s}s ({attempt + 1}/{attempts - 1})")
+            time.sleep(wait_s)
+    raise RuntimeError("unreachable")
+
+
+def release(log) -> None:
+    """Sign out: revoke the refresh token so the session is freed now rather
+    than when it expires. Best-effort."""
+    token = _SESSION.get("refresh_token") or _SESSION.get("access_token")
+    client = os.environ.get("REFINITIV_APP_KEY") or os.environ.get("REFINITIV_CLIENT_ID")
+    _SESSION.clear()
+    if not token or not client:
+        return
+    basic = base64.b64encode(f"{client}:".encode()).decode()
+    try:
+        _request(f"{BASE}/auth/oauth2/v1/revoke", {"token": token},
+                 extra_headers={"Authorization": f"Basic {basic}"})
+        log("RDP  session released")
+    except Exception as exc:  # noqa: BLE001
+        log(f"RDP  sign-out failed (session will expire on its own): {exc}")
 
 
 def _last_close(token: str, ric: str, start: str) -> tuple[str, float] | None:
@@ -93,8 +136,16 @@ def _last_close(token: str, ric: str, start: str) -> tuple[str, float] | None:
 
 def mpc_dated_ois(config_path: Path, meetings: list[str], sonia: float | None,
                   bank_rate: float | None, start: str, log) -> dict:
+    try:
+        return _mpc_dated_ois(config_path, meetings, sonia, bank_rate, start, log)
+    finally:
+        release(log)
+
+
+def _mpc_dated_ois(config_path: Path, meetings: list[str], sonia: float | None,
+                   bank_rate: float | None, start: str, log) -> dict:
     cfg = json.loads(config_path.read_text())
-    token = _token()
+    token = _token(log)
     rows, errors = [], []
     for i, ric in enumerate(cfg.get("mpc_ois", [])):
         try:

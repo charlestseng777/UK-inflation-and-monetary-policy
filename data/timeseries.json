@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T01:49:14+00:00",
+  "generated_at": "2026-10-03T01:25:36+00:00",
   "start": "2015-01",
   "observations": [
     {
@@ -8695,10 +8695,10 @@
       "wage_growth": null,
       "gdp_growth": null,
       "policy_rate": 3.75,
-      "expected_rate": 3.95,
-      "ois_m1": 3.77,
+      "expected_rate": 3.96,
+      "ois_m1": 3.76,
       "ois_m2": 3.86,
-      "pricing_bp": 20.3,
+      "pricing_bp": 20.5,
       "ois_3m": 3.88,
       "ois_2y": 4.65,
       "contributions": {
@@ -8737,12 +8737,74 @@
         "wage_growth": null,
         "gdp_growth": null,
         "policy_rate": 0.0,
-        "expected_rate": 0.15,
+        "expected_rate": 0.16,
         "ois_3m": 0.09,
         "ois_2y": 0.38
       },
       "real_rate": null,
-      "expected_gap": 0.2
+      "expected_gap": 0.21
+    },
+    {
+      "date": "2026-10",
+      "headline_cpi": null,
+      "core_cpi": null,
+      "services_cpi": null,
+      "goods_cpi": null,
+      "core_goods_cpi": null,
+      "food_cpi": null,
+      "energy_cpi": null,
+      "alcohol_tobacco_cpi": null,
+      "wage_growth": null,
+      "gdp_growth": null,
+      "policy_rate": 3.75,
+      "expected_rate": null,
+      "ois_m1": null,
+      "ois_m2": null,
+      "pricing_bp": null,
+      "ois_3m": 3.87,
+      "ois_2y": 4.54,
+      "contributions": {
+        "services": null,
+        "core_goods": null,
+        "food": null,
+        "energy": null,
+        "alcohol_tobacco": null,
+        "other": null
+      },
+      "weights": {
+        "services": 470.0,
+        "core_goods": 324.9,
+        "food": 109.6,
+        "energy": 58.4,
+        "alcohol_tobacco": 37.2
+      },
+      "index": {
+        "headline": null,
+        "core": null,
+        "services": null,
+        "core_goods": null,
+        "energy": null,
+        "food": null,
+        "alcohol_tobacco": null
+      },
+      "headline_contribution": null,
+      "mom": {
+        "headline_cpi": null,
+        "core_cpi": null,
+        "services_cpi": null,
+        "core_goods_cpi": null,
+        "food_cpi": null,
+        "energy_cpi": null,
+        "alcohol_tobacco_cpi": null,
+        "wage_growth": null,
+        "gdp_growth": null,
+        "policy_rate": 0.0,
+        "expected_rate": null,
+        "ois_3m": -0.01,
+        "ois_2y": -0.11
+      },
+      "real_rate": null,
+      "expected_gap": null
     }
   ]
 }

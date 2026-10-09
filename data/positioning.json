@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T02:18:45+00:00",
+ "generated_at": "2026-10-09T02:36:34+00:00",
  "as_of": "2026-09-29",
  "contracts": [{"id": "c096742", "label": "GBP/USD (CME)", "code": "096742"}, {"id": "c299741", "label": "EUR/GBP cross (CME)", "code": "299741"}],
  "weekly": [

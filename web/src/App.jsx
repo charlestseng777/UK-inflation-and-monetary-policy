@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useData } from './lib/useData.js'
 import { addMonths, monthLong } from './lib/format.js'
-import StatCards, { LatestSummary } from './components/StatCards.jsx'
+import StatCards, { LatestSummary, lastWith } from './components/StatCards.jsx'
 import { InsightEngineCard } from './components/InsightPanel.jsx'
 import MainChart from './components/MainChart.jsx'
 import StackedChart from './components/StackedChart.jsx'
@@ -230,7 +230,7 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
             chart below to see what that month's number was actually made of.
           </p>
           <div className="mt-2">
-            <LatestSummary row={latest} wage={latest?.wage_growth} realRate={latest?.real_rate} />
+            <LatestSummary row={latest} wage={lastWith(observations, 'wage_growth')?.wage_growth} realRate={latest?.real_rate} />
           </div>
         </div>
 
@@ -261,7 +261,7 @@ python fetcher/fetch.py --no-llm{'\n'}npm --prefix web run dev
       </header>
 
       <div className="space-y-4">
-        {tab === 'overview' && <StatCards row={latest} />}
+        {tab === 'overview' && <StatCards rows={observations} />}
         {tab === 'rates' && <KpiCards cards={ratesCards(state)} />}
         {tab === 'positioning' && <KpiCards cards={positioningCards(state)} />}
 

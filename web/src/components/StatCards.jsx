@@ -5,17 +5,27 @@ const CARDS = [
   { id: 'headline_cpi', label: 'Headline CPI', color: PALETTE.headline, note: 'Target variable' },
   { id: 'core_cpi', label: 'Core CPI', color: PALETTE.core, note: 'Excl. energy, food, alcohol & tobacco' },
   { id: 'services_cpi', label: 'Services CPI', color: PALETTE.services, note: 'Domestic price pressure' },
-  { id: 'policy_rate', label: 'Bank Rate', color: PALETTE.policy, note: 'MPC policy setting' },
+  // Orange rather than wage growth's chart violet, which Core CPI already uses in this row.
+  { id: 'wage_growth', label: 'Wage growth', color: PALETTE.policy, note: 'AWE regular pay, 3m y/y' },
 ]
 
-export default function StatCards({ row }) {
-  if (!row) return null
+/** Newest row with a value for `key`. Wages are published about a month after CPI, so their latest month can lag. */
+export function lastWith(rows, key) {
+  for (let i = rows.length - 1; i >= 0; i -= 1) {
+    if (rows[i][key] !== null && rows[i][key] !== undefined) return rows[i]
+  }
+  return null
+}
+
+export default function StatCards({ rows }) {
+  if (!rows?.length) return null
 
   return (
     <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
       {CARDS.map((card) => {
-        const value = row[card.id]
-        const change = row.mom?.[card.id]
+        const row = lastWith(rows, card.id)
+        const value = row?.[card.id]
+        const change = row?.mom?.[card.id]
         return (
           <div key={card.id} className="card card-pad animate-fade-up">
             <div className="flex items-center gap-2">
@@ -40,7 +50,7 @@ export default function StatCards({ row }) {
               <span className="text-faint">on the month</span>
             </div>
 
-            <div className="mt-1.5 text-[11px] leading-snug text-faint">{card.note}</div>
+            <div className="mt-1.5 text-[11px] leading-snug text-faint">{card.note} · {monthLong(row?.date)}</div>
           </div>
         )
       })}

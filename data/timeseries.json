@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T00:54:30+00:00",
+  "generated_at": "2026-10-22T00:53:13+00:00",
   "start": "2015-01",
   "observations": [
     {
@@ -8684,14 +8684,14 @@
     },
     {
       "date": "2026-09",
-      "headline_cpi": null,
-      "core_cpi": null,
-      "services_cpi": null,
-      "goods_cpi": null,
-      "core_goods_cpi": null,
-      "food_cpi": null,
-      "energy_cpi": null,
-      "alcohol_tobacco_cpi": null,
+      "headline_cpi": 3.5,
+      "core_cpi": 2.79,
+      "services_cpi": 3.7,
+      "goods_cpi": 3.2,
+      "core_goods_cpi": 1.05,
+      "food_cpi": 1.3,
+      "energy_cpi": 17.87,
+      "alcohol_tobacco_cpi": 2.5,
       "wage_growth": null,
       "gdp_growth": null,
       "policy_rate": 3.75,
@@ -8702,38 +8702,38 @@
       "ois_3m": 3.88,
       "ois_2y": 4.65,
       "contributions": {
-        "services": null,
-        "core_goods": null,
-        "food": null,
-        "energy": null,
-        "alcohol_tobacco": null,
-        "other": null
+        "services": 2.22,
+        "core_goods": 0.21,
+        "food": 0.14,
+        "energy": 1.04,
+        "alcohol_tobacco": 0.09,
+        "other": -0.2
       },
       "weights": {
-        "services": 470.0,
-        "core_goods": 324.9,
+        "services": 600.0,
+        "core_goods": 194.9,
         "food": 109.6,
         "energy": 58.4,
         "alcohol_tobacco": 37.2
       },
       "index": {
-        "headline": null,
-        "core": null,
-        "services": null,
-        "core_goods": null,
-        "energy": null,
-        "food": null,
-        "alcohol_tobacco": null
+        "headline": 144.1,
+        "core": 140.0,
+        "services": 149.8,
+        "core_goods": 124.8,
+        "energy": 178.1,
+        "food": 144.3,
+        "alcohol_tobacco": 160.2
       },
-      "headline_contribution": null,
+      "headline_contribution": 3.5,
       "mom": {
-        "headline_cpi": null,
-        "core_cpi": null,
-        "services_cpi": null,
-        "core_goods_cpi": null,
-        "food_cpi": null,
-        "energy_cpi": null,
-        "alcohol_tobacco_cpi": null,
+        "headline_cpi": 0.4,
+        "core_cpi": 0.22,
+        "services_cpi": 0.3,
+        "core_goods_cpi": 0.15,
+        "food_cpi": 0.0,
+        "energy_cpi": 4.06,
+        "alcohol_tobacco_cpi": -0.2,
         "wage_growth": null,
         "gdp_growth": null,
         "policy_rate": 0.0,
@@ -8741,7 +8741,7 @@
         "ois_3m": 0.09,
         "ois_2y": 0.38
       },
-      "real_rate": null,
+      "real_rate": 0.25,
       "expected_gap": 0.21
     },
     {
@@ -8759,10 +8759,10 @@
       "policy_rate": 3.75,
       "expected_rate": 3.99,
       "ois_m1": 3.73,
-      "ois_m2": 3.9,
-      "pricing_bp": 24.1,
-      "ois_3m": 3.97,
-      "ois_2y": 4.68,
+      "ois_m2": 3.91,
+      "pricing_bp": 24.2,
+      "ois_3m": 3.98,
+      "ois_2y": 4.73,
       "contributions": {
         "services": null,
         "core_goods": null,
@@ -8800,8 +8800,8 @@
         "gdp_growth": null,
         "policy_rate": 0.0,
         "expected_rate": 0.03,
-        "ois_3m": 0.09,
-        "ois_2y": 0.03
+        "ois_3m": 0.1,
+        "ois_2y": 0.08
       },
       "real_rate": null,
       "expected_gap": 0.24

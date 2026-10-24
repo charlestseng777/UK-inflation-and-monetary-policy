@@ -1,9 +1,9 @@
 {
  "meta": {
   "as_of": "2026-10-23",
-  "generated_at": "2026-10-24T19:24:18+00:00",
+  "generated_at": "2026-10-24T19:36:17+00:00",
   "mode": "live",
-  "build_ms": 10867,
+  "build_ms": 7286,
   "llm": {
    "used": false,
    "reason": "no ANTHROPIC_API_KEY"
@@ -57,7 +57,7 @@
    "FTSE": "yahoo:^FTSE",
    "SX5E": "yahoo:^STOXX50E",
    "NKY": "yahoo:^N225",
-   "CSI300": "yahoo:000300.SS",
+   "CSI300": "cnbc:.CSI300",
    "VIX": "yahoo:^VIX",
    "BRENT": "yahoo:BZ=F",
    "WTI": "yahoo:CL=F",
@@ -122,6 +122,48 @@
  "movers": {
   "up": [
    {
+    "id": "EU_HY_OAS",
+    "name": "Euro HY credit spread (OAS)",
+    "short": "EUR HY",
+    "asset_class": "credit",
+    "region": "EA",
+    "d1": 16.0,
+    "unit": "bp",
+    "z": 2.1,
+    "last": 3.54,
+    "note": "spreads wider",
+    "date": "2026-10-22",
+    "lagged": true
+   },
+   {
+    "id": "CSI300",
+    "name": "CSI 300",
+    "short": "CSI 300",
+    "asset_class": "equities",
+    "region": "CN",
+    "d1": 1.71,
+    "unit": "%",
+    "z": 1.95,
+    "last": 4105.33,
+    "note": "higher",
+    "date": "2026-10-23",
+    "lagged": false
+   },
+   {
+    "id": "US_HY_OAS",
+    "name": "US HY credit spread (OAS)",
+    "short": "US HY",
+    "asset_class": "credit",
+    "region": "US",
+    "d1": 13.0,
+    "unit": "bp",
+    "z": 1.84,
+    "last": 3.4,
+    "note": "spreads wider",
+    "date": "2026-10-22",
+    "lagged": true
+   },
+   {
     "id": "BRENT",
     "name": "Brent crude",
     "short": "Brent",
@@ -131,7 +173,9 @@
     "unit": "%",
     "z": 1.67,
     "last": 116.72,
-    "note": "higher"
+    "note": "higher",
+    "date": "2026-10-23",
+    "lagged": false
    },
    {
     "id": "COPPER",
@@ -143,43 +187,9 @@
     "unit": "%",
     "z": 1.61,
     "last": 6.48,
-    "note": "higher"
-   },
-   {
-    "id": "WTI",
-    "name": "WTI crude",
-    "short": "WTI",
-    "asset_class": "commodities",
-    "region": "US",
-    "d1": 3.82,
-    "unit": "%",
-    "z": 1.6,
-    "last": 103.27,
-    "note": "higher"
-   },
-   {
-    "id": "TTF",
-    "name": "Dutch TTF gas",
-    "short": "TTF gas",
-    "asset_class": "commodities",
-    "region": "EA",
-    "d1": 4.23,
-    "unit": "%",
-    "z": 1.59,
-    "last": 93.85,
-    "note": "higher"
-   },
-   {
-    "id": "US30Y",
-    "name": "US 30Y Treasury",
-    "short": "UST 30Y",
-    "asset_class": "rates",
-    "region": "US",
-    "d1": 4.0,
-    "unit": "bp",
-    "z": 0.74,
-    "last": 5.33,
-    "note": "yields higher"
+    "note": "higher",
+    "date": "2026-10-23",
+    "lagged": false
    }
   ],
   "down": [
@@ -193,7 +203,9 @@
     "unit": "%",
     "z": -3.04,
     "last": 156.814,
-    "note": "JPY stronger"
+    "note": "JPY stronger",
+    "date": "2026-10-23",
+    "lagged": false
    },
    {
     "id": "DE2Y",
@@ -205,7 +217,9 @@
     "unit": "bp",
     "z": -1.79,
     "last": 3.02,
-    "note": "yields lower"
+    "note": "yields lower",
+    "date": "2026-10-23",
+    "lagged": false
    },
    {
     "id": "DE5Y",
@@ -217,31 +231,37 @@
     "unit": "bp",
     "z": -1.69,
     "last": 3.12,
-    "note": "yields lower"
+    "note": "yields lower",
+    "date": "2026-10-23",
+    "lagged": false
    },
    {
-    "id": "GOLD",
-    "name": "Gold",
-    "short": "Gold",
-    "asset_class": "commodities",
-    "region": "GLOBAL",
-    "d1": -1.29,
-    "unit": "%",
-    "z": -1.08,
-    "last": 4007.9,
-    "note": "lower"
-   },
-   {
-    "id": "DE10Y",
-    "name": "Germany 10Y Bund",
-    "short": "Bund",
+    "id": "UK30Y",
+    "name": "UK 30Y Gilt",
+    "short": "Gilt 30Y",
     "asset_class": "rates",
-    "region": "DE",
-    "d1": -5.0,
+    "region": "UK",
+    "d1": -8.66,
     "unit": "bp",
-    "z": -1.04,
-    "last": 3.39,
-    "note": "yields lower"
+    "z": -1.65,
+    "last": 5.718,
+    "note": "yields lower",
+    "date": "2026-10-22",
+    "lagged": true
+   },
+   {
+    "id": "UK10Y",
+    "name": "UK 10Y Gilt",
+    "short": "Gilt 10Y",
+    "asset_class": "rates",
+    "region": "UK",
+    "d1": -5.62,
+    "unit": "bp",
+    "z": -1.24,
+    "last": 5.312,
+    "note": "yields lower",
+    "date": "2026-10-22",
+    "lagged": true
    }
   ],
   "top": [
@@ -255,7 +275,51 @@
     "unit": "%",
     "z": -3.04,
     "last": 156.814,
-    "note": "JPY stronger"
+    "note": "JPY stronger",
+    "date": "2026-10-23",
+    "lagged": false
+   },
+   {
+    "id": "EU_HY_OAS",
+    "name": "Euro HY credit spread (OAS)",
+    "short": "EUR HY",
+    "asset_class": "credit",
+    "region": "EA",
+    "d1": 16.0,
+    "unit": "bp",
+    "z": 2.1,
+    "last": 3.54,
+    "note": "spreads wider",
+    "date": "2026-10-22",
+    "lagged": true
+   },
+   {
+    "id": "CSI300",
+    "name": "CSI 300",
+    "short": "CSI 300",
+    "asset_class": "equities",
+    "region": "CN",
+    "d1": 1.71,
+    "unit": "%",
+    "z": 1.95,
+    "last": 4105.33,
+    "note": "higher",
+    "date": "2026-10-23",
+    "lagged": false
+   },
+   {
+    "id": "US_HY_OAS",
+    "name": "US HY credit spread (OAS)",
+    "short": "US HY",
+    "asset_class": "credit",
+    "region": "US",
+    "d1": 13.0,
+    "unit": "bp",
+    "z": 1.84,
+    "last": 3.4,
+    "note": "spreads wider",
+    "date": "2026-10-22",
+    "lagged": true
    },
    {
     "id": "DE2Y",
@@ -267,43 +331,9 @@
     "unit": "bp",
     "z": -1.79,
     "last": 3.02,
-    "note": "yields lower"
-   },
-   {
-    "id": "DE5Y",
-    "name": "Germany 5Y Bobl",
-    "short": "Bobl",
-    "asset_class": "rates",
-    "region": "DE",
-    "d1": -8.0,
-    "unit": "bp",
-    "z": -1.69,
-    "last": 3.12,
-    "note": "yields lower"
-   },
-   {
-    "id": "BRENT",
-    "name": "Brent crude",
-    "short": "Brent",
-    "asset_class": "commodities",
-    "region": "GLOBAL",
-    "d1": 3.14,
-    "unit": "%",
-    "z": 1.67,
-    "last": 116.72,
-    "note": "higher"
-   },
-   {
-    "id": "COPPER",
-    "name": "Copper",
-    "short": "Copper",
-    "asset_class": "commodities",
-    "region": "CN",
-    "d1": 1.78,
-    "unit": "%",
-    "z": 1.61,
-    "last": 6.48,
-    "note": "higher"
+    "note": "yields lower",
+    "date": "2026-10-23",
+    "lagged": false
    }
   ]
  },
@@ -333,7 +363,9 @@
       "intensity": 1,
       "risk": null,
       "quantity": "10Y yield",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "fx",
@@ -348,7 +380,9 @@
       "intensity": 1,
       "risk": null,
       "quantity": "currency vs USD",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "equities",
@@ -363,12 +397,26 @@
       "intensity": 1,
       "risk": "off",
       "quantity": "index",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "credit",
       "id": "US_HY_OAS",
-      "available": false
+      "available": true,
+      "name": "US HY credit spread (OAS)",
+      "short": "US HY",
+      "d1": 13.0,
+      "unit": "bp",
+      "z": 1.84,
+      "direction": "up",
+      "intensity": 2,
+      "risk": "off",
+      "quantity": "spreads",
+      "proxy": null,
+      "date": "2026-10-22",
+      "lagged": true
      },
      {
       "column": "commodities",
@@ -383,7 +431,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "price",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      }
     ]
    },
@@ -394,7 +444,19 @@
      {
       "column": "rates",
       "id": "UK10Y",
-      "available": false
+      "available": true,
+      "name": "UK 10Y Gilt",
+      "short": "Gilt 10Y",
+      "d1": -5.62,
+      "unit": "bp",
+      "z": -1.24,
+      "direction": "down",
+      "intensity": 2,
+      "risk": null,
+      "quantity": "10Y yield",
+      "proxy": null,
+      "date": "2026-10-22",
+      "lagged": true
      },
      {
       "column": "fx",
@@ -409,7 +471,9 @@
       "intensity": 1,
       "risk": null,
       "quantity": "currency vs USD",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "equities",
@@ -424,7 +488,9 @@
       "intensity": 1,
       "risk": "off",
       "quantity": "index",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "credit",
@@ -439,7 +505,9 @@
       "intensity": 1,
       "risk": "off",
       "quantity": "spreads",
-      "proxy": "ETF price"
+      "proxy": "ETF price",
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "commodities",
@@ -454,7 +522,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "price",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      }
     ]
    },
@@ -475,7 +545,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "10Y yield",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "fx",
@@ -490,7 +562,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "currency vs USD",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "equities",
@@ -505,12 +579,26 @@
       "intensity": 0,
       "risk": "off",
       "quantity": "index",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "credit",
       "id": "EU_HY_OAS",
-      "available": false
+      "available": true,
+      "name": "Euro HY credit spread (OAS)",
+      "short": "EUR HY",
+      "d1": 16.0,
+      "unit": "bp",
+      "z": 2.1,
+      "direction": "up",
+      "intensity": 3,
+      "risk": "off",
+      "quantity": "spreads",
+      "proxy": null,
+      "date": "2026-10-22",
+      "lagged": true
      },
      {
       "column": "commodities",
@@ -525,7 +613,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "price",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      }
     ]
    },
@@ -536,7 +626,19 @@
      {
       "column": "rates",
       "id": "JP10Y",
-      "available": false
+      "available": true,
+      "name": "Japan 10Y JGB",
+      "short": "JGB 10Y",
+      "d1": -0.9,
+      "unit": "bp",
+      "z": -0.27,
+      "direction": "down",
+      "intensity": 0,
+      "risk": null,
+      "quantity": "10Y yield",
+      "proxy": null,
+      "date": "2026-10-22",
+      "lagged": true
      },
      {
       "column": "fx",
@@ -551,7 +653,9 @@
       "intensity": 3,
       "risk": null,
       "quantity": "currency vs USD",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "equities",
@@ -566,7 +670,9 @@
       "intensity": 0,
       "risk": "off",
       "quantity": "index",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "credit",
@@ -586,7 +692,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "price",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      }
     ]
    },
@@ -607,7 +715,9 @@
       "intensity": 1,
       "risk": null,
       "quantity": "10Y yield",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "fx",
@@ -622,12 +732,26 @@
       "intensity": 0,
       "risk": null,
       "quantity": "currency vs USD",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "equities",
       "id": "CSI300",
-      "available": false
+      "available": true,
+      "name": "CSI 300",
+      "short": "CSI 300",
+      "d1": 1.71,
+      "unit": "%",
+      "z": 1.95,
+      "direction": "up",
+      "intensity": 2,
+      "risk": "on",
+      "quantity": "index",
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      },
      {
       "column": "credit",
@@ -647,7 +771,9 @@
       "intensity": 2,
       "risk": null,
       "quantity": "price",
-      "proxy": null
+      "proxy": null,
+      "date": "2026-10-23",
+      "lagged": false
      }
     ]
    }
@@ -5304,7 +5430,7 @@
   {
    "id": "CN",
    "name": "China",
-   "text": "CGB 10Y yields rose 2bp to 1.61%. The renminbi firmed with USD/CNY +0.00% at 6.6779. Copper rose 1.8%."
+   "text": "CGB 10Y yields rose 2bp to 1.61%. The renminbi firmed with USD/CNY +0.00% at 6.6779. The CSI 300 rose 1.7% and copper rose 1.8%."
   }
  ],
  "relationships": [
@@ -5343,6 +5469,15 @@
    "evidence": "Brent +3.1%, US 5Y breakeven +3bp",
    "lesson": "Energy feeds directly into headline inflation, so short-dated breakevens track oil closely.",
    "strength": 3.0700000000000003
+  },
+  {
+   "id": "china_growth",
+   "topic": "Growth",
+   "statement": "Copper and Chinese equities rose together, pointing to firmer China growth sentiment.",
+   "status": "held",
+   "evidence": "Copper +1.8%, CSI 300 +1.7%",
+   "lesson": "China consumes about half the world's copper, so the metal is a real-time proxy for Chinese industrial demand.",
+   "strength": 2.8966666666666665
   },
   {
    "id": "yields_dollar",
@@ -7032,8 +7167,8 @@
      "pct_1y": 1.0,
      "pct_all": 2.0,
      "z_d1": 0.68,
-     "z_level_1y": -2.51,
-     "vol20": 3.75,
+     "z_level_1y": -2.49,
+     "vol20": 3.76,
      "unit": "bp",
      "spark": [
       1.753,
@@ -7070,10 +7205,13 @@
       1.682,
       1.682,
       1.682,
+      1.74,
       1.684,
       1.689,
       1.691,
       1.685,
+      1.684,
+      1.684,
       1.72,
       1.676,
       1.675,
@@ -8612,6 +8750,91 @@
      "hi_1y": 72366.34,
      "lo_1y": 48537.7,
      "region": "JP",
+     "asset_class": "equities",
+     "stale": false
+    },
+    {
+     "id": "CSI300",
+     "name": "CSI 300",
+     "short": "CSI 300",
+     "last": 4105.33,
+     "date": "2026-10-23",
+     "d1": 1.71,
+     "w1": -1.57,
+     "m1": -9.12,
+     "ytd": -11.33,
+     "pct_1y": 1.0,
+     "pct_all": 38.0,
+     "z_d1": 1.95,
+     "z_level_1y": -3.2,
+     "vol20": 1.01,
+     "unit": "%",
+     "spark": [
+      4728.0018,
+      4649.1917,
+      4702.4272,
+      4569.5235,
+      4600.2624,
+      4549.7201,
+      4588.1968,
+      4543.1781,
+      4600.9304,
+      4658.1549,
+      4651.3098,
+      4694.4365,
+      4702.0247,
+      4663.7887,
+      4690.9165,
+      4663.9513,
+      4665.8812,
+      4741.0981,
+      4725.8134,
+      4588.6955,
+      4592.7504,
+      4618.8952,
+      4563.1266,
+      4552.0326,
+      4590.7935,
+      4630.277,
+      4609.1764,
+      4625.0862,
+      4611.4394,
+      4547.9559,
+      4552.5784,
+      4548.0499,
+      4575.0245,
+      4558.7371,
+      4572.5995,
+      4548.3898,
+      4510.1554,
+      4480.0821,
+      4450.0402,
+      4480.2683,
+      4460.1557,
+      4507.3926,
+      4539.5654,
+      4544.5875,
+      4517.2785,
+      4439.1443,
+      4340.755,
+      4345.2088,
+      4357.6155,
+      4310.2765,
+      4317.2549,
+      4287.9798,
+      4275.68,
+      4217.6801,
+      4166.0124,
+      4170.6131,
+      4174.5349,
+      4152.1076,
+      4111.9325,
+      4036.2966,
+      4105.3286
+     ],
+     "hi_1y": 5059.66,
+     "lo_1y": 4036.3,
+     "region": "CN",
      "asset_class": "equities",
      "stale": false
     },

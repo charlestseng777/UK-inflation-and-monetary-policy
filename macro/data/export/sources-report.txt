@@ -1,4 +1,4 @@
-2026-10-24 19:19:13 WARNING macrodash.clients.refinitiv  Refinitiv login rejected; skipping Refinitiv for this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400: {"error":"access_denied"  ,"error_description":"Session quota is reached." } 
+2026-10-24 19:31:23 WARNING macrodash.clients.refinitiv  Refinitiv login rejected; skipping Refinitiv for this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400: {"error":"access_denied"  ,"error_description":"Session quota is reached." } 
 FAIL  US1Y         refinitiv:US1YT=RR                                 https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400: {"error":"access_denied"  ,"error_descri
 OK    US1Y         treasury:1 Yr                                       2954 rows, last 2026-10-23 = 4.4400
 OK    US1Y         fred:DGS1                                       2953 rows, last 2026-10-22 = 4.4100
@@ -20,7 +20,7 @@ OK    US30Y        fred:DGS30                                      2953 rows, la
 FAIL  US30Y        stooq:30usy.b                                  Stooq 30usy.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  UK2Y         refinitiv:GB2YT=RR                                 Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    UK2Y         boe_curve:nominal:2                                  2984 rows, last 2026-10-22 = 4.6759
-OK    UK2Y         cnbc:GB2Y-GB                                     514 rows, last 2026-10-23 = 4.9193
+OK    UK2Y         cnbc:GB2Y-GB                                     516 rows, last 2026-10-23 = 4.9193
 FAIL  UK2Y         stooq:2uky.b                                   Stooq 2uky.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  UK5Y         refinitiv:GB5YT=RR                                 Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    UK5Y         boe_curve:nominal:5                                  2984 rows, last 2026-10-22 = 4.9294
@@ -40,11 +40,11 @@ OK    DE2Y         cnbc:DE2Y-DE                                     518 rows, la
 FAIL  DE2Y         stooq:2dey.b                                   Stooq 2dey.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  DE5Y         refinitiv:DE5YT=RR                                 Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    DE5Y         bundesbank:BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R05XX.R.A.A._Z._Z.A   2998 rows, last 2026-10-23 = 3.1200
-OK    DE5Y         cnbc:DE5Y-DE                                     519 rows, last 2026-10-23 = 3.1389
+OK    DE5Y         cnbc:DE5Y-DE                                     518 rows, last 2026-10-23 = 3.1389
 FAIL  DE5Y         stooq:5dey.b                                   Stooq 5dey.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  DE10Y        refinitiv:DE10YT=RR                                Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    DE10Y        bundesbank:BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A   2998 rows, last 2026-10-23 = 3.3900
-OK    DE10Y        cnbc:DE10Y-DE                                    520 rows, last 2026-10-23 = 3.3429
+OK    DE10Y        cnbc:DE10Y-DE                                    519 rows, last 2026-10-23 = 3.3429
 FAIL  DE10Y        stooq:10dey.b                                  Stooq 10dey.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  DE30Y        refinitiv:DE30YT=RR                                Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    DE30Y        bundesbank:BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R30XX.R.A.A._Z._Z.A   2998 rows, last 2026-10-23 = 3.7600
@@ -60,7 +60,7 @@ OK    JP10Y        cnbc:JP10Y-JP                                    494 rows, la
 FAIL  JP10Y        stooq:10jpy.b                                  Stooq 10jpy.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  JP30Y        refinitiv:JP30YT=RR                                Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    JP30Y        mof:30Y                                        2883 rows, last 2026-10-22 = 3.9520
-OK    JP30Y        cnbc:JP30Y-JP                                    491 rows, last 2026-10-23 = 3.8290
+OK    JP30Y        cnbc:JP30Y-JP                                    495 rows, last 2026-10-23 = 3.8290
 FAIL  JP30Y        stooq:30jpy.b                                  Stooq 30jpy.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  JP1Y         refinitiv:JP1YT=RR                                 Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
 OK    JP1Y         mof:1Y                                         2883 rows, last 2026-10-22 = 1.6600
@@ -74,7 +74,7 @@ FAIL  ES10Y        refinitiv:ES10YT=RR                                Refinitiv 
 OK    ES10Y        cnbc:ES10Y-ES                                    519 rows, last 2026-10-23 = 4.0432
 FAIL  ES10Y        stooq:10esy.b                                  Stooq 10esy.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 FAIL  CN10Y        refinitiv:CN10YT=RR                                Refinitiv login failed earlier this run: https://api.refinitiv.com/auth/oauth2/v1/token -> HTTP 400:
-OK    CN10Y        cnbc:CN10Y-CN                                    481 rows, last 2026-10-23 = 1.6150
+OK    CN10Y        cnbc:CN10Y-CN                                    484 rows, last 2026-10-23 = 1.6150
 FAIL  CN10Y        stooq:10cny.b                                  Stooq 10cny.b: <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="no
 OK    US3M         treasury:3 Mo                                       2954 rows, last 2026-10-23 = 4.2200
 OK    US3M         fred:DGS3MO                                     2953 rows, last 2026-10-22 = 4.2200

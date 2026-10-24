@@ -7,7 +7,7 @@ function Row({ m, rank }) {
     <li className="grid grid-cols-[20px_1fr_auto_auto] items-center gap-3 py-2.5">
       <span className="num text-xs text-ink-3">{rank}</span>
       <span className="min-w-0">
-        <span className="block truncate text-[15px] text-ink">{m.name}</span>
+        <span className="block text-[15px] leading-snug text-ink">{m.name}</span>
         <span className="block text-xs text-ink-3">{m.asset_class} · {m.note}{m.lagged && <> · {date(m.date)} print</>}</span>
       </span>
       <span className="num text-right text-xs text-ink-3">{Math.abs(m.z).toFixed(1)}σ</span>

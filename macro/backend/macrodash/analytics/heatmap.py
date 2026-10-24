@@ -55,7 +55,7 @@ def build_heatmap(stats: dict[str, dict], registry: dict[str, Instrument]) -> di
             elif col == "credit":
                 risk = "off" if value_dir > 0 else "on"
             cells.append({"column": col, "id": iid, "available": True, "name": inst.name, "short": inst.short,
-                          "d1": d1, "unit": inst.move_unit, "z": st.get("z_d1"), "direction": direction,
+                          "d1": d1, "value": value_dir if col == "fx" else d1, "unit": inst.move_unit, "z": st.get("z_d1"), "direction": direction,
                           "intensity": intensity(st.get("z_d1")), "risk": risk, "quantity": QUANTITY[col],
                           "proxy": "ETF price" if col == "credit" and inst.kind == "price" else None,
                           "date": st.get("date"), "lagged": bool(st.get("lagged"))})

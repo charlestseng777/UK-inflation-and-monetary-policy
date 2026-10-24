@@ -20,7 +20,7 @@ function Cell({ c }) {
     <td className="px-1.5 py-1.5">
       <Tooltip
         className="w-full"
-        content={<><span className="text-ink">{c.name}</span><br />{move(c.d1, c.unit)} · {c.z != null ? `${Math.abs(c.z).toFixed(1)}σ move` : ''}
+        content={<><span className="text-ink">{c.name}</span><br />{c.short} {move(c.d1, c.unit)} · {c.z != null ? `${Math.abs(c.z).toFixed(1)}σ move` : ''}
           {c.proxy && <><br />Arrow shows spread direction; value is the {c.proxy} move.</>}
           {c.risk && <><br />Reads as risk-{c.risk}</>}</>}
       >
@@ -30,7 +30,7 @@ function Cell({ c }) {
         >
           <span className={`text-lg ${c.intensity ? '' : 'text-ink-3'}`} style={c.intensity ? { color: `rgb(${hue})` } : {}}>{arrow}</span>
           <span className={`num text-right text-sm ${c.intensity >= 1 ? 'text-ink' : 'text-ink-2'}`}>
-            {move(c.d1, c.unit)}
+            {move(c.value ?? c.d1, c.unit)}
             {c.proxy && <span className="block text-[10px] leading-none text-ink-3">{c.proxy}</span>}
             {c.lagged && <span className="block text-[10px] leading-none text-ink-3">{date(c.date)}</span>}
           </span>

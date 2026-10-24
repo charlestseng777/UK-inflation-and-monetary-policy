@@ -82,3 +82,25 @@ def test_rss_and_atom():
             '<link href="http://b"/><updated>2026-10-23T09:00:00Z</updated></entry></feed>')
     assert parse_feed(rss, "Fed")[0]["date"] == "2026-10-22"
     assert parse_feed(atom, "ECB")[0]["url"] == "http://b"
+
+
+def test_cnbc_chart():
+    from macrodash.clients.cnbc import parse_chart
+    body = json.dumps({"barData": {"priceBars": [
+        {"tradeTime": "20261022000000", "close": "3.551"}, {"tradeTime": "20261023000000", "close": "3.602"}]}})
+    s = parse_chart(body, "IT10Y-IT")
+    assert s.iloc[-1] == 3.602 and s.index[0].day == 22
+    with pytest.raises(SourceError):
+        parse_chart("<html>", "X")
+
+
+def test_sdmx_xml_both_flavours():
+    specific = ('<message:StructureSpecificData xmlns:message="m"><DataSet><Series>'
+                '<Obs TIME_PERIOD="2026-10-22" OBS_VALUE="2.65"/><Obs TIME_PERIOD="2026-10-23" OBS_VALUE="2.70"/>'
+                '</Series></DataSet></message:StructureSpecificData>')
+    generic = ('<m:GenericData xmlns:m="m" xmlns:generic="g"><generic:Series><generic:Obs>'
+               '<generic:ObsDimension value="2026-10-23"/><generic:ObsValue value="2.71"/>'
+               '</generic:Obs></generic:Series></m:GenericData>')
+    assert sdmx.parse_any(specific, "X").iloc[-1] == 2.70
+    assert sdmx.parse_any(generic, "X").iloc[-1] == 2.71
+    assert sdmx.parse_any("Title;x\n2026-10-23;2,72;\n", "X").iloc[-1] == 2.72

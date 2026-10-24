@@ -37,7 +37,13 @@ def fetch(http: HttpClient, code: str, start: str) -> pd.Series:
     p2 = int(dt.datetime.now(dt.UTC).timestamp()) + 86400
     text = http.get_text(URL.format(symbol=code), params={
         "period1": p1, "period2": p2, "interval": "1d", "includePrePost": "false", "events": ""})
-    return parse_chart(text, code)
+    s = parse_chart(text, code)
+    if len(s) < 20:
+        # Some exchanges (e.g. Shanghai) answer a period query with one bar;
+        # a named range returns the full daily history.
+        s = parse_chart(http.get_text(URL.format(symbol=code), params={"range": "10y", "interval": "1d"}), code)
+        s = s[s.index >= pd.Timestamp(start)]
+    return s
 
 
 def fed_funds_contract(year: int, month: int) -> str:

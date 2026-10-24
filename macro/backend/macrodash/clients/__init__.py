@@ -12,7 +12,7 @@ import pandas as pd
 
 from ..config import get_settings
 from ..instruments import Instrument
-from . import alphavantage, eia, fred, mof, sdmx, stooq, treasury, yahoo
+from . import alphavantage, cnbc, eia, fred, mof, sdmx, stooq, treasury, yahoo
 from . import refinitiv as rdp
 from .base import HttpClient, SourceError
 from .boe import BoECurves, fetch_iadb
@@ -40,6 +40,7 @@ class SourceRouter:
             case "mof": return mof.fetch(h, code, start)
             case "yahoo": return yahoo.fetch(h, code, start)
             case "stooq": return stooq.fetch(h, code, start)
+            case "cnbc": return cnbc.fetch(h, code, start)
             case "eia": return eia.fetch(h, code, start)
             case "alphavantage": return alphavantage.fetch(h, code, start)
             case "refinitiv":

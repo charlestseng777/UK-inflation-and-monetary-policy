@@ -5,9 +5,9 @@ Two engines produce the same output shape (one row per meeting with the
 implied rate after it):
 
 1. `path_from_ois_curve`: from an OIS (or proxy) term structure. Spot rates
-   become discount factors; log-linear interpolation of discount factors gives
-   piecewise-flat forwards; the average forward across each inter-meeting
-   window is the expected overnight rate after that meeting. This is the
+   are interpolated linearly in zero-rate space and turned into discount
+   factors; the average forward across each inter-meeting window is the
+   expected overnight rate after that meeting. This is the
    standard meeting-date bootstrap used on rates desks.
 
 2. `path_from_fed_funds_futures`: from 30-day fed funds futures, using the
@@ -36,19 +36,27 @@ def _df(rate_pct: float, t: float) -> float:
 
 
 def interp_df(nodes: list[tuple[float, float]], t: float) -> float:
-    """Discount factor at t (years) from (tenor, rate %) nodes, log-linear in
-    DF (flat forwards) between nodes, flat-forward extrapolation beyond the
-    last node."""
+    """Discount factor at t (years) from (tenor, spot rate %) nodes, using
+    linear interpolation of zero rates (flat beyond the end nodes).
+
+    Linear-in-zero keeps forwards moving gradually between sparse nodes; a
+    flat-forward scheme would load a whole 1Y node's slope onto the first
+    meeting when the curve has few points (e.g. a bill-curve proxy).
+    """
     if t <= 0:
         return 1.0
-    pts = [(0.0, 1.0)] + [(ten, _df(r, ten)) for ten, r in nodes]
-    for (t0, d0), (t1, d1) in zip(pts, pts[1:]):
-        if t0 <= t <= t1:
-            w = (t - t0) / (t1 - t0) if t1 > t0 else 0.0
-            return d0 ** (1 - w) * d1 ** w
-    (t0, d0), (t1, d1) = pts[-2], pts[-1]
-    fwd = -math.log(d1 / d0) / (t1 - t0) if t1 > t0 else 0.0
-    return d1 * math.exp(-fwd * (t - t1))
+    pts = sorted(nodes)
+    if t <= pts[0][0]:
+        z = pts[0][1]
+    elif t >= pts[-1][0]:
+        z = pts[-1][1]
+    else:
+        z = pts[-1][1]
+        for (t0, r0), (t1, r1) in zip(pts, pts[1:]):
+            if t0 <= t <= t1:
+                z = r0 + (r1 - r0) * (t - t0) / (t1 - t0)
+                break
+    return _df(z, t)
 
 
 def avg_forward(nodes: list[tuple[float, float]], t0: float, t1: float) -> float:

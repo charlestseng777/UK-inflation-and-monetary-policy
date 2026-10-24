@@ -5,7 +5,9 @@ Each regime is a signature: the direction each cross-asset factor should
 move on a day of that type. Factors are measured as today's move in units of
 its own 20-day volatility (z), clipped to +/-3 so one outlier cannot decide
 the day alone. A regime's score is the weighted average agreement between
-its signature and the observed z's; the best score wins if it is convincing,
+its signature and the observed z's; regimes whose defining factors
+('require') did not move in the stated direction are excluded, so the
+headline never contradicts the tape. The best score wins if it is convincing,
 otherwise the day is 'Mixed' (or 'Quiet' if nothing moved).
 """
 
@@ -32,26 +34,32 @@ REGIMES = {
     "Hawkish repricing": {
         "tone": "hawkish",
         "sig": {"front_end": 1.0, "long_end": 0.6, "curve": -0.5, "usd": 0.7, "equities": -0.5, "gold": -0.4},
+        "require": {"front_end": 1},
         "summary": "rates markets priced a more hawkish policy path"},
     "Dovish repricing": {
         "tone": "dovish",
         "sig": {"front_end": -1.0, "long_end": -0.6, "curve": 0.5, "usd": -0.7, "equities": 0.4, "gold": 0.4},
+        "require": {"front_end": -1},
         "summary": "rates markets priced a more dovish policy path"},
     "Risk-on": {
         "tone": "risk_on",
         "sig": {"equities": 1.0, "credit_spreads": -0.8, "vol": -0.7, "long_end": 0.3, "oil": 0.3, "copper": 0.3},
+        "require": {"equities": 1},
         "summary": "investors added risk across equities and credit"},
     "Risk-off / flight to quality": {
         "tone": "risk_off",
         "sig": {"equities": -1.0, "credit_spreads": 0.8, "vol": 0.8, "long_end": -0.6, "gold": 0.5, "usd": 0.3},
+        "require": {"equities": -1, "long_end": -1},
         "summary": "investors cut risk and bought government bonds"},
     "Reflation / inflation repricing": {
         "tone": "inflation",
         "sig": {"breakevens": 1.0, "oil": 0.8, "long_end": 0.6, "curve": 0.5, "copper": 0.4},
+        "require": {"breakevens": 1, "long_end": 1},
         "summary": "inflation expectations and commodities led yields higher"},
     "Growth scare": {
         "tone": "risk_off",
         "sig": {"long_end": -0.9, "oil": -0.6, "copper": -0.6, "equities": -0.6, "breakevens": -0.5, "curve": -0.3},
+        "require": {"long_end": -1, "equities": -1},
         "summary": "growth worries pulled yields, commodities and equities lower"},
 }
 
@@ -78,6 +86,10 @@ def classify_regime(z: dict[str, float | None]) -> dict:
     for name, spec in REGIMES.items():
         sig = {k: w for k, w in spec["sig"].items() if k in f}
         if len(sig) < 2:
+            continue
+        # A regime whose defining moves went the other way cannot describe
+        # the day, however well the rest of its signature fits.
+        if any(f.get(k, 0) * sign < 0.25 for k, sign in spec.get("require", {}).items()):
             continue
         total_w = sum(abs(w) for w in sig.values())
         score = sum(w * f[k] for k, w in sig.items()) / total_w

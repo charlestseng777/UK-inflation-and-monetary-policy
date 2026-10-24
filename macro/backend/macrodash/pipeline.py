@@ -14,6 +14,7 @@ import logging
 import time
 from collections import Counter
 
+import numpy as np
 import pandas as pd
 
 from . import instruments as reg
@@ -236,8 +237,8 @@ def _attach_pricing_history(rows: list[dict], repo: Repository, as_of: dt.date, 
             # Back-fill a plausible pricing history for the demo only.
             prev = s["priced_12m_bp"] - demo_src.DEMO_SHOCK_BP.get(r["id"], 0)
             idx = pd.bdate_range(end=as_of, periods=130)[:-1]
-            walk = pd.Series(range(len(idx)), index=idx, dtype=float)
-            hist = (prev + (walk - walk.iloc[-1]) * 0.08 + (walk % 7 - 3) * 0.6).round(1)
+            steps = np.random.default_rng(11).normal(0, 1.6, len(idx))
+            hist = pd.Series(prev + steps[::-1].cumsum()[::-1] - steps[-1], index=idx).round(1)
             repo.upsert_series(sid, hist, "demo")
         today = pd.Series({pd.Timestamp(as_of): s["priced_12m_bp"]})
         repo.upsert_series(sid, today, f"derived:{r['method']}")

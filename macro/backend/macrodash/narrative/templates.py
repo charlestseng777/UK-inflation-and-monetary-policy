@@ -64,10 +64,11 @@ def _policy_phrase(ctx: Ctx, bank: str) -> str | None:
     s = p["summary"]
     total = s["priced_12m_bp"]
     what = "easing" if total < 0 else "tightening"
+    proxy = " on the bill-curve proxy" if p.get("quality") == "low" else ""
     if chg is not None and abs(chg) >= 2:
         direction = "added" if (chg < 0) == (total < 0) else "removed"
-        return f"markets {direction} {abs(chg):.0f}bp of {p['short']} {what} over 12 months (now {fmt.bp(total)})"
-    return f"{p['short']} pricing was steady at {fmt.bp(total)} over 12 months"
+        return f"markets {direction} {abs(chg):.0f}bp of {p['short']} {what} over 12 months{proxy} (now {fmt.bp(total)})"
+    return f"{p['short']} pricing was steady at {fmt.bp(total)} over 12 months{proxy}"
 
 
 def _asset_phrase(ctx: Ctx, iid: str, label: str) -> str | None:

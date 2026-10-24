@@ -38,6 +38,7 @@ class RefinitivSession:
         self._token: str | None = None
         self._expires = 0.0
         self._lock = threading.Lock()
+        self._failed: str | None = None
 
     def _login(self) -> None:
         s = get_settings()
@@ -60,8 +61,17 @@ class RefinitivSession:
 
     def token(self) -> str:
         with self._lock:
+            # A rejected login will not succeed on the next instrument either;
+            # fail fast instead of re-authenticating once per series.
+            if self._failed:
+                raise SourceError(f"Refinitiv login failed earlier this run: {self._failed}")
             if not self._token or time.time() >= self._expires:
-                self._login()
+                try:
+                    self._login()
+                except SourceError as exc:
+                    self._failed = str(exc)[:200]
+                    log.warning("Refinitiv login rejected; skipping Refinitiv for this run: %s", self._failed)
+                    raise
             return self._token  # type: ignore[return-value]
 
 

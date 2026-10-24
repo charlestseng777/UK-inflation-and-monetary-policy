@@ -22,12 +22,12 @@
      "US1YT=RR"
     ],
     [
-     "fred",
-     "DGS1"
-    ],
-    [
      "treasury",
      "1 Yr"
+    ],
+    [
+     "fred",
+     "DGS1"
     ]
    ],
    "demo": {
@@ -49,12 +49,12 @@
      "US2YT=RR"
     ],
     [
-     "fred",
-     "DGS2"
-    ],
-    [
      "treasury",
      "2 Yr"
+    ],
+    [
+     "fred",
+     "DGS2"
     ],
     [
      "stooq",
@@ -80,12 +80,12 @@
      "US5YT=RR"
     ],
     [
-     "fred",
-     "DGS5"
-    ],
-    [
      "treasury",
      "5 Yr"
+    ],
+    [
+     "fred",
+     "DGS5"
     ],
     [
      "stooq",
@@ -111,12 +111,12 @@
      "US10YT=RR"
     ],
     [
-     "fred",
-     "DGS10"
-    ],
-    [
      "treasury",
      "10 Yr"
+    ],
+    [
+     "fred",
+     "DGS10"
     ],
     [
      "stooq",
@@ -142,12 +142,12 @@
      "US30YT=RR"
     ],
     [
-     "fred",
-     "DGS30"
-    ],
-    [
      "treasury",
      "30 Yr"
+    ],
+    [
+     "fred",
+     "DGS30"
     ],
     [
      "stooq",
@@ -175,6 +175,10 @@
     [
      "boe_curve",
      "nominal:2"
+    ],
+    [
+     "cnbc",
+     "GB2Y-GB"
     ],
     [
      "stooq",
@@ -266,6 +270,10 @@
      "nominal:30"
     ],
     [
+     "cnbc",
+     "GB30Y-GB"
+    ],
+    [
      "stooq",
      "30uky.b"
     ]
@@ -291,6 +299,10 @@
     [
      "bundesbank",
      "BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R02XX.R.A.A._Z._Z.A"
+    ],
+    [
+     "cnbc",
+     "DE2Y-DE"
     ],
     [
      "stooq",
@@ -320,6 +332,10 @@
      "BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R05XX.R.A.A._Z._Z.A"
     ],
     [
+     "cnbc",
+     "DE5Y-DE"
+    ],
+    [
      "stooq",
      "5dey.b"
     ]
@@ -345,6 +361,10 @@
     [
      "bundesbank",
      "BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A"
+    ],
+    [
+     "cnbc",
+     "DE10Y-DE"
     ],
     [
      "stooq",
@@ -374,6 +394,10 @@
      "BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R30XX.R.A.A._Z._Z.A"
     ],
     [
+     "cnbc",
+     "DE30Y-DE"
+    ],
+    [
      "stooq",
      "30dey.b"
     ]
@@ -399,6 +423,10 @@
     [
      "mof",
      "2Y"
+    ],
+    [
+     "cnbc",
+     "JP2Y-JP"
     ],
     [
      "stooq",
@@ -428,6 +456,10 @@
      "10Y"
     ],
     [
+     "cnbc",
+     "JP10Y-JP"
+    ],
+    [
      "stooq",
      "10jpy.b"
     ]
@@ -453,6 +485,10 @@
     [
      "mof",
      "30Y"
+    ],
+    [
+     "cnbc",
+     "JP30Y-JP"
     ],
     [
      "stooq",
@@ -502,6 +538,10 @@
      "FR10YT=RR"
     ],
     [
+     "cnbc",
+     "FR10Y-FR"
+    ],
+    [
      "stooq",
      "10fry.b"
     ]
@@ -523,6 +563,10 @@
     [
      "refinitiv",
      "IT10YT=RR"
+    ],
+    [
+     "cnbc",
+     "IT10Y-IT"
     ],
     [
      "stooq",
@@ -548,6 +592,10 @@
      "ES10YT=RR"
     ],
     [
+     "cnbc",
+     "ES10Y-ES"
+    ],
+    [
      "stooq",
      "10esy.b"
     ]
@@ -571,6 +619,10 @@
      "CN10YT=RR"
     ],
     [
+     "cnbc",
+     "CN10Y-CN"
+    ],
+    [
      "stooq",
      "10cny.b"
     ]
@@ -590,12 +642,12 @@
    "tenor": 0.25,
    "sources": [
     [
-     "fred",
-     "DGS3MO"
-    ],
-    [
      "treasury",
      "3 Mo"
+    ],
+    [
+     "fred",
+     "DGS3MO"
     ]
    ],
    "demo": {
@@ -614,12 +666,12 @@
    "tenor": 0.5,
    "sources": [
     [
-     "fred",
-     "DGS6MO"
-    ],
-    [
      "treasury",
      "6 Mo"
+    ],
+    [
+     "fred",
+     "DGS6MO"
     ]
    ],
    "demo": {

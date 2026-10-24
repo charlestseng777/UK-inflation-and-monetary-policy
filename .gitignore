@@ -13,3 +13,8 @@ web/public/data/
 
 # Machine-local tool settings
 .claude/settings.local.json
+
+# Global macro dashboard: local database and HTTP cache (history is exported to macro/data/export)
+macro/data/*.db
+macro/data/cache/
+macro/.env

@@ -104,3 +104,14 @@ def test_sdmx_xml_both_flavours():
     assert sdmx.parse_any(specific, "X").iloc[-1] == 2.70
     assert sdmx.parse_any(generic, "X").iloc[-1] == 2.71
     assert sdmx.parse_any("Title;x\n2026-10-23;2,72;\n", "X").iloc[-1] == 2.72
+
+
+def test_bundesbank_semicolon_sdmx_csv():
+    text = "﻿DATAFLOW;BBK_STD_FREQ;TIME_PERIOD;OBS_VALUE\nBBK:BBSIS;D;2026-10-22;3,31\nBBK:BBSIS;D;2026-10-23;3,35\n"
+    assert sdmx.parse_any(text, "X").iloc[-1] == 3.35
+
+
+def test_weekend_rows_dropped():
+    from macrodash.clients.base import clean_series
+    s = clean_series({"2026-10-23": 1.0, "2026-10-24": 1.0})   # Fri, Sat
+    assert len(s) == 1

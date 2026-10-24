@@ -62,7 +62,8 @@ class Repository:
         with self.engine.connect() as conn:
             rows = conn.execute(q.order_by(observations.c.date)).all()
         s = pd.Series({pd.Timestamp(d): v for d, v in rows}, dtype="float64", name=instrument_id)
-        return s.sort_index()
+        s = s.sort_index()
+        return s[s.index.dayofweek < 5] if len(s) else s
 
     def load_panel(self, ids: Iterable[str] | None = None) -> pd.DataFrame:
         """Wide frame: one column per instrument, indexed by date."""
@@ -75,6 +76,7 @@ class Repository:
             return pd.DataFrame()
         frame = pd.DataFrame(rows, columns=["id", "date", "value"])
         frame["date"] = pd.to_datetime(frame["date"])
+        frame = frame[frame["date"].dt.dayofweek < 5]   # weekend stamps are feed artefacts
         return frame.pivot_table(index="date", columns="id", values="value", aggfunc="last").sort_index()
 
     def series_meta(self) -> dict[str, dict]:

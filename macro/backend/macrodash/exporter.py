@@ -30,7 +30,7 @@ def export(out: Path, repo: Repository | None = None) -> None:
         rows = conn.execute(select(observations).order_by(observations.c.instrument_id, observations.c.date)).all()
     frame = pd.DataFrame(rows, columns=["id", "date", "value", "source"])
     for iid, grp in frame.groupby("id"):
-        grp[["date", "value", "source"]].to_csv(hist / f"{iid}.csv", index=False, float_format="%.6g")
+        grp[["date", "value", "source"]].to_csv(hist / f"{iid}.csv", index=False, float_format="%.8g")
     snap = repo.latest_snapshot()
     if snap:
         (out / "dashboard.json").write_text(json.dumps(snap, indent=1, default=str))

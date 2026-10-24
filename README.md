@@ -1,5 +1,10 @@
 # UK Inflation & Monetary Policy
 
+> **New: Global Macro Research Dashboard.** A separate cross-asset morning dashboard
+> (rates, FX, credit, equities, commodities, central-bank pricing, interview mode and
+> flashcards) lives in [`macro/`](macro/README.md). It shares nothing with the UK
+> inflation app below, which is unchanged.
+
 A macro dashboard that shows how UK inflation evolved and how the Bank of England
 responded — headline CPI against Bank Rate, decomposed down to the components the
 MPC actually watches.

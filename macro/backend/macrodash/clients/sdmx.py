@@ -51,10 +51,16 @@ def parse_sdmx_xml(text: str, code: str) -> pd.Series:
 
 
 def parse_any(text: str, code: str) -> pd.Series:
+    text = text.lstrip("\ufeff")
     head = text.lstrip()[:200]
+    first = text.split("\n", 1)[0]
     if head.startswith("<"):
         return parse_sdmx_xml(text, code)
-    if "TIME_PERIOD" in head:
+    if "TIME_PERIOD" in first:
+        # The Bundesbank serves SDMX-CSV with ';' separators.
+        if ";" in first:
+            frame = pd.read_csv(io.StringIO(text), sep=";", decimal="," if "," in text.split("\n", 2)[1] else ".")
+            return clean_series(dict(zip(frame["TIME_PERIOD"], pd.to_numeric(frame["OBS_VALUE"], errors="coerce"))), code)
         return parse_sdmx_csv(text, code)
     # Bundesbank 'download' CSV: metadata lines, then 'YYYY-MM-DD,value[,flag]'.
     values = {}

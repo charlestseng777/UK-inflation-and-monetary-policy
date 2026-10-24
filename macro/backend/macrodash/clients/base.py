@@ -127,5 +127,8 @@ def clean_series(values: dict | pd.Series, name: str | None = None) -> pd.Series
     s.index = pd.to_datetime(s.index, errors="coerce")
     s = s[~s.index.isna()].dropna()
     s = s[~s.index.duplicated(keep="last")].sort_index()
+    # Markets in scope do not settle at weekends; some feeds stamp a Saturday
+    # copy of Friday's close, which would fake a flat day and shift the date.
+    s = s[s.index.dayofweek < 5]
     s.name = name
     return s

@@ -24,7 +24,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 50
     steps:
       - name: Gate on 05:30 UK
         id: gate
@@ -75,8 +75,8 @@ jobs:
         run: |
           mkdir -p ../data/export
           python -m macrodash import || true
-          python -m macrodash sources > ../data/export/sources-report.txt 2>&1 || true
-          tail -n 80 ../data/export/sources-report.txt
+          # The probe is diagnostic only: bounded, and visible in the log.
+          timeout 600 python -m macrodash sources 2>&1 | tee ../data/export/sources-report.txt || true
           python -m macrodash run
           python -m macrodash export
 

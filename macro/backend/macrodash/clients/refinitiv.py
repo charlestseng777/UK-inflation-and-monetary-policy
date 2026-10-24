@@ -37,11 +37,31 @@ PRICE_FIELDS = ("TRDPRC_1", "MID_PRICE", "SETTLE", "HST_CLOSE", "PRIMACT_1", "OF
 class RefinitivSession:
     def __init__(self, http: HttpClient):
         self.http = http
+        self.fast_http = HttpClient(timeout=20, retries=1, cache_dir=http.cache_dir,
+                                    cache_ttl_seconds=http.cache_ttl_seconds)
         self._token: str | None = None
         self._expires = 0.0
         self._lock = threading.Lock()
         self._failed: str | None = None
         self._refresh: str | None = None
+        self._consecutive_errors = 0
+        self.fetched = 0
+
+    MAX_CONSECUTIVE_ERRORS = 3
+
+    def record(self, ok: bool, error: str = "") -> None:
+        """Circuit breaker: after a few data failures in a row (entitlements,
+        timeouts), stop sending Refinitiv requests for the rest of the run."""
+        if ok:
+            self._consecutive_errors = 0
+            self.fetched += 1
+            return
+        self._consecutive_errors += 1
+        if self._consecutive_errors == 1:
+            log.warning("Refinitiv data request failed: %s", error[:300])
+        if self._consecutive_errors >= self.MAX_CONSECUTIVE_ERRORS and not self._failed:
+            self._failed = f"{self._consecutive_errors} consecutive data errors, last: {error[:200]}"
+            log.warning("Refinitiv disabled for this run: %s", self._failed)
 
     def _login_with_retry(self) -> None:
         """The account allows one session. If another process holds it
@@ -135,8 +155,17 @@ def parse_interday(text: str, ric: str, fields: tuple[str, ...]) -> pd.Series:
 
 def fetch(session: RefinitivSession, ric: str, start: str, kind: str) -> pd.Series:
     fields = YIELD_FIELDS if kind in {"yield", "rate", "spread"} else PRICE_FIELDS
-    q = urllib.parse.urlencode({"interval": "P1D", "start": start, "count": "10000"})
+    q = urllib.parse.urlencode({"interval": "P1D", "start": start, "count": "5000"})
     url = f"{BASE}/data/historical-pricing/v1/views/interday-summaries/{urllib.parse.quote(ric, safe='')}?{q}"
-    body = session.http.request("GET", url, headers={"Authorization": f"Bearer {session.token()}",
-                                                     "Accept": "application/json"}, use_cache=False)
-    return parse_interday(body.decode("utf-8"), ric, fields)
+    token = session.token()
+    try:
+        # Short timeout, single retry: a slow Refinitiv must not stall the run
+        # when every instrument has an official fallback.
+        body = session.fast_http.request("GET", url, headers={"Authorization": f"Bearer {token}",
+                                                              "Accept": "application/json"}, use_cache=False)
+        series = parse_interday(body.decode("utf-8"), ric, fields)
+    except SourceError as exc:
+        session.record(False, f"{ric}: {exc}")
+        raise
+    session.record(True)
+    return series

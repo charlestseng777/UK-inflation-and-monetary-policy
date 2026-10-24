@@ -115,3 +115,14 @@ def test_weekend_rows_dropped():
     from macrodash.clients.base import clean_series
     s = clean_series({"2026-10-23": 1.0, "2026-10-24": 1.0})   # Fri, Sat
     assert len(s) == 1
+
+
+def test_refinitiv_circuit_breaker(tmp_path):
+    from macrodash.clients.base import HttpClient
+    from macrodash.clients.refinitiv import RefinitivSession
+    session = RefinitivSession(HttpClient(timeout=1, retries=0, cache_dir=tmp_path, cache_ttl_seconds=0))
+    session._token, session._expires = "t", 1e12
+    for _ in range(3):
+        session.record(False, "timeout")
+    with pytest.raises(SourceError):
+        session.token()

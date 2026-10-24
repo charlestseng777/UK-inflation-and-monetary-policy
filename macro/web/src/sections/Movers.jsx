@@ -1,6 +1,6 @@
 import Section from '../components/Section.jsx';
 import Move from '../components/Move.jsx';
-import { levelFor } from '../lib/format.js';
+import { date } from '../lib/format.js';
 
 function Row({ m, rank }) {
   return (
@@ -8,7 +8,7 @@ function Row({ m, rank }) {
       <span className="num text-xs text-ink-3">{rank}</span>
       <span className="min-w-0">
         <span className="block truncate text-[15px] text-ink">{m.name}</span>
-        <span className="block text-xs text-ink-3">{m.asset_class} · {m.note}</span>
+        <span className="block text-xs text-ink-3">{m.asset_class} · {m.note}{m.lagged && <> · {date(m.date)} print</>}</span>
       </span>
       <span className="num text-right text-xs text-ink-3">{Math.abs(m.z).toFixed(1)}σ</span>
       <Move value={m.d1} unit={m.unit} always className="w-20 text-right text-[15px] font-medium" />

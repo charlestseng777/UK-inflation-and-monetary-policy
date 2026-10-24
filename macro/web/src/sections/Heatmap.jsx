@@ -1,6 +1,6 @@
 import Section from '../components/Section.jsx';
 import Tooltip from '../components/Tooltip.jsx';
-import { move } from '../lib/format.js';
+import { date, move } from '../lib/format.js';
 
 const COL_LABEL = { rates: 'Rates', fx: 'FX', equities: 'Equities', credit: 'Credit', commodities: 'Commodities' };
 const COL_NOTE = {
@@ -32,6 +32,7 @@ function Cell({ c }) {
           <span className={`num text-right text-sm ${c.intensity >= 1 ? 'text-ink' : 'text-ink-2'}`}>
             {move(c.d1, c.unit)}
             {c.proxy && <span className="block text-[10px] leading-none text-ink-3">{c.proxy}</span>}
+            {c.lagged && <span className="block text-[10px] leading-none text-ink-3">{date(c.date)}</span>}
           </span>
         </div>
       </Tooltip>
@@ -42,7 +43,7 @@ function Cell({ c }) {
 export default function Heatmap({ heatmap }) {
   return (
     <Section id="heatmap" index={3} question="Which way did the world move?" title="Global cross-asset heatmap"
-      aside={<span className="text-xs text-ink-3">▲▼ direction · shade = size vs normal</span>}>
+      aside={<span className="text-xs text-ink-3">▲▼ direction · shade = size vs normal · dated cells = previous print</span>}>
       <div className="card overflow-x-auto p-3">
         <table className="w-full min-w-[560px] border-separate border-spacing-0">
           <thead>

@@ -323,8 +323,13 @@ def build_snapshot(repo: Repository, mode: str, router: SourceRouter | None, ing
     z = {k: v.get("z_d1") for k, v in stats.items() if v.get("date") == as_of}
     z.update({c["id"]: c.get("z_d1") for c in curves})
     regime = rg.classify_regime(z)
-    movers = mv.rank_movers(stats, registry, as_of)
-    heat = hm.build_heatmap({k: v for k, v in stats.items() if v.get("date") == as_of}, registry)
+    # Movers and the heatmap use each market's latest print if it is recent;
+    # sources that publish a day later (BoE curves, FRED OAS, MOF) are kept
+    # and flagged rather than dropped. The regime uses same-day moves only.
+    floor = (as_of_d - dt.timedelta(days=4)).isoformat()
+    recent = {k: {**v, "lagged": v["date"] < as_of} for k, v in stats.items() if v.get("date") and v["date"] >= floor}
+    movers = mv.rank_movers(recent, registry, as_of)
+    heat = hm.build_heatmap(recent, registry)
 
     ctx = templates.Ctx(stats, curves, spreads, policy, attribution, regime, movers)
     regime_text = templates.regime_paragraph(ctx)

@@ -57,6 +57,7 @@ def build_heatmap(stats: dict[str, dict], registry: dict[str, Instrument]) -> di
             cells.append({"column": col, "id": iid, "available": True, "name": inst.name, "short": inst.short,
                           "d1": d1, "unit": inst.move_unit, "z": st.get("z_d1"), "direction": direction,
                           "intensity": intensity(st.get("z_d1")), "risk": risk, "quantity": QUANTITY[col],
-                          "proxy": "ETF price" if col == "credit" and inst.kind == "price" else None})
+                          "proxy": "ETF price" if col == "credit" and inst.kind == "price" else None,
+                          "date": st.get("date"), "lagged": bool(st.get("lagged"))})
         rows.append({"region": code, "name": name, "cells": cells})
     return {"columns": COLUMNS, "rows": rows}

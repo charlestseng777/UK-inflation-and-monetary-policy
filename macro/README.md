@@ -149,8 +149,10 @@ the footer of the page lists anything unavailable).
 | Speeches | Fed, BoE, ECB, BoJ RSS | |
 | Calendar | Central bank meeting dates (config) | FRED release dates with a key |
 
-Refinitiv sits first in every list when credentials work, and is skipped
-for the whole run after one rejected login.
+Refinitiv sits first in every list when credentials work. The account allows
+one session at a time: if Workspace or another job holds it ("Session quota is
+reached"), the client waits and retries, and it always signs out at the end of
+a run. After a definitive failure it is skipped for the rest of the run.
 
 ### Policy expectations: method per bank
 

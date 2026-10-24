@@ -14,8 +14,10 @@ include, rather than real-time snapshots.
 
 from __future__ import annotations
 
+import base64
 import json
 import logging
+import os
 import threading
 import time
 import urllib.parse
@@ -39,6 +41,38 @@ class RefinitivSession:
         self._expires = 0.0
         self._lock = threading.Lock()
         self._failed: str | None = None
+        self._refresh: str | None = None
+
+    def _login_with_retry(self) -> None:
+        """The account allows one session. If another process holds it
+        ('Session quota is reached'), wait for it to finish and try again."""
+        attempts = int(os.environ.get("MACRO_REFINITIV_SESSION_RETRIES", "4"))
+        wait = int(os.environ.get("MACRO_REFINITIV_SESSION_WAIT", "60"))
+        for attempt in range(attempts + 1):
+            try:
+                self._login()
+                return
+            except SourceError as exc:
+                if "quota" not in str(exc).lower() or attempt == attempts:
+                    raise
+                log.warning("Refinitiv session busy; retrying in %ss (%d/%d)", wait, attempt + 1, attempts)
+                time.sleep(wait)
+
+    def release(self) -> None:
+        """Sign out (revoke the refresh token) so the account's single session
+        is free again for Workspace or other jobs. Best-effort."""
+        s = get_settings()
+        token, client = self._refresh or self._token, s.refinitiv_app_key or s.refinitiv_client_id
+        self._token = self._refresh = None
+        if not token or not client:
+            return
+        basic = base64.b64encode(f"{client}:".encode()).decode()
+        try:
+            self.http.request("POST", f"{BASE}/auth/oauth2/v1/revoke", data={"token": token},
+                              headers={"Authorization": f"Basic {basic}"}, use_cache=False)
+            log.info("Refinitiv session released")
+        except Exception as exc:  # noqa: BLE001
+            log.info("Refinitiv sign-out failed (session will expire on its own): %s", exc)
 
     def _login(self) -> None:
         s = get_settings()
@@ -50,13 +84,16 @@ class RefinitivSession:
             url, data = f"{BASE}/auth/oauth2/v1/token", {
                 "grant_type": "password", "username": s.refinitiv_username,
                 "password": s.refinitiv_password, "client_id": s.refinitiv_app_key,
-                "scope": "trapi", "takeExclusiveSignOnControl": "false"}
+                # Never sign out someone's Workspace session unless explicitly allowed.
+                "scope": "trapi",
+                "takeExclusiveSignOnControl": "true" if s.refinitiv_take_session else "false"}
         else:
             raise SourceError("Refinitiv credentials not configured")
         payload = json.loads(self.http.request("POST", url, data=data, use_cache=False))
         if not payload.get("access_token"):
             raise SourceError("Refinitiv token response had no access_token")
         self._token = payload["access_token"]
+        self._refresh = payload.get("refresh_token")
         self._expires = time.time() + int(payload.get("expires_in", 300)) - 30
 
     def token(self) -> str:
@@ -67,7 +104,7 @@ class RefinitivSession:
                 raise SourceError(f"Refinitiv login failed earlier this run: {self._failed}")
             if not self._token or time.time() >= self._expires:
                 try:
-                    self._login()
+                    self._login_with_retry()
                 except SourceError as exc:
                     self._failed = str(exc)[:200]
                     log.warning("Refinitiv login rejected; skipping Refinitiv for this run: %s", self._failed)

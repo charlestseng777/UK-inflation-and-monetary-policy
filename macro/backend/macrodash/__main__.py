@@ -70,7 +70,9 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"OK    {inst.id:12} {src.provider}:{src.code:40} {len(s):6d} rows, last {s.index[-1].date()} = {s.iloc[-1]:.4f}")
                 except Exception as exc:  # noqa: BLE001
                     ok = False
-                    print(f"FAIL  {inst.id:12} {src.provider}:{src.code:40} {str(exc)[:100]}")
+                    print(f"FAIL  {inst.id:12} {src.provider}:{src.code:40} {str(exc)[:160]}")
+        if router.rdp is not None:
+            router.rdp.release()
         return 0 if ok else 1
     if args.cmd == "export":
         from .exporter import export

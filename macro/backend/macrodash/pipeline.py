@@ -395,6 +395,7 @@ def run(demo: bool | None = None, skip_ingest: bool = False) -> dict:
     mode = "demo" if (s.demo_mode if demo is None else demo) else "live"
     repo = Repository()
     run_id = repo.start_run(mode)
+    router = None
     try:
         router = None if mode == "demo" else SourceRouter()
         if skip_ingest:
@@ -414,3 +415,6 @@ def run(demo: bool | None = None, skip_ingest: bool = False) -> dict:
         repo.finish_run(run_id, "error", {"error": str(exc)})
         log.exception("pipeline failed")
         raise
+    finally:
+        if router is not None and router.rdp is not None:
+            router.rdp.release()

@@ -60,6 +60,7 @@ class Settings:
     refinitiv_password: str | None
     refinitiv_client_id: str | None
     refinitiv_client_secret: str | None
+    refinitiv_take_session: bool
 
     anthropic_api_key: str | None
     anthropic_model: str
@@ -117,6 +118,7 @@ def get_settings() -> Settings:
         refinitiv_password=env("REFINITIV_PASSWORD") or None,
         refinitiv_client_id=env("REFINITIV_CLIENT_ID") or None,
         refinitiv_client_secret=env("REFINITIV_CLIENT_SECRET") or None,
+        refinitiv_take_session=_bool("MACRO_REFINITIV_TAKE_SESSION"),
         anthropic_api_key=env("ANTHROPIC_API_KEY") or None,
         anthropic_model=env("ANTHROPIC_MODEL", "claude-opus-5-5"),
         llm_enabled=_bool("MACRO_LLM_ENABLED", True),

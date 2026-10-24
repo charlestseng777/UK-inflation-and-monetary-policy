@@ -49,8 +49,11 @@ class SourceRouter:
                 return rdp.fetch(self.rdp, code, start, kind)
         raise SourceError(f"unknown provider {provider!r}")
 
+    MIN_ROWS = 30   # a source returning a handful of bars is not a history
+
     def fetch(self, inst: Instrument) -> tuple[pd.Series, str] | None:
         errors = []
+        thin: tuple[pd.Series, str] | None = None
         for src in inst.sources:
             if src.provider == "refinitiv" and self.rdp is None:
                 continue
@@ -59,11 +62,17 @@ class SourceRouter:
             except Exception as exc:  # noqa: BLE001 - any source failure falls through to the next
                 errors.append(f"{src.provider}:{src.code}: {exc}")
                 continue
-            if len(series) > 0:
+            if len(series) >= self.MIN_ROWS:
                 if errors:
                     log.info("%s: using %s after %d failed source(s)", inst.id, src.provider, len(errors))
                 return series, f"{src.provider}:{src.code}"
-            errors.append(f"{src.provider}:{src.code}: empty")
+            if len(series) and thin is None:
+                thin = (series, f"{src.provider}:{src.code}")
+            errors.append(f"{src.provider}:{src.code}: only {len(series)} rows")
+        if thin is not None:
+            # Better a short series than none (e.g. a monthly fallback).
+            log.warning("%s: only a short history available (%s)", inst.id, thin[1])
+            return thin
         self.failures[inst.id] = errors
         log.warning("%s: every source failed: %s", inst.id, " | ".join(errors) or "no usable sources")
         return None

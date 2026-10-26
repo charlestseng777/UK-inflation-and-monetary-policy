@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T01:03:20+00:00",
+  "generated_at": "2026-10-26T11:09:31+00:00",
   "latest_month": "2026-09",
   "latest": {
     "headline_cpi": 3.5,
@@ -7483,6 +7483,12 @@
   "mpc_news": {
     "Alan Taylor": [
       {
+        "title": "Global Market: BoE's Taylor says energy prices alone do not justify rate hike",
+        "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOcDRWNHE0d0RlZDRkNFl2dk1IUFpnVFVmU3QzY0ZVelllbHRpRml3WjNDQUNOYlN2WHYzVUpDdmoyUlpXUDdGOFpnWE5DMDlqWkd2aEdGYV9jSy1McG1Rakl4YnJHdWEwYndLT0xDWFNaOGpGZ2pTMExZWHJnR3NSdDV0aFVHM2ZmbXRwYzBIa1FMRlo2VVB1VDRXQjdkYUtWekVoU29tVXY3emduZkFLNzFMRlBwTUFCeDZPbndxUHU5VS1kN1VORzE1N0JKd09xdVlLeDduTTgzWjdCTTZ6d1AxNTh5TEYxNDlyTjdmMVZxcDlRVURtNtIB_gFBVV95cUxNMFpNbXZod1pzLThkLVp5QUhTZE9MVVp6bmRjNG9qc1pkNnZ4NVlQQ3dBclJHaDZ4WHRzdjVhS2xqLWVDdjM2ZFczeTJVMzI5Q01OaWYteWZ1dElkWm1ZWUVHVFlBZDJNYmVTck5VQzBreWdGb0NrWjVPRGRMaVFPc1BfWi1vaV9rOE1tSzNCWHpiTGZvTGhfTF9OTmc4cEtSN1UyUktSM3BoZ1k4Q01tSE9XNm1TZ2kzcnlpMlZkUVNHcTJxUHFLVjN2NHF1czN5a3NONlFUN0FXczlENVlHZWFBMk5xRGIwZnNMcWYyTWw1SWlKUUFVXzFEd0t3dw?oc=5",
+        "source": "The Economic Times",
+        "published": "2026-09-30T07:00:00+00:00"
+      },
+      {
         "title": "Searching for signposts − speech by Alan Taylor",
         "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQbG0wOUtsNlhZem1hMUFNZDk1bVEzZTVuMmF3Ti1FdHhjM3h6Z2xGYklPS3NBTUdrNU5KNnktWnBPaDR4ZGNuaE5tN0taOEx3b1pQU2t4YXFnUHl0TnNPdU0wbHpXcWxjYTl6VExXWERfbUFuSm5PVnJ5NC1TdVJwZTd2TXpqbEJLU3k0S3NFM1R0c3Body02bzNudVFNTFdP?oc=5",
         "source": "Bank of England",
@@ -7505,20 +7511,14 @@
         "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPY1c3VlVkOTVNNzVxREJXQ2lpd01YNUhzTGYyLWZWM3VGd2ZMUVdHc1QwQ3Z6NmZLWU1KTVRaYVFwQ01iQzdjT3RsQ3g5T2tfcXltdEtBQU9EMFlqem1UaWFpMEc5VUYwc2MxLXhTVUJJY0xqYjkzdnd4aE5wVjl3a2ZNWkFYYVVtenlJNTBsYmpfT1FkcHBFSi1FLTU5V3M?oc=5",
         "source": "Reuters",
         "published": "2026-09-29T07:00:00+00:00"
-      },
-      {
-        "title": "Bank of England policymaker says raising interest rates ‘not compelling’",
-        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOclF0VmRRcXZNblZoRDhXS3Ruc3F5UTRLTUwtWlBycGhiRERRajRMejZaeWJyUWZnQmtHRDVCM05lS3BHM2NtelhaWDF6LThyX0hZQnREUXlMQ0xNRnN5RTdxdGlkMEpkQ1ZLRnc2a3ZJd0NTOHFobHF3LXZCYlNJZ1lmS2U4Zl9OQ3pRbC1ySQ?oc=5",
-        "source": "Yahoo Finance UK",
-        "published": "2026-09-29T07:00:00+00:00"
       }
     ],
     "Andrew Bailey": [
       {
-        "title": "Bank of England Governor Says Too Early to Make Call on Second-Round Inflation",
-        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQcVdrN3A1QTljaWt2QUhlR0l6RkljY3JiX3RUU2tLOEF4cDBOSXRqT1BOOWxvNmJlNmQ3bEh4YkdPS28waDZOT3FiNi10TTY1U2REX3c1RjJWMjRhTXhjY0NZckx3QXBIdkpsNXJQSElDYWsxWElXdW96dEZibUZOMDRJMm1FTmZWQVNsWnBqLWptT2RDT19VZ3JKNzdYd0REbWZOaTVqTEdlaVRaM2JpLXhVVWszb1ozVjFTQXlnR3J4SXc0NWc?oc=5",
-        "source": "WSJ",
-        "published": "2026-10-23T09:56:13+00:00"
+        "title": "Labour group attacks ‘Bailey premium’ of bond sales",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPREFhMEVYaHJSV3ZybmZ1ZFcwd3BxN0ExcWd4R1l1LXdncHNBY05RbWxUTTRPZkgtZWozY2U5UE5aWTZaNUs3THVCMXVUMjJvQ0U2Q3BMQU56ck94SHpQME1uaWYxMzdKQnVzQldPLWIyQkFEaVlhWUZoV245THhpMGI3VzBhNTBXSFhCSTZoWWFRb3lBVVM4QnFxTGUxNDA?oc=5",
+        "source": "The Times",
+        "published": "2026-10-25T18:41:36+00:00"
       },
       {
         "title": "Bank of England chief sounds alarm over AI borrowing binge that could trigger market crash",
@@ -7527,22 +7527,22 @@
         "published": "2026-10-22T08:57:17+00:00"
       },
       {
+        "title": "Pound To Euro Price Forecast: Can GBP Push Towards 1.20?",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZ09VT0J1NkE3TlhWMlp6VEFDN2lHeGtsY3RwVms4SWZSaGNTMmY5cUlhR0RlRktmdkFGS3VWY3BIR3hNODVaeUtuV1YzOUd5LVA0UTc3TUtSVGhZVDd5bXBsVnZzY0RYZUlaTlBvOGxwN2dTeXhzdTRfSDlnaGRaT2djYTdTZG1qQnpCY3E2YXh6d3EycFkyZGdCblZpaWFIMnhVWDc3N1hrTk9DTGFEbjc2MW0?oc=5",
+        "source": "Exchange Rates UK",
+        "published": "2026-10-22T05:30:00+00:00"
+      },
+      {
         "title": "Bank of England chief warns over AI borrowing binge",
         "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQMTRtWkVpREhYUjU3ZXoycFAxeTFhVllnYUgwVl9vSktBS0pJbWxKS3ZIaTZtdmFqcXZ2bGR3YktTR0lWbFdOYmpCNW5sWTZQMEVNakd6QjY4U0tLTDFnRU9kMWIxTS1SUnhLdlo3UnFBY0M4M2EzRXA2TDREQXFUUUlyQi1feHhTUVJqTGFQUlhwck5FN1lGaThoblJmQ3lY?oc=5",
         "source": "The Telegraph",
         "published": "2026-10-21T17:30:00+00:00"
       },
       {
-        "title": "BOE’s Bailey Defends Speaking Out Over Trump Attacks on Powell",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPVWJBU29iMl9razU1M0VRLVU1aXlyN3FLaVQxajJqSFhoMHYzQ0NZd3FmZXVhdUFoci0yMlBIWFNoQm1PYWcyNmZCdmFWaDAxc2VhZnp2NDlQSE1Uck5tTVR4UHI5ZDl1UGpOdzNPUWZZTjVzWGNTb0RqTjJIVjkycDJqNExIYmxUaWVWT19IZ0E0QnlqRmZIVjFGTF9KZHNvRGQ0VmN4dHNRanZHUzBwX0txWQ?oc=5",
-        "source": "Bloomberg.com",
-        "published": "2026-10-21T15:05:36+00:00"
-      },
-      {
-        "title": "BANK OF ENGLAND GOVERNOR ANDREW BAILEY WILL NOT DISCUSS CURRENT MONETARY POLICY IN OMFIF EVENT",
-        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQRnl4QUxDQW1fRlRjNi1Db3NEdm9qcllVSk1IcldkNmZtUmFTeU1Kek1USHFCaGhHcFh5Rk1wTFlqVDNvRHFYb0VXYUxNRlJmcDdoVHNINDV2cjhyUURjUUw5WDZuZjhJY0ZWdnEteVF4MlMwdnlmeVp2Tk1kN0p1YmZXMTQxcVpBMV9pMUxMbFhOdmppZG1WNzdLWHNtczdBSWVwZEV1d2pMLTRfQk1GX2hpUFNhR1JLZ0FTT19qU3MzMTUtams5cEw5ZUpqVnN3WFJ0M1k5b2tCVHdCVC1DNHZjbTZCR205?oc=5",
-        "source": "TradingView",
-        "published": "2026-10-21T13:04:00+00:00"
+        "title": "Bank of England set to overshadow Healey’s Budget with interest rate hike",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPUGpvb1Z4SlNPZDBrRkgtd0pwNkxFNnY1SGlKdGhNYzBPSVpHMW5FYTRBT3drdERjbWZVVmdwWjVHWFJIR0gwV3ltNnFUdDN5a0NaVDNZSlFab09QdXQ5VWc3UkRxM3JSYlNmc1M3WU1aTVZxV2N5ZlRJNUhkNlVvTmpEUU9UNUNhVzVvY1p0dGxiUXB5dE4yRE94RUQ?oc=5",
+        "source": "City AM",
+        "published": "2026-10-21T11:02:38+00:00"
       }
     ],
     "Catherine L Mann": [
@@ -7553,28 +7553,28 @@
         "published": "2026-10-16T20:02:18+00:00"
       },
       {
-        "title": "Old exposures, new actors: implications for monetary policy of the UK’s external imbalances − speech by Catherine L. Mann",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQQzZtWXBUNVZhOGsxWl9UZl9oeEg0MmkwaDc2bm9MdWhnamdLUUROcmNINUVqRVpUREhHUFlEUG84b1JQWVdscmwxNkw4VjZPTUl0Qk1SRXBnT0FCNGRhMFdzQ0FhTlR5d3NYS2w3ejdySXZiS0tTN0pVdGEzRG1IdHY0c25BcENmMWNWMEJELTg0US1IS3N0b1lyUHNDSHB3ODYxWkJDWm8?oc=5",
-        "source": "Bank of England",
-        "published": "2026-05-13T07:00:00+00:00"
+        "title": "FLA Launches 'Provocations' Podcast with Catherine Mann to Tackle UK Productivity Crisis",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOUzg4cHF4NkVKTkF2eXFuLVd5cDlvRDJqSDltQW56Y1JSUkR2bkxHbUdkbW1WaGZGM3kzblZ1eXI3NmhFV2Nod19CM0JXZzNzV282ZVBMUV91ZEdvMExPeExkakJ2VjhoR0J2TW9ZU2EzUTFZMmJkZEc4RjlTQWxJNDVDUHo0cml1ZzFmU2NnVElFX1J0VGZoTnBtRDFJNkQwdThUdGwwQV9CQ0plc0FYR0FqVQ?oc=5",
+        "source": "FF News",
+        "published": "2026-10-15T07:00:00+00:00"
       },
       {
-        "title": "The UK's International Exposures and Vulnerabilities | Catherine Mann",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOVXZEMlNaZWJIemtkMnhZSHNUOG53VGFVREtReU9RYVVhLVpCWEVSR2VrdUYyMEhzaUVXel93WnhmNmdLNVBJRmxiVjFkbUF4ckFDeUw1YUxEZ0EwLW9CaTM3R0hkTUt3RDhmdTZmeHhvUmtmOFhlU2tldHBVaDNEcGhMM0p0MWhBMkhxVVZPTW1HcnA2RHNZZXN0U3VvZw?oc=5",
-        "source": "The London School of Economics and Political Science",
-        "published": "2026-05-13T07:00:00+00:00"
+        "title": "Financial conditions: what’s priced in? − speech by Catherine L. Mann",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNX1pULTdmWGJGand3RUczcnhaRU1DSl9NcHVIQTB0bXE5ZFJ4MFBsNHp4ZS05RWl3T2ZlVkpUNk42NmVJQUxDNzVsLTU2MGRhRTg3MDJaRnQtMVNKaTU4ZTFXV3NmNklxdk1sR1haYm13aUxrVzE2TWlLYkl4dko1N05LekJXeEJWenlEYkRSZ19XODJNbG01TkpOMV85S3RSV05sUDkwUi1iZw?oc=5",
+        "source": "EIN News",
+        "published": "2026-10-01T16:22:00+00:00"
       },
       {
-        "title": "King's Business School hosts joint conference with the Bank of England on business conditions and uncertainty",
-        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQUphMEFvUE51ZnE4b3VPeFdZa2ljUHo3RjlwUkZsSUJpaE9aVEltejhEbHNaS0d4Q0RiY2FRdlBVZXRXWGx3LVpMb0xRb2VuQXlkLUI3bjRNYzd6Z0MtS3RqYTVCd0Q4bG5ldnNMN1cwd05yMVNvYWIzckItS05pLUt2WlBqUGxzLW5WR3RodUVrYmpqOXI4cXFfaW02WXFidC14b1ZKNkNqeEhqQnVlVGgxSDEtTWdnSGYwVklwajhlVkZKNGNzQzdqeExVay1X?oc=5",
-        "source": "King's College London",
-        "published": "2025-11-21T08:00:00+00:00"
+        "title": "BOE’s Mann Backs Rate Rise to Tame Inflation",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOc3Y4Yks0TDJUUkp1MnowWVJSMzNqMVNDbUxGc3hqUWJsSlJXcFVkbzQtZ3hwRlJUVG5vWHhQREx4NGlSX21zZU5yYVdKak5McHZncFRhQktPaDcyaWRGODN4eU42eURsOHhLT0hZWmFGbW44RmV6aV9tU0Z1QWEyeVZPSTZSNk4y?oc=5",
+        "source": "WSJ",
+        "published": "2026-10-01T07:00:00+00:00"
       },
       {
-        "title": "Quantitative tightening and monetary policy stance − speech by Catherine L. Mann",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQb0NqNTR4OUlKS0JOZElyY29OYkJvcTUtNVM1eVpTbWF1dW1fODB3bWQ0ZmJrYmFiMFVkeDlxTDlaSVBNQ25pVUcwSzByNVI3Y0VScVFJakV2Ny1GUHFCR1QtNmtNcXlkNlROLVBMc0tjbVVDZC1jT0Z5bE1PNV9yVUhxc2YxOVhlaFd3emticUFJejRfVVlWVkRtZk1mQXdCUXlLYkFQeXREbnRSV3BFWURPbTJfU2ZRR1RWRjNR?oc=5",
-        "source": "Bank of England",
-        "published": "2025-06-02T07:00:00+00:00"
+        "title": "Here's the full agenda for the Jackson Hole Fed symposium",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQcGZib0U2WVlfVk9nMnlNTmhPamxoSWRJeFhGM2Fhbk9HNEp6ZEtJUzItVW5NZWNlS2ZnempVTGw1ekUxQ0haSXJGWTc3aWNTcElubl9FTDV3OUlMWjhJaV9ZVXg5blZRQkpnQmQxeXVscFlqNjNyaW9fMW0zMkVhQmYxZjJ3clRQN0FvRDMyS0tLNG54d0JYaGZ4LThESkU?oc=5",
+        "source": "investingLive",
+        "published": "2026-08-27T07:00:00+00:00"
       }
     ],
     "Clare Lombardelli": [
@@ -7597,15 +7597,15 @@
         "published": "2026-09-25T07:00:00+00:00"
       },
       {
-        "title": "Rate rise ‘increasingly likely’ if energy price shock persists, says BoE official",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNVGhmUU1BWEdKenFOc09SaWFwUFNrNTlDemU0R0ExZTZFOGRWZHVOSEdRdUtyRkM0LVJNQlZTT3pwTjNwOGV2NHJ1bHVGUmlscnNGZ2RnMmxiaEM4YTltTkpydXlsVHd0SlhENE1ueHZrSkZTVkpsZWNhVE5OUEFraHR0Rzk?oc=5",
-        "source": "Financial Times",
-        "published": "2026-09-24T07:00:00+00:00"
-      },
-      {
         "title": "BoE’s Lombardelli: Rate hikes 'likely' if energy prices stay high",
         "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNajY3eVFubFgxN1pOSXIwUExaYVByTUtwMVpydVFmY3VwZnM3WkFQR05lN09KbS1lSG5yN2F0SEVpMWFDYWczUTU4dzd1OUpYTGpJUTl4NDc4ME9McXotOFQtb2dmOFNMRGpmWmViUTJTN2wzNE01aU1aZktHbjJwdkFiTTRVNk45dnY3Yl9LVnZBMWlPbHc?oc=5",
         "source": "Investment Week",
+        "published": "2026-09-24T07:00:00+00:00"
+      },
+      {
+        "title": "Rate rise ‘increasingly likely’ if energy price shock persists, says BoE official",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNVGhmUU1BWEdKenFOc09SaWFwUFNrNTlDemU0R0ExZTZFOGRWZHVOSEdRdUtyRkM0LVJNQlZTT3pwTjNwOGV2NHJ1bHVGUmlscnNGZ2RnMmxiaEM4YTltTkpydXlsVHd0SlhENE1ueHZrSkZTVkpsZWNhVE5OUEFraHR0Rzk?oc=5",
+        "source": "Financial Times",
         "published": "2026-09-24T07:00:00+00:00"
       }
     ],
@@ -7635,19 +7635,13 @@
         "published": "2026-09-28T07:00:00+00:00"
       },
       {
-        "title": "Bank of England's Ramsden says rates may need to rise if inflation pressures build",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPekZpLS1Db2w2SFdhcmVuWlo3RjE5YXVQb0d4bF9lWE9lYWVrQjRJc1Y4TjgxZEhNRXFKVlFxV09PTEhsV2xLYW1sT1pUblFTMzY1bVhVZjNncmtvamNXN1MxUXlad0NEMk05Q0lhZWg5TGc0SWdUcmdpRDBNd0VHVTNReWlTWjAzcV9wNkFMWllnbFRmSWxSRjAyb19aZw?oc=5",
-        "source": "Yahoo Finance",
+        "title": "BOE’s Ramsden Sees Case for Raising Key Rate if Inflationary Pressures Build",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRUdnZ0p6czNmbW0tWlhUS3NRbmt3RGlHVDRwT1Atd1dzdFdHdXNpaXlway1jbktpU0xzQWdOeVlWeEpibXQxekVMNTJDQlJhRFNuTi1aVUpjWU1yYjZqekYyYTJKajFGTEZ4aldaaWhJNmVzbGxoVGE2X1N1WXdjOHZ0OVZ3ZWFhdGczc21zOEUxQVQ2cFJUdk1LUE5PS29iTmRQYWpQZ3pPWGFTOEFCd2tqTGk4REcwdzlCNDNjRHJudw?oc=5",
+        "source": "WSJ",
         "published": "2026-09-28T07:00:00+00:00"
       }
     ],
     "Huw Pill": [
-      {
-        "title": "Bank of England’s chief economist offers hope on interest rates",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOazBhRURZU08tZkZfZ0JwNmJNaHZzam90Sm5DRWdTbXRCZjVDVzI5TTJqYXRYVXpPX1pfVFVTLUZLdWZxRHNWbnVpYmRxRElfMUJneHFVWWhicTlvTEtQNXd2WFFFTnNDZWJvVDZZYkpqcEdQdzE4QTNQdV81Q1EweWs5dFN3cV84ODBDS3ctSDlqMURjTGtvbjJrUzR5VlhMZ25NV0tOaHRMREdUVV93?oc=5",
-        "source": "BuyAssociation Group",
-        "published": "2026-10-15T14:12:09+00:00"
-      },
       {
         "title": "UK Central Bank's Huw Pill Signals Caution on Rate Hikes",
         "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOWkM4WnI1YzNWTksydXItUHBSaEwwbC1mWWVUS1FFWFV1QlhMRkhPdFhrUncxWnBEa1dyRGNLOUNHYk5xLTB6UExlamFyU3ZTYUdJZ0JNNkRGX3ZUYUNzTXhpUmVsQ09tMjg4b3VMc0ltUlItWW5TanZwUzZyNEJqR2R0Z1hycmE5cXpVWGdJcXlzMlJvbGVfMkxR?oc=5",
@@ -7667,6 +7661,12 @@
         "published": "2026-10-15T07:00:00+00:00"
       },
       {
+        "title": "Bank of England’s chief economist offers hope on interest rates",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOazBhRURZU08tZkZfZ0JwNmJNaHZzam90Sm5DRWdTbXRCZjVDVzI5TTJqYXRYVXpPX1pfVFVTLUZLdWZxRHNWbnVpYmRxRElfMUJneHFVWWhicTlvTEtQNXd2WFFFTnNDZWJvVDZZYkpqcEdQdzE4QTNQdV81Q1EweWs5dFN3cV84ODBDS3ctSDlqMURjTGtvbjJrUzR5VlhMZ25NV0tOaHRMREdUVV93?oc=5",
+        "source": "BuyAssociation Group",
+        "published": "2026-10-15T07:00:00+00:00"
+      },
+      {
         "title": "BoE’s Pill says should not give impression that hike now would be the start of a series of increases",
         "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxORU16Z0F2ODh1MlhaT21FYnM2UWx4X0JIZzNXVU9LdTV2c2xVS1ZyZzhuczhza0haaHpYNVQ3X25GZkxMcTE3RHNxT0hfbkhNSXkzXzUxTk1tQlVGSFR5cEJLRUF2ZVdDeWhiWG5UNHdGclZVdE9GdXE2UzNBOWtfQlRObXVaS1FjclZLbUg2Z0EwdlB2RUZ0TTN2cVRxUDMyak1lb1NCZlJnZXVXNWJ4NzhfRGxydkp4VFRZanhFT0RyY2hJM05nTjR3TlVRU3o3X1Fndi1oUG5EN0s5WmhWcHZiRV9UMGFtemJIUVBhdUJoam1pNHFBSQ?oc=5",
         "source": "www.tmgm.com",
@@ -7677,7 +7677,7 @@
       {
         "title": "Bank of England’s Greene Challenges Wage Benchmark Before November Meeting",
         "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBkZGlTc3Zyby10SkRHV2o0R25IMXpacVNodktteVRwemJsUXRoV2N1LXJWSFhrQUFHZjRoU1RrUlplZjNDQ0ZvVGY0SnA2THE0QmUwTHlGMW0zTms?oc=5",
-        "source": "TOKENPOST",
+        "source": "tokenpost.com",
         "published": "2026-10-21T04:50:26+00:00"
       },
       {
@@ -7719,22 +7719,22 @@
         "published": "2026-10-18T05:00:01+00:00"
       },
       {
-        "title": "Bank Of England Says Businesses Absorbing Energy Costs Could Ease Inflation Pressures",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQZ1ZjaVZGZ0pjUGx1cjVsTTE3T0c1c09QWUZQZWNsMWZJX3NMR1pwdW9VdkFUMTM0RWgxdGNlRzZGV01jV1Q2MVhaanFKUEZnQ3RIZDlXZnJwaFg4ZkRoanJZQkxibVlFcmVtd25obm4yMmtXZkdBcC1CMTZCUER6T3RWQmlkWFVXZjF3TGJvcDZZVmRGbng5TDJnUjMyVndzZTF2OTVIWlBqTW8?oc=5",
-        "source": "Arise News",
-        "published": "2026-10-15T10:34:17+00:00"
-      },
-      {
-        "title": "Bank of England Officials Divide Over Inflation Risk Facing UK",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNQktXQWN1Qnd3RmpqZEx4cWhzakxvMk1fQXhmcGExX1Y2T19UZUtZWVBaVzlYZ2VTTTV6Q3RBVnREMU1jTVZrdGJMZXh5eXR5VUhDaEFSMW1QTzNVazJrVEUxMmZDU3NCbEhUa1dKOHFrR1FJRzBJVzhDSjRXeVVENS1CVVZGeXk5WjhvcURHcU5fUHZCQThodTdDRkIyVW4xd0xvOFlDYndsRHIydVI4akJ0bw?oc=5",
-        "source": "Bloomberg.com",
-        "published": "2026-10-15T09:26:41+00:00"
-      },
-      {
         "title": "Bank of England says UK economy weathers energy price shock better than expected",
         "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxONlJRSlNFYnJBcGhJNzBXV3pJVEZLVzc4ZXZqeGIwc3pxaVR4NHpac1o5Sko3WkE5VWM1dDdTYllxVl9GVVl4dHJObUpmd0lrLTU4LTZUcjR0SjJtQk5DUkhNbnNpX09DNDlRVDU5aWpvc0tWRXlvWTJ6U2E5M042WjVVbWlMd1ZQWUMyb2pmUTJVU1RlS2NCXzJhRQ?oc=5",
         "source": "Traders Union",
         "published": "2026-10-15T08:53:53+00:00"
+      },
+      {
+        "title": "Bank of England's Breeden says cost-cutting by firms helping central bank",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQTlRqOEp1TktZM3ZxOUZ4ZU9jUHJCX1JkRjJFS2Z6T0NwT00zSk8weGswQ3ZJWmVIdGxveko1ZUg0SU9kQ1Z6RXlMYUltaDZMSlRiRE9YeFlBbDVxRXlxOThrYTFsejg3ZEJjWkNLM3ZqaXpuMmZqTlo2aW4wUEdjS1pibTNEb0RQc09SNzNNQTRfUUVsUWFYMTNZRHN4T29EZFExX0RRUVgzcUhLeTl1T2xWWTA?oc=5",
+        "source": "Reuters",
+        "published": "2026-10-15T07:00:00+00:00"
+      },
+      {
+        "title": "BoE's Sarah Breeden: Surprised how well the UK economy has absorbed the energy price shock",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPZzJvY1VqaF8zbVJIT1R0OXJTRGdDdUdEUlhyLVhGcUFNQ0R6VVl4V2o5dG5RZWc4Wlc1NTlrUEdwNWIzb2tvRTVYUUVzSnYycXdMUkh3bVAtQVA0SER1OUFfZnZqVkt0NldoSkZNbkFfNV9KdGk4TS1BSkF6dHFpaGdJQQ?oc=5",
+        "source": "CNBC",
+        "published": "2026-10-15T07:00:00+00:00"
       }
     ],
     "Swati Dhingra": [
@@ -7797,13 +7797,13 @@
     }
   ],
   "synthetic_mpc_curve": {
-    "as_of": "2026-10-22",
-    "spread_bps": 1.6,
+    "as_of": "2026-10-23",
+    "spread_bps": 1.57,
     "spread_method": "holt_linear_trend",
     "meetings": [
       {
         "meeting": "2026-11-05",
-        "tenor_days": 14,
+        "tenor_days": 13,
         "synthetic_ois": null,
         "implied_sonia": null,
         "implied_rate": null,
@@ -7815,26 +7815,26 @@
       },
       {
         "meeting": "2026-12-17",
-        "tenor_days": 56,
-        "synthetic_ois": 3.9167,
-        "implied_sonia": 4.1008,
-        "implied_rate": 4.1168,
-        "pricing_bp": 36.7,
+        "tenor_days": 55,
+        "synthetic_ois": 3.9242,
+        "implied_sonia": 4.1146,
+        "implied_rate": 4.1303,
+        "pricing_bp": 38.0,
         "direction": "hike",
         "full_steps_priced": 1,
-        "probability_next_step_pct": 46.7,
+        "probability_next_step_pct": 52.1,
         "source": "boe_ois_curve"
       },
       {
         "meeting": "2027-02-04",
-        "tenor_days": 105,
-        "synthetic_ois": 4.0026,
-        "implied_sonia": 4.255,
-        "implied_rate": 4.271,
-        "pricing_bp": 52.1,
+        "tenor_days": 104,
+        "synthetic_ois": 4.0139,
+        "implied_sonia": 4.2776,
+        "implied_rate": 4.2934,
+        "pricing_bp": 54.3,
         "direction": "hike",
         "full_steps_priced": 2,
-        "probability_next_step_pct": 8.4,
+        "probability_next_step_pct": 17.3,
         "source": "boe_ois_curve"
       }
     ]
@@ -7953,150 +7953,150 @@
     }
   ],
   "rates": {
-    "latest_daily": "2026-10-22",
+    "latest_daily": "2026-10-23",
     "snapshot": {
       "bank_rate": {
         "value": 3.75,
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "chg_1w": 0.0,
         "chg_1m": 0.0
       },
       "be_10y": {
-        "value": 3.369,
-        "date": "2026-10-22",
-        "chg_1w": -0.015,
-        "chg_1m": -0.006
+        "value": 3.375,
+        "date": "2026-10-23",
+        "chg_1w": 0.006,
+        "chg_1m": -0.029
       },
       "be_5y": {
-        "value": 3.676,
-        "date": "2026-10-22",
-        "chg_1w": -0.005,
-        "chg_1m": 0.015
+        "value": 3.684,
+        "date": "2026-10-23",
+        "chg_1w": 0.031,
+        "chg_1m": -0.024
       },
       "be_5y5y": {
-        "value": 3.061,
-        "date": "2026-10-22",
-        "chg_1w": -0.027,
-        "chg_1m": -0.027
+        "value": 3.066,
+        "date": "2026-10-23",
+        "chg_1w": -0.019,
+        "chg_1m": -0.034
       },
       "gilt_10y": {
-        "value": 5.312,
-        "date": "2026-10-22",
-        "chg_1w": -0.032,
-        "chg_1m": 0.101
+        "value": 5.348,
+        "date": "2026-10-23",
+        "chg_1w": 0.011,
+        "chg_1m": 0.042
       },
       "gilt_2y": {
-        "value": 4.676,
-        "date": "2026-10-22",
-        "chg_1w": 0.007,
-        "chg_1m": 0.102
+        "value": 4.707,
+        "date": "2026-10-23",
+        "chg_1w": 0.064,
+        "chg_1m": 0.037
       },
       "gilt_30y": {
-        "value": 5.718,
-        "date": "2026-10-22",
-        "chg_1w": -0.146,
-        "chg_1m": -0.053
+        "value": 5.77,
+        "date": "2026-10-23",
+        "chg_1w": -0.081,
+        "chg_1m": -0.073
       },
       "gilt_5y": {
-        "value": 4.929,
-        "date": "2026-10-22",
-        "chg_1w": 0.009,
-        "chg_1m": 0.139
+        "value": 4.961,
+        "date": "2026-10-23",
+        "chg_1w": 0.056,
+        "chg_1m": 0.065
       },
       "gilt_ois_2y": {
-        "value": 2.6,
-        "date": "2026-10-22",
-        "chg_1w": -2.1,
-        "chg_1m": 2.5
+        "value": 2.8,
+        "date": "2026-10-23",
+        "chg_1w": 4.2,
+        "chg_1m": 6.3
       },
       "ois_1y": {
-        "value": 4.413,
-        "date": "2026-10-22",
+        "value": 4.44,
+        "date": "2026-10-23",
         "chg_1w": 0.024,
-        "chg_1m": 0.078
+        "chg_1m": 0.026
       },
       "ois_2y": {
-        "value": 4.65,
-        "date": "2026-10-22",
-        "chg_1w": 0.028,
-        "chg_1m": 0.078
+        "value": 4.679,
+        "date": "2026-10-23",
+        "chg_1w": 0.022,
+        "chg_1m": -0.026
       },
       "priced_12m": {
-        "value": 111.5,
-        "date": "2026-10-22",
-        "chg_1w": 4.1,
-        "chg_1m": 4.7
+        "value": 114.9,
+        "date": "2026-10-23",
+        "chg_1w": 2.7,
+        "chg_1m": -7.4
       },
       "real_10y": {
-        "value": 1.943,
-        "date": "2026-10-22",
-        "chg_1w": -0.016,
-        "chg_1m": 0.107
+        "value": 1.973,
+        "date": "2026-10-23",
+        "chg_1w": 0.005,
+        "chg_1m": 0.071
       },
       "s2s10": {
-        "value": 63.6,
-        "date": "2026-10-22",
-        "chg_1w": -3.8,
-        "chg_1m": -0.2
+        "value": 64.0,
+        "date": "2026-10-23",
+        "chg_1w": -5.4,
+        "chg_1m": 0.4
       },
       "s5s30": {
-        "value": 78.9,
-        "date": "2026-10-22",
-        "chg_1w": -15.5,
-        "chg_1m": -19.2
+        "value": 80.9,
+        "date": "2026-10-23",
+        "chg_1w": -13.7,
+        "chg_1m": -13.8
       },
       "sonia": {
-        "value": 3.734,
-        "date": "2026-10-22",
+        "value": 3.735,
+        "date": "2026-10-23",
         "chg_1w": 0.001,
-        "chg_1m": 0.003
+        "chg_1m": 0.004
       }
     },
     "ois_curve": {
-      "as_of": "2026-10-22",
-      "sonia": 3.734,
+      "as_of": "2026-10-23",
+      "sonia": 3.7345,
       "bank_rate": 3.75,
       "points": [
         {
           "tenor": "1M",
-          "rate": 3.856,
-          "vs_sonia_bp": 12.2
+          "rate": 3.864,
+          "vs_sonia_bp": 13.0
         },
         {
           "tenor": "3M",
-          "rate": 3.975,
-          "vs_sonia_bp": 24.1
+          "rate": 3.987,
+          "vs_sonia_bp": 25.2
         },
         {
           "tenor": "6M",
-          "rate": 4.137,
-          "vs_sonia_bp": 40.3
+          "rate": 4.156,
+          "vs_sonia_bp": 42.2
         },
         {
           "tenor": "1Y",
-          "rate": 4.413,
-          "vs_sonia_bp": 67.9
+          "rate": 4.44,
+          "vs_sonia_bp": 70.6
         },
         {
           "tenor": "18M",
-          "rate": 4.576,
-          "vs_sonia_bp": 84.2
+          "rate": 4.604,
+          "vs_sonia_bp": 87.0
         },
         {
           "tenor": "2Y",
-          "rate": 4.65,
-          "vs_sonia_bp": 91.6
+          "rate": 4.679,
+          "vs_sonia_bp": 94.4
         },
         {
           "tenor": "3Y",
-          "rate": 4.679,
-          "vs_sonia_bp": 94.5
+          "rate": 4.715,
+          "vs_sonia_bp": 98.0
         }
       ]
     },
     "mpc_ois": {
       "source": "refinitiv",
-      "reference_sonia": 3.734,
+      "reference_sonia": 3.7345,
       "bank_rate": 3.75,
       "meetings": [
         {
@@ -8112,7 +8112,7 @@
           "date": "2026-10-23",
           "rate": 4.0975,
           "meeting": "2026-12-17",
-          "cumulative_bp": 36.4,
+          "cumulative_bp": 36.3,
           "change_bp": 11.1
         },
         {
@@ -8120,7 +8120,7 @@
           "date": "2026-10-23",
           "rate": 4.3108,
           "meeting": "2027-02-04",
-          "cumulative_bp": 57.7,
+          "cumulative_bp": 57.6,
           "change_bp": 21.3
         },
         {
@@ -8136,7 +8136,7 @@
           "date": "2026-10-23",
           "rate": 4.6169,
           "meeting": "2027-04-29",
-          "cumulative_bp": 88.3,
+          "cumulative_bp": 88.2,
           "change_bp": 16.7
         },
         {
@@ -8363,15 +8363,21 @@
     "revised_values": [
       {
         "date": "2026-10",
+        "field": "expected_rate",
+        "from": 4.0,
+        "to": 3.99
+      },
+      {
+        "date": "2026-10",
         "field": "ois_3m",
-        "from": 3.98,
-        "to": 3.97
+        "from": 3.97,
+        "to": 3.99
       },
       {
         "date": "2026-10",
         "field": "ois_2y",
-        "from": 4.69,
-        "to": 4.65
+        "from": 4.65,
+        "to": 4.68
       }
     ],
     "has_changes": true

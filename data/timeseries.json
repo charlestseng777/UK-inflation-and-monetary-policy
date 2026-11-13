@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T05:14:54+00:00",
+  "generated_at": "2026-11-13T05:14:31+00:00",
   "start": "2015-01",
   "observations": [
     {
@@ -8631,7 +8631,7 @@
       "energy_cpi": 13.81,
       "alcohol_tobacco_cpi": 2.7,
       "wage_growth": 3.7,
-      "gdp_growth": 1.98,
+      "gdp_growth": 1.88,
       "policy_rate": 3.75,
       "expected_rate": 3.8,
       "ois_m1": 3.73,
@@ -8673,7 +8673,7 @@
         "energy_cpi": 3.94,
         "alcohol_tobacco_cpi": 0.2,
         "wage_growth": 0.1,
-        "gdp_growth": 0.2,
+        "gdp_growth": 0.1,
         "policy_rate": 0.0,
         "expected_rate": -0.04,
         "ois_3m": 0.02,
@@ -8693,7 +8693,7 @@
       "energy_cpi": 17.87,
       "alcohol_tobacco_cpi": 2.5,
       "wage_growth": null,
-      "gdp_growth": null,
+      "gdp_growth": 2.08,
       "policy_rate": 3.75,
       "expected_rate": 3.96,
       "ois_m1": 3.76,
@@ -8735,7 +8735,7 @@
         "energy_cpi": 4.06,
         "alcohol_tobacco_cpi": -0.2,
         "wage_growth": null,
-        "gdp_growth": null,
+        "gdp_growth": 0.2,
         "policy_rate": 0.0,
         "expected_rate": 0.16,
         "ois_3m": 0.09,
@@ -8819,12 +8819,12 @@
       "wage_growth": null,
       "gdp_growth": null,
       "policy_rate": 4.0,
-      "expected_rate": 4.14,
-      "ois_m1": 4.0,
-      "ois_m2": 4.07,
-      "pricing_bp": 13.8,
-      "ois_3m": 4.1,
-      "ois_2y": 4.67,
+      "expected_rate": 4.17,
+      "ois_m1": 4.01,
+      "ois_m2": 4.09,
+      "pricing_bp": 17.3,
+      "ois_3m": 4.11,
+      "ois_2y": 4.72,
       "contributions": {
         "services": null,
         "core_goods": null,
@@ -8861,12 +8861,12 @@
         "wage_growth": null,
         "gdp_growth": null,
         "policy_rate": 0.25,
-        "expected_rate": 0.14,
-        "ois_3m": 0.09,
-        "ois_2y": 0.03
+        "expected_rate": 0.17,
+        "ois_3m": 0.1,
+        "ois_2y": 0.08
       },
       "real_rate": null,
-      "expected_gap": 0.14
+      "expected_gap": 0.17
     }
   ]
 }

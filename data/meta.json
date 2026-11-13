@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T05:14:54+00:00",
+  "generated_at": "2026-11-13T05:14:31+00:00",
   "latest_month": "2026-09",
   "latest": {
     "headline_cpi": 3.5,
@@ -8,7 +8,7 @@
     "policy_rate": 3.75,
     "real_rate": 0.25,
     "wage_growth": null,
-    "gdp_growth": null,
+    "gdp_growth": 2.08,
     "expected_rate": 3.96,
     "ois_3m": 3.88,
     "ois_2y": 4.65
@@ -22,7 +22,7 @@
     "energy_cpi": 4.06,
     "alcohol_tobacco_cpi": -0.2,
     "wage_growth": null,
-    "gdp_growth": null,
+    "gdp_growth": 0.2,
     "policy_rate": 0.0,
     "expected_rate": 0.16,
     "ois_3m": 0.09,
@@ -7580,30 +7580,30 @@
         "published": "2026-09-29T07:00:00+00:00"
       },
       {
-        "title": "BoE's Taylor casts doubt on practicality of single rate hike",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPY1c3VlVkOTVNNzVxREJXQ2lpd01YNUhzTGYyLWZWM3VGd2ZMUVdHc1QwQ3Z6NmZLWU1KTVRaYVFwQ01iQzdjT3RsQ3g5T2tfcXltdEtBQU9EMFlqem1UaWFpMEc5VUYwc2MxLXhTVUJJY0xqYjkzdnd4aE5wVjl3a2ZNWkFYYVVtenlJNTBsYmpfT1FkcHBFSi1FLTU5V3M?oc=5",
-        "source": "Reuters",
-        "published": "2026-09-29T07:00:00+00:00"
-      },
-      {
         "title": "Bank of England policymaker says raising interest rates ‘not compelling’",
         "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOclF0VmRRcXZNblZoRDhXS3Ruc3F5UTRLTUwtWlBycGhiRERRajRMejZaeWJyUWZnQmtHRDVCM05lS3BHM2NtelhaWDF6LThyX0hZQnREUXlMQ0xNRnN5RTdxdGlkMEpkQ1ZLRnc2a3ZJd0NTOHFobHF3LXZCYlNJZ1lmS2U4Zl9OQ3pRbC1ySQ?oc=5",
         "source": "Yahoo Finance UK",
+        "published": "2026-09-29T07:00:00+00:00"
+      },
+      {
+        "title": "BoE's Taylor casts doubt on practicality of single rate hike",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPY1c3VlVkOTVNNzVxREJXQ2lpd01YNUhzTGYyLWZWM3VGd2ZMUVdHc1QwQ3Z6NmZLWU1KTVRaYVFwQ01iQzdjT3RsQ3g5T2tfcXltdEtBQU9EMFlqem1UaWFpMEc5VUYwc2MxLXhTVUJJY0xqYjkzdnd4aE5wVjl3a2ZNWkFYYVVtenlJNTBsYmpfT1FkcHBFSi1FLTU5V3M?oc=5",
+        "source": "Reuters",
         "published": "2026-09-29T07:00:00+00:00"
       }
     ],
     "Andrew Bailey": [
       {
         "title": "Warning for millions of borrowers that Bank of England rates could hit 5%",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPaVc1T0NMaEVmbVlOOXIyTWt1TjZ2OTEtZG1xaXZ0ZUF2VzhuRl9ELTVVNTU5d2JmcWl6TTNHdHFZb1g2dk1wS1duMTNjU2N3YmRHb2FNR25MT1FNd3drMEoyYWE2QmdLb1N1QThnRVNzQ3hzdWtld1pReWFKYmJHZ0tSMEFhY2pXZFZtZ25B?oc=5",
-        "source": "AOL.co.uk",
-        "published": "2026-11-11T12:41:01+00:00"
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNWl9zQlZIeVBPUEhCSTN2ZW03Yy1CQVlGRWo2UEdMWm42cTFaSkFzV3lDWHpSQ2MwS0Y3Qy01Y3FPcjBPTW5sWHp2VkJaQmlQSDNVQWJJVk1kVm1EOU1SSl9Wbjd5YVhCZFNEQl9CZkV1eHZZTVFvRDFoSW8yOGlxVGtjTkwtQdIBiwFBVV95cUxOdU1fX0VsMXUxdWllRlZrMll3Ymw4NUFCSldsRmVGdHlsclRGcmFSYkFKMm9FRGJISVplTWhTYXlCblRCMjM5M0RZZkF4enNQcHg3VFpSRklLNXRjUTdFcHUtZUJmRV9XNWxJN2VhQk1JQ3BwNWxPUmx1dmQ2QjUzaVNFT09fb1Q0OVZB?oc=5",
+        "source": "The Mirror",
+        "published": "2026-11-11T12:41:00+00:00"
       },
       {
-        "title": "Warning for millions of borrowers that Bank of England rates could hit 5%",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNWl9zQlZIeVBPUEhCSTN2ZW03Yy1CQVlGRWo2UEdMWm42cTFaSkFzV3lDWHpSQ2MwS0Y3Qy01Y3FPcjBPTW5sWHp2VkJaQmlQSDNVQWJJVk1kVm1EOU1SSl9Wbjd5YVhCZFNEQl9CZkV1eHZZTVFvRDFoSW8yOGlxVGtjTkwtQdIBiwFBVV95cUxOdU1fX0VsMXUxdWllRlZrMll3Ymw4NUFCSldsRmVGdHlsclRGcmFSYkFKMm9FRGJISVplTWhTYXlCblRCMjM5M0RZZkF4enNQcHg3VFpSRklLNXRjUTdFcHUtZUJmRV9XNWxJN2VhQk1JQ3BwNWxPUmx1dmQ2QjUzaVNFT09fb1Q0OVZB?oc=5",
-        "source": "Mirror",
-        "published": "2026-11-11T12:41:00+00:00"
+        "title": "Andrew Bailey’s Bank of England Will Have to Grapple With Crude Economics",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVTlWRHE2VmhNY2FuNjFDNkNMUWp5LXZwUmlXdjJha0J3ZVpKZ2RHNTZoeVk1amdYNkExMWR1R2RnOUFmTml2REplRWxvMF96T3lkX2lkUUdfZzJTRUVZVncwZDBBWTUtMkV4dkVEbHZMeXNEYjJfUUo3NlhPYUZ1aWNPd0ZaSW5XNlBWOEFyZkZaOFloRmhzMjkwbW5kZDB3UGtFb1BySmVHMWNLSk92VWg0LUpwNnRKNXR3MW5ITzhxOXhFc0E?oc=5",
+        "source": "Bloomberg.com",
+        "published": "2026-11-11T05:26:30+00:00"
       },
       {
         "title": "UK inflation to overshoot Bank of England target for next 4 years, think-tank forecasts",
@@ -7664,28 +7664,28 @@
         "published": "2026-11-11T12:18:33+00:00"
       },
       {
+        "title": "Young people in UK hit by ‘low-gear economy’, warns Bank of England deputy",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQQXFuSUdsX29TZTJONVlLWi1nS3U4aTA5STN4SU9zMmF5SVZxd3ByWHBWSksxdWpySUlYdHBROWFVV1BndEZodXNRY1ZIdmJVTFp2bS1BS2dSSjVINTRrOXkyLWpJWXBSUUh0b18wOWdMdjMzVXhaU3VGWWhnVGRGaDF1ZlM3bGZLbW02RU9qeEdGN3hjMGNIV3VyWkFOUnhmQUYyV3lTNmRLdw?oc=5",
+        "source": "The Guardian",
+        "published": "2026-11-11T11:45:00+00:00"
+      },
+      {
         "title": "Base Rate Rises Are in No-One’s Interest",
         "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1hR2szWEpLRUF4MVhNM3EwV1RHVUotYlBPbnRnelhEV1lEb05NdTRGZ2JNdXhtUEpoakVSMG1YTy1vZDhUb3dOVWxHZkpoVDRmckFTQjNkcTQ3YkJ3ZGMtN21xY0RUYjRKLXZRSndSVQ?oc=5",
         "source": "https://politicsuk.com/",
         "published": "2026-11-11T08:01:44+00:00"
       },
       {
+        "title": "Andrew Bailey’s Bank of England Will Have to Grapple With Crude Economics",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVTlWRHE2VmhNY2FuNjFDNkNMUWp5LXZwUmlXdjJha0J3ZVpKZ2RHNTZoeVk1amdYNkExMWR1R2RnOUFmTml2REplRWxvMF96T3lkX2lkUUdfZzJTRUVZVncwZDBBWTUtMkV4dkVEbHZMeXNEYjJfUUo3NlhPYUZ1aWNPd0ZaSW5XNlBWOEFyZkZaOFloRmhzMjkwbW5kZDB3UGtFb1BySmVHMWNLSk92VWg0LUpwNnRKNXR3MW5ITzhxOXhFc0E?oc=5",
+        "source": "Bloomberg.com",
+        "published": "2026-11-11T05:26:30+00:00"
+      },
+      {
         "title": "Officials From Major Central Banks Signal More Rate Increases",
         "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQck56UmRTZHhldlIwNFBWdEd3eHRjVTBqY0RWcnRZV2FRNEZEQ0JWdlVJdzJ2cUFTbXZjQWNybkROVkxWbGJoQ2tKWWNNNFF1ZlNTYVdodDF5d2RtYmw4WDd2Szk4SHVyazQ5dF9FajB6Skh0R1IyQlZjWTFBQU9aOS1VZzB3Tll3cXgtVFRKQ0NSdks4T0ZPV245S3hXQ29aWFY4eFJVYmFVVGZpRWpuT2Z3?oc=5",
         "source": "Bloomberg.com",
         "published": "2026-11-11T00:01:00+00:00"
-      },
-      {
-        "title": "BOE's Lombardelli Flags Persistent Inflation Risk, Keeps December and February Hike on Table",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE14TngxNm54aVFiWFRpZ29vX2k3TVNRVVh4aHgtX3BDekpKbXN3cEdPZHJ1dE9WSFprcWozMWRabW4zUUZYdFY5SFpfYkdkZ1h1dl9yYjZ3X3RyVlZpWjBTbXBDLWY2ZXdkNG9wcmNFdm1aZTdOLWc?oc=5",
-        "source": "BigGo Finance",
-        "published": "2026-11-10T22:59:28+00:00"
-      },
-      {
-        "title": "BoE's Lombardelli sees risk that persistent inflation will crystallise",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPUWpUdzlaQTY1QnBOX2ZYOVFCTW9yMXZIOS1KanNSZ0VBazRZQnlTQXlrTFprMWgxYk1pYkNMMTQwcjVXSXptTmJnNjljMGg0WElDN3FuWmZtVHRsRWhwTVFOWURYaUM4UlNGN0YyYTBjNlBHUnNia2MzZTRtU1R3QWR1dnZHOTVDRTJNWkRVQjFNWlEzVTJrVk9jRlRWXzZiVEVyT1F6eUZuRXlGWGxXR3hBNmM?oc=5",
-        "source": "Reuters",
-        "published": "2026-11-10T22:21:51+00:00"
       }
     ],
     "Dave Ramsden": [
@@ -7760,6 +7760,12 @@
         "published": "2026-11-12T00:25:00+00:00"
       },
       {
+        "title": "BoE’s Greene says it is appropriate to proactively tighten our monetary policy stance",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPNjRfdmU1RU9icnZKREo3WUpJbFBkcGpvVlEwZ2VaQ3dvdjdjRVBpWXdVSzVkSTRaUXI1eFZiNzV0d1NadjFoQWxrX1dFZjZ1T19KdjhNd25QWWs1dk5xRUdHVmlTSFpLaW91dS11NlBrM3l6X09JOFBPSlVaV2xLZ1o3YnNmZ2dtQTdxYnRJa0JTM2c5b3ByWHItT1pSb0RpdHNET2FEbUJFb3NDcmVtVHF4dERqTktNSzgxWXpqQ2hNQ3FNbEE?oc=5",
+        "source": "FXStreet",
+        "published": "2026-11-11T23:38:09+00:00"
+      },
+      {
         "title": "Bank of England’s Greene calls for proactive policy tightening",
         "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOeHlEQk1jTGVWT2pzVjN4dVRTVndNbmpiOTZNT2hDbkV6NzlGc1Bnbk5KdVB0UnNaWTY1V2s3VFpSQkhEMkFneWQzUDVkQlVaSnlfcGlxWU84bmVBMVl6TENhRHRwTUhNYmtzLTRGekp2Smk2LTc1Wm1aWGFRZWhCVHAydzd2a3ZXcHJFdGRfc0VpaXYyYVh6ZFdQX1AyWFFqODlaUFhoeVFPMno2bTd0NUlkRThDYkxJLXc?oc=5",
         "source": "Investing.com",
@@ -7776,12 +7782,6 @@
         "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNGlFZWkzcE1CM094X3F2cnFOM19ZQlhOMVlLM0tZa3d4dDRwQlJHdlZwSmszN1NzYm02YkFyQ1ZhUFN3dUhiNndUZHZTd1BfQUFtSV9jdXZwRmE0eFltbmNLU3cwU2l4NnMwRG1sU29NQVFzM0lNSVFpdUxFbFBMZ2o4d3dDS0Q1UmRWUE9hOERrRE5ocWFueWI0cGpDQ0VMcjVGTVZtc2V5X3QyQ0hSNVVQSXlCbmlkZ0pz?oc=5",
         "source": "Reuters",
         "published": "2026-11-11T18:43:52+00:00"
-      },
-      {
-        "title": "BOE’s Greene Says UK Labor Market Is Not as Weak as Thought",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQTFFyejhpTDYyRW1wb083ZVVPZkIzSk1ab0xMM281ZjJQcmpCYURXNm1BdDFEM1g0RWdVdHZUZ1FxRk1HLWZYSVlRc0dOZVpqaUd1MjhpNEtkc01ORkM2UmlrQThVRDdwNWxPR1BzMklQaGtMZG1DV3ZDV2xzN1VLejl2Y2NKczhhYVlPbVpJOTV5a3dRMXNibVBGc0I5OU5BUFhnRHdaZzd0b0d0OGVN?oc=5",
-        "source": "Bloomberg.com",
-        "published": "2026-10-20T07:00:00+00:00"
       }
     ],
     "Sarah Breeden": [
@@ -7851,12 +7851,6 @@
   },
   "upcoming_releases": [
     {
-      "id": "gdp",
-      "label": "GDP growth",
-      "source": "ONS",
-      "date": "2026-11-12"
-    },
-    {
       "id": "wages",
       "label": "Wage growth",
       "source": "ONS",
@@ -7869,6 +7863,12 @@
       "date": "2026-11-18"
     },
     {
+      "id": "gdp",
+      "label": "GDP growth",
+      "source": "ONS",
+      "date": "2026-12-11"
+    },
+    {
       "id": "boe_rate",
       "label": "BoE policy decision",
       "source": "Bank of England",
@@ -7876,44 +7876,44 @@
     }
   ],
   "synthetic_mpc_curve": {
-    "as_of": "2026-11-10",
-    "spread_bps": 1.57,
+    "as_of": "2026-11-11",
+    "spread_bps": 1.58,
     "spread_method": "holt_linear_trend",
     "meetings": [
       {
         "meeting": "2026-12-17",
-        "tenor_days": 37,
-        "synthetic_ois": 4.0085,
-        "implied_sonia": 4.1571,
-        "implied_rate": 4.1728,
-        "pricing_bp": 17.3,
+        "tenor_days": 36,
+        "synthetic_ois": 4.0099,
+        "implied_sonia": 4.17,
+        "implied_rate": 4.1859,
+        "pricing_bp": 18.6,
         "direction": "hike",
         "full_steps_priced": 0,
-        "probability_next_step_pct": 69.1,
+        "probability_next_step_pct": 74.3,
         "source": "boe_ois_curve"
       },
       {
         "meeting": "2027-02-04",
-        "tenor_days": 86,
-        "synthetic_ois": 4.0932,
-        "implied_sonia": 4.3339,
-        "implied_rate": 4.3496,
-        "pricing_bp": 35.0,
+        "tenor_days": 85,
+        "synthetic_ois": 4.1022,
+        "implied_sonia": 4.3506,
+        "implied_rate": 4.3665,
+        "pricing_bp": 36.6,
         "direction": "hike",
         "full_steps_priced": 1,
-        "probability_next_step_pct": 39.8,
+        "probability_next_step_pct": 46.6,
         "source": "boe_ois_curve"
       },
       {
         "meeting": "2027-03-18",
-        "tenor_days": 128,
-        "synthetic_ois": 4.1722,
-        "implied_sonia": 4.4779,
-        "implied_rate": 4.4936,
-        "pricing_bp": 49.4,
+        "tenor_days": 127,
+        "synthetic_ois": 4.1844,
+        "implied_sonia": 4.5068,
+        "implied_rate": 4.5227,
+        "pricing_bp": 52.3,
         "direction": "hike",
-        "full_steps_priced": 1,
-        "probability_next_step_pct": 97.5,
+        "full_steps_priced": 2,
+        "probability_next_step_pct": 9.1,
         "source": "boe_ois_curve"
       }
     ]
@@ -8032,220 +8032,228 @@
     }
   ],
   "rates": {
-    "latest_daily": "2026-11-10",
+    "latest_daily": "2026-11-11",
     "snapshot": {
       "bank_rate": {
         "value": 4.0,
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "chg_1w": 0.25,
         "chg_1m": 0.25
       },
       "be_10y": {
-        "value": 3.137,
-        "date": "2026-11-10",
-        "chg_1w": -0.112,
-        "chg_1m": -0.274
+        "value": 3.189,
+        "date": "2026-11-11",
+        "chg_1w": -0.046,
+        "chg_1m": -0.223
       },
       "be_5y": {
-        "value": 3.305,
-        "date": "2026-11-10",
-        "chg_1w": -0.165,
-        "chg_1m": -0.394
+        "value": 3.399,
+        "date": "2026-11-11",
+        "chg_1w": -0.045,
+        "chg_1m": -0.305
       },
       "be_5y5y": {
-        "value": 2.97,
-        "date": "2026-11-10",
-        "chg_1w": -0.059,
-        "chg_1m": -0.153
+        "value": 2.98,
+        "date": "2026-11-11",
+        "chg_1w": -0.045,
+        "chg_1m": -0.141
       },
       "gilt_10y": {
-        "value": 5.19,
-        "date": "2026-11-10",
-        "chg_1w": -0.041,
-        "chg_1m": -0.255
+        "value": 5.211,
+        "date": "2026-11-11",
+        "chg_1w": 0.065,
+        "chg_1m": -0.218
       },
       "gilt_2y": {
-        "value": 4.662,
-        "date": "2026-11-10",
-        "chg_1w": 0.018,
-        "chg_1m": -0.025
+        "value": 4.711,
+        "date": "2026-11-11",
+        "chg_1w": 0.133,
+        "chg_1m": 0.016
       },
       "gilt_30y": {
-        "value": 5.645,
-        "date": "2026-11-10",
-        "chg_1w": -0.049,
-        "chg_1m": -0.363
+        "value": 5.65,
+        "date": "2026-11-11",
+        "chg_1w": 0.024,
+        "chg_1m": -0.319
       },
       "gilt_5y": {
-        "value": 4.838,
-        "date": "2026-11-10",
-        "chg_1w": -0.011,
-        "chg_1m": -0.144
+        "value": 4.879,
+        "date": "2026-11-11",
+        "chg_1w": 0.101,
+        "chg_1m": -0.103
       },
       "gilt_ois_2y": {
-        "value": -0.6,
-        "date": "2026-11-10",
-        "chg_1w": -2.9,
-        "chg_1m": -5.4
+        "value": -0.5,
+        "date": "2026-11-11",
+        "chg_1w": -5.9,
+        "chg_1m": -1.6
       },
       "ois_1y": {
-        "value": 4.499,
-        "date": "2026-11-10",
-        "chg_1w": 0.076,
-        "chg_1m": 0.116
+        "value": 4.537,
+        "date": "2026-11-11",
+        "chg_1w": 0.181,
+        "chg_1m": 0.119
       },
       "ois_2y": {
-        "value": 4.668,
-        "date": "2026-11-10",
-        "chg_1w": 0.048,
-        "chg_1m": 0.029
+        "value": 4.717,
+        "date": "2026-11-11",
+        "chg_1w": 0.193,
+        "chg_1m": 0.033
       },
       "priced_12m": {
-        "value": 85.4,
-        "date": "2026-11-10",
-        "chg_1w": -20.3,
-        "chg_1m": -25.2
+        "value": 92.1,
+        "date": "2026-11-11",
+        "chg_1w": -2.5,
+        "chg_1m": -23.0
       },
       "real_10y": {
-        "value": 2.052,
-        "date": "2026-11-10",
-        "chg_1w": 0.07,
-        "chg_1m": 0.018
+        "value": 2.022,
+        "date": "2026-11-11",
+        "chg_1w": 0.111,
+        "chg_1m": 0.006
       },
       "s2s10": {
-        "value": 52.7,
-        "date": "2026-11-10",
-        "chg_1w": -6.1,
-        "chg_1m": -23.1
+        "value": 50.0,
+        "date": "2026-11-11",
+        "chg_1w": -6.8,
+        "chg_1m": -23.4
       },
       "s5s30": {
-        "value": 80.7,
-        "date": "2026-11-10",
-        "chg_1w": -3.7,
-        "chg_1m": -21.9
+        "value": 77.1,
+        "date": "2026-11-11",
+        "chg_1w": -7.7,
+        "chg_1m": -21.6
       },
       "sonia": {
         "value": 3.984,
-        "date": "2026-11-10",
-        "chg_1w": 0.25,
-        "chg_1m": 0.251
+        "date": "2026-11-11",
+        "chg_1w": 0.251,
+        "chg_1m": 0.252
       }
     },
     "ois_curve": {
-      "as_of": "2026-11-10",
-      "sonia": 3.9842,
+      "as_of": "2026-11-11",
+      "sonia": 3.9837,
       "bank_rate": 4.0,
       "points": [
         {
           "tenor": "1M",
-          "rate": 3.99,
-          "vs_sonia_bp": 0.6
+          "rate": 3.992,
+          "vs_sonia_bp": 0.8
         },
         {
           "tenor": "3M",
-          "rate": 4.1,
-          "vs_sonia_bp": 11.6
+          "rate": 4.111,
+          "vs_sonia_bp": 12.8
         },
         {
           "tenor": "6M",
-          "rate": 4.267,
-          "vs_sonia_bp": 28.3
+          "rate": 4.287,
+          "vs_sonia_bp": 30.3
         },
         {
           "tenor": "1Y",
-          "rate": 4.499,
-          "vs_sonia_bp": 51.5
+          "rate": 4.537,
+          "vs_sonia_bp": 55.3
         },
         {
           "tenor": "18M",
-          "rate": 4.621,
-          "vs_sonia_bp": 63.7
+          "rate": 4.668,
+          "vs_sonia_bp": 68.5
         },
         {
           "tenor": "2Y",
-          "rate": 4.668,
-          "vs_sonia_bp": 68.4
+          "rate": 4.717,
+          "vs_sonia_bp": 73.3
         },
         {
           "tenor": "3Y",
-          "rate": 4.668,
-          "vs_sonia_bp": 68.4
+          "rate": 4.707,
+          "vs_sonia_bp": 72.3
         }
       ]
     },
     "mpc_ois": {
       "source": "refinitiv",
-      "reference_sonia": 3.9842,
+      "reference_sonia": 3.9837,
       "bank_rate": 4.0,
       "meetings": [
         {
           "ric": "GBPMPCOISM1=",
-          "date": "2026-11-11",
-          "rate": 4.178,
+          "date": "2026-11-12",
+          "rate": 4.192,
           "meeting": "2026-12-17",
-          "cumulative_bp": 19.4,
-          "change_bp": 19.4
+          "cumulative_bp": 20.8,
+          "change_bp": 20.8
         },
         {
           "ric": "GBPMPCOISM2=",
-          "date": "2026-11-11",
-          "rate": 4.365,
+          "date": "2026-11-12",
+          "rate": 4.38,
           "meeting": "2027-02-04",
-          "cumulative_bp": 38.1,
-          "change_bp": 18.7
+          "cumulative_bp": 39.6,
+          "change_bp": 18.8
         },
         {
           "ric": "GBPMPCOISM3=",
-          "date": "2026-11-11",
-          "rate": 4.509,
+          "date": "2026-11-12",
+          "rate": 4.532,
           "meeting": "2027-03-18",
-          "cumulative_bp": 52.5,
-          "change_bp": 14.4
+          "cumulative_bp": 54.8,
+          "change_bp": 15.2
         },
         {
           "ric": "GBPMPCOISM4=",
-          "date": "2026-11-11",
-          "rate": 4.665,
+          "date": "2026-11-12",
+          "rate": 4.69,
           "meeting": "2027-04-29",
-          "cumulative_bp": 68.1,
-          "change_bp": 15.6
+          "cumulative_bp": 70.6,
+          "change_bp": 15.8
         },
         {
           "ric": "GBPMPCOISM5=",
-          "date": "2026-11-11",
-          "rate": 4.738,
+          "date": "2026-11-12",
+          "rate": 4.778,
           "meeting": "2027-06-17",
-          "cumulative_bp": 75.4,
-          "change_bp": 7.3
+          "cumulative_bp": 79.4,
+          "change_bp": 8.8
         },
         {
           "ric": "GBPMPCOISM6=",
-          "date": "2026-11-11",
-          "rate": 4.819,
+          "date": "2026-11-12",
+          "rate": 4.872,
           "meeting": "2027-07-29",
-          "cumulative_bp": 83.5,
-          "change_bp": 8.1
+          "cumulative_bp": 88.8,
+          "change_bp": 9.4
         },
         {
           "ric": "GBPMPCOISM7=",
-          "date": "2026-11-11",
-          "rate": 4.836,
+          "date": "2026-11-12",
+          "rate": 4.913,
           "meeting": "2027-09-16",
-          "cumulative_bp": 85.2,
-          "change_bp": 1.7
+          "cumulative_bp": 92.9,
+          "change_bp": 4.1
         },
         {
           "ric": "GBPMPCOISM8=",
-          "date": "2026-11-11",
-          "rate": 4.89,
+          "date": "2026-11-12",
+          "rate": 4.934,
           "meeting": "2027-11-04",
-          "cumulative_bp": 90.6,
-          "change_bp": 5.4
+          "cumulative_bp": 95.0,
+          "change_bp": 2.1
         }
       ]
     },
     "auctions": {
       "recent": [
+        {
+          "date": "2026-11-13",
+          "name": "4 1/8% Treasury Gilt 2033",
+          "type": "Outright",
+          "size_bn": 4.0,
+          "yield": 4.993188,
+          "price": 95.34
+        },
         {
           "date": "2026-11-12",
           "name": "0 1/8% Treasury Gilt 2028",
@@ -8397,18 +8405,10 @@
           "size_bn": 5.31,
           "yield": 4.612607,
           "price": 100.05
-        },
-        {
-          "date": "2026-07-29",
-          "name": "0 1/8% Treasury Gilt 2028",
-          "type": "Outright",
-          "size_bn": 0.75,
-          "yield": 4.089609,
-          "price": 94.26
         }
       ],
-      "last_3m_bn": 54.2,
-      "last_3m_count": 18
+      "last_3m_bn": 58.2,
+      "last_3m_count": 19
     },
     "notes": [],
     "next_meetings": [
@@ -8441,16 +8441,34 @@
     "added_months": [],
     "revised_values": [
       {
+        "date": "2026-08",
+        "field": "gdp_growth",
+        "from": 1.98,
+        "to": 1.88
+      },
+      {
+        "date": "2026-09",
+        "field": "gdp_growth",
+        "from": null,
+        "to": 2.08
+      },
+      {
+        "date": "2026-11",
+        "field": "expected_rate",
+        "from": 4.14,
+        "to": 4.17
+      },
+      {
         "date": "2026-11",
         "field": "ois_3m",
-        "from": 4.07,
-        "to": 4.1
+        "from": 4.1,
+        "to": 4.11
       },
       {
         "date": "2026-11",
         "field": "ois_2y",
-        "from": 4.54,
-        "to": 4.67
+        "from": 4.67,
+        "to": 4.72
       }
     ],
     "has_changes": true

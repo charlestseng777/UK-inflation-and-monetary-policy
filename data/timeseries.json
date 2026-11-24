@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T05:14:49+00:00",
+  "generated_at": "2026-11-24T05:14:16+00:00",
   "start": "2015-01",
   "observations": [
     {
@@ -8819,12 +8819,12 @@
       "wage_growth": null,
       "gdp_growth": null,
       "policy_rate": 4.0,
-      "expected_rate": 4.21,
+      "expected_rate": 4.22,
       "ois_m1": 3.98,
-      "ois_m2": 4.11,
-      "pricing_bp": 20.7,
-      "ois_3m": 4.15,
-      "ois_2y": 4.75,
+      "ois_m2": 4.12,
+      "pricing_bp": 21.7,
+      "ois_3m": 4.14,
+      "ois_2y": 4.65,
       "contributions": {
         "services": null,
         "core_goods": null,
@@ -8861,12 +8861,12 @@
         "wage_growth": null,
         "gdp_growth": null,
         "policy_rate": 0.25,
-        "expected_rate": 0.21,
-        "ois_3m": 0.14,
-        "ois_2y": 0.11
+        "expected_rate": 0.22,
+        "ois_3m": 0.13,
+        "ois_2y": 0.01
       },
       "real_rate": null,
-      "expected_gap": 0.21
+      "expected_gap": 0.22
     }
   ]
 }
